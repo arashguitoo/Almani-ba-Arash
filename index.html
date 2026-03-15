@@ -1,0 +1,1654 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lern Deutsch mit Arash</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold:#D4A843; --gold-lt:#F0C96A; --dark:#0E0E14; --dark2:#16161F;
+      --card:#1E1E2C; --border:#2E2E42; --text:#EDE9DD; --muted:#8A8499;
+      --green:#4CAF82; --blue:#5B9BD5; --red:#E05C5C; --purple:#9B6DD4;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Vazirmatn',sans-serif;background:var(--dark);color:var(--text);min-height:100vh;overflow-x:hidden}
+    header{background:linear-gradient(135deg,#1a1028 0%,#0e1a2e 100%);border-bottom:1px solid var(--border);padding:18px 20px 14px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 4px 24px rgba(0,0,0,.5)}
+    .logo{display:flex;align-items:center;gap:10px}
+    .logo-icon{width:40px;height:40px;background:linear-gradient(135deg,var(--gold),var(--gold-lt));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px}
+    .logo-text{font-size:18px;font-weight:700;background:linear-gradient(90deg,var(--gold),var(--gold-lt));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .logo-sub{font-size:11px;color:var(--muted);display:block;font-weight:300}
+    main{padding:20px 16px 100px;max-width:680px;margin:0 auto}
+    section{display:none}
+    section.active{display:block}
+    .hero{text-align:center;padding:40px 20px 32px}
+    .hero h1{font-size:32px;font-weight:900;line-height:1.3;background:linear-gradient(135deg,var(--gold-lt),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px}
+    .hero p{color:var(--muted);font-size:15px;line-height:1.8;max-width:400px;margin:0 auto 28px}
+    .path-list{display:flex;flex-direction:column;gap:14px}
+    .path-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px 20px;cursor:pointer;transition:all .25s;display:flex;align-items:center;gap:16px;text-align:right}
+    .path-card:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 8px 28px rgba(212,168,67,.18)}
+    .path-card.locked{opacity:.5;cursor:not-allowed}
+    .path-card.locked:hover{transform:none;border-color:var(--border);box-shadow:none}
+    .card-num{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+    .step0 .card-num{background:linear-gradient(135deg,#2a4a7f,#1a2d55)}
+    .step1 .card-num{background:linear-gradient(135deg,#3a2a6f,#231a4f)}
+    .step2 .card-num{background:linear-gradient(135deg,#1a4a3f,#0f2d27)}
+    .step3 .card-num{background:linear-gradient(135deg,#4a2a1f,#2d1a0f)}
+    .card-info{flex:1}
+    .card-title{font-weight:700;font-size:16px;margin-bottom:4px}
+    .card-desc{font-size:13px;color:var(--muted);line-height:1.6}
+    .card-arrow{color:var(--gold);font-size:20px;flex-shrink:0}
+    .badge-new{display:inline-block;background:var(--green);color:#000;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;margin-right:8px}
+    .progress-bar-wrap{background:var(--border);border-radius:4px;height:6px;margin-bottom:4px;overflow:hidden}
+    .progress-bar-fill{height:100%;background:linear-gradient(90deg,var(--purple),#c9a0ff);border-radius:4px}
+    .lesson-header{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+    .back-btn{background:var(--card);border:1px solid var(--border);color:var(--text);width:36px;height:36px;border-radius:10px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .lesson-title{font-size:20px;font-weight:700}
+    .lesson-subtitle{font-size:13px;color:var(--muted)}
+    .sub-tabs{display:flex;gap:8px;margin-bottom:20px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+    .sub-tabs::-webkit-scrollbar{display:none}
+    .sub-tab{background:var(--card);border:1px solid var(--border);color:var(--muted);padding:8px 16px;border-radius:20px;font-family:'Vazirmatn',sans-serif;font-size:13px;cursor:pointer;white-space:nowrap;transition:all .2s;flex-shrink:0}
+    .sub-tab.active,.sub-tab:hover{background:var(--purple);color:#fff;border-color:var(--purple);font-weight:600}
+    .block{margin-bottom:24px}
+    .block-label{font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;margin-bottom:10px}
+    .info-box{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 18px;line-height:1.9;font-size:14.5px}
+    .info-box.highlight{border-color:var(--gold);background:rgba(212,168,67,.08)}
+    .tip-box{background:rgba(91,155,213,.1);border:1px solid rgba(91,155,213,.3);border-radius:14px;padding:14px 18px;font-size:14px;line-height:1.9}
+    .pronoun-table{width:100%;border-collapse:collapse;background:var(--card);border-radius:14px;overflow:hidden;border:1px solid var(--border)}
+    .pronoun-table th{background:rgba(212,168,67,.15);padding:10px 14px;font-size:12px;font-weight:700;color:var(--gold);text-align:right;border-bottom:1px solid var(--border)}
+    .pronoun-table td{padding:10px 14px;font-size:14px;border-bottom:1px solid var(--border)}
+    .pronoun-table tr:last-child td{border-bottom:none}
+    .pronoun-table tr:hover td{background:rgba(255,255,255,.03)}
+    .pronoun-de{font-family:'Playfair Display',serif;font-weight:700;color:var(--gold-lt);direction:ltr;display:inline-block}
+    .pronoun-fa{color:var(--muted);font-size:13px}
+    .note-inline{font-size:11px;background:rgba(155,109,212,.2);color:#c9a0ff;padding:2px 8px;border-radius:10px;margin-right:6px}
+    .conj-wrap{margin-bottom:16px}
+    .conj-verb-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--gold-lt);margin-bottom:2px;direction:ltr}
+    .conj-verb-fa{font-size:12px;color:var(--muted);margin-bottom:10px}
+    .conj-table{width:100%;border-collapse:collapse;background:var(--card);border-radius:12px;overflow:hidden;border:1px solid var(--border)}
+    .conj-table td{padding:9px 14px;font-size:13.5px;border-bottom:1px solid var(--border)}
+    .conj-table tr:last-child td{border-bottom:none}
+    .conj-pro{color:var(--muted);font-size:13px;direction:ltr}
+    .conj-form{font-family:'Playfair Display',serif;font-weight:700;color:var(--green);direction:ltr}
+    .conj-note{font-size:11px;color:var(--blue);margin-top:2px}
+    .conj-highlight td{background:rgba(76,175,130,.08)}
+    .dialogue{display:flex;flex-direction:column;gap:12px}
+    .bubble{border-radius:16px;padding:12px 16px;max-width:88%;font-size:14.5px;line-height:1.7}
+    .bubble.left{background:var(--card);border:1px solid var(--border);align-self:flex-start;border-bottom-right-radius:4px}
+    .bubble.right{background:rgba(155,109,212,.15);border:1px solid rgba(155,109,212,.3);align-self:flex-end;border-bottom-left-radius:4px;text-align:left;direction:ltr}
+    .bubble-name{font-size:11px;color:var(--gold);font-weight:700;margin-bottom:4px}
+    .bubble-de{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;direction:ltr}
+    .bubble-fa{font-size:12px;color:var(--muted);margin-top:3px}
+    .game-box{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px}
+    .game-title{font-size:14px;font-weight:700;color:var(--gold);margin-bottom:6px}
+    .game-desc{font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.7}
+    .sentence-target{background:var(--dark2);border-radius:10px;padding:12px 16px;font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.6}
+    .drop-zone{min-height:52px;background:var(--dark2);border:2px dashed var(--border);border-radius:12px;padding:10px 12px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px;transition:border-color .2s;direction:ltr}
+    .drop-zone.success{border-color:var(--green);background:rgba(76,175,130,.08)}
+    .drop-zone.error{border-color:var(--red);background:rgba(224,92,92,.08)}
+    .word-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;direction:ltr}
+    .chip{background:rgba(212,168,67,.15);border:1px solid rgba(212,168,67,.4);color:var(--gold-lt);padding:8px 14px;border-radius:20px;font-size:14px;cursor:pointer;font-family:'Playfair Display',serif;font-weight:700;transition:all .2s;user-select:none}
+    .chip:hover{background:rgba(212,168,67,.3)}
+    .chip.placed{opacity:.3;pointer-events:none}
+    .chip.in-drop{background:rgba(91,155,213,.2);border-color:rgba(91,155,213,.5);color:var(--blue);cursor:pointer}
+    .chip.in-drop:hover{background:rgba(91,155,213,.35)}
+    .game-feedback{font-size:14px;padding:10px 14px;border-radius:10px;margin-bottom:10px;display:none}
+    .game-feedback.show{display:block}
+    .game-feedback.ok{background:rgba(76,175,130,.15);border:1px solid rgba(76,175,130,.4);color:var(--green)}
+    .game-feedback.bad{background:rgba(224,92,92,.15);border:1px solid rgba(224,92,92,.4);color:var(--red)}
+    .game-btn-row{display:flex;gap:8px;flex-wrap:wrap}
+    .blank-sentence{font-size:18px;font-family:'Playfair Display',serif;direction:ltr;text-align:left;margin-bottom:14px;line-height:2;color:var(--text)}
+    .blank-input{background:var(--dark2);border:2px solid var(--border);color:var(--text);font-family:'Playfair Display',serif;font-size:16px;padding:6px 12px;border-radius:8px;width:130px;text-align:center;outline:none;transition:border-color .2s;direction:ltr}
+    .blank-input:focus{border-color:var(--gold)}
+    .blank-input.correct{border-color:var(--green);background:rgba(76,175,130,.1)}
+    .blank-input.wrong{border-color:var(--red);background:rgba(224,92,92,.1)}
+    .match-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .match-col-label{font-size:11px;font-weight:700;letter-spacing:1px;color:var(--gold);margin-bottom:8px;text-align:center}
+    .match-card{background:var(--dark2);border:2px solid var(--border);border-radius:12px;padding:12px 10px;text-align:center;cursor:pointer;transition:all .2s;font-size:14px;min-height:52px;display:flex;align-items:center;justify-content:center;margin-bottom:8px}
+    .match-card:hover{border-color:var(--gold)}
+    .match-card.selected{border-color:var(--purple);background:rgba(155,109,212,.15);color:#c9a0ff}
+    .match-card.matched{border-color:var(--green);background:rgba(76,175,130,.1);color:var(--green);pointer-events:none}
+    .match-card.wrong-shake{border-color:var(--red);animation:shake .3s ease}
+    .match-card-de{font-family:'Playfair Display',serif;font-weight:700;direction:ltr}
+    @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+    .quiz-box{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px 20px;text-align:center}
+    .quiz-question{font-size:20px;font-weight:900;margin-bottom:8px;font-family:'Playfair Display',serif;color:var(--gold-lt);direction:ltr}
+    .quiz-question-fa{font-size:13px;color:var(--muted);margin-bottom:20px;direction:rtl;font-family:'Vazirmatn',sans-serif}
+    .quiz-sub{font-size:13px;color:var(--muted);margin-bottom:24px}
+    .quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+    .quiz-opt{background:var(--dark2);border:2px solid var(--border);color:var(--text);border-radius:12px;padding:14px 10px;font-size:13px;cursor:pointer;transition:all .2s;font-family:'Vazirmatn',sans-serif}
+    .quiz-opt:hover{border-color:var(--gold)}
+    .quiz-opt.correct{border-color:var(--green);background:rgba(76,175,130,.15);color:var(--green)}
+    .quiz-opt.wrong{border-color:var(--red);background:rgba(224,92,92,.15);color:var(--red)}
+    .quiz-progress{height:6px;background:var(--border);border-radius:3px;margin-bottom:20px;overflow:hidden}
+    .quiz-progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-lt));border-radius:3px;transition:width .4s ease}
+    .quiz-score{font-size:40px;font-weight:900;color:var(--gold);margin-bottom:8px}
+    .gloss-search{width:100%;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 16px;color:var(--text);font-family:'Vazirmatn',sans-serif;font-size:14px;margin-bottom:20px;outline:none;direction:rtl}
+    .gloss-search:focus{border-color:var(--gold)}
+    .gloss-search::placeholder{color:var(--muted)}
+    .alpha-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+    .alpha-tab{background:var(--card);border:1px solid var(--border);color:var(--muted);padding:4px 10px;border-radius:8px;font-size:12px;cursor:pointer;font-family:'Playfair Display',serif;font-weight:700;transition:all .2s}
+    .alpha-tab.active,.alpha-tab:hover{background:var(--gold);color:#000;border-color:var(--gold)}
+    .gloss-section{margin-bottom:24px}
+    .gloss-letter{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:var(--gold);margin-bottom:10px}
+    .gloss-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 16px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .gloss-de{font-weight:700;font-size:15px;font-family:'Playfair Display',serif;direction:ltr}
+    .gloss-fa{font-size:14px;color:var(--gold-lt)}
+    .gloss-source{font-size:10px;color:var(--muted);background:var(--dark2);padding:2px 8px;border-radius:10px;white-space:nowrap}
+    .bottom-nav{position:fixed;bottom:0;left:0;right:0;background:rgba(14,14,20,.95);backdrop-filter:blur(16px);border-top:1px solid var(--border);display:flex;justify-content:space-around;padding:10px 0 16px;z-index:100}
+    .bnav-item{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;color:var(--muted);transition:color .2s;padding:0 16px;background:none;border:none;font-family:'Vazirmatn',sans-serif}
+    .bnav-item.active{color:var(--gold)}
+    .bnav-item span:first-child{font-size:22px}
+    .bnav-item span:last-child{font-size:10px}
+    .mt16{margin-top:16px}
+    .center{text-align:center}
+    .primary-btn{background:linear-gradient(135deg,var(--gold),var(--gold-lt));color:#000;border:none;border-radius:12px;padding:14px 28px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Vazirmatn',sans-serif;transition:opacity .2s;display:inline-block}
+    .primary-btn:hover{opacity:.85}
+    .sec-btn{background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:12px;padding:12px 20px;font-size:14px;cursor:pointer;font-family:'Vazirmatn',sans-serif;transition:all .2s}
+    .sec-btn:hover{border-color:var(--gold);color:var(--gold)}
+    .sound-rule{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px 16px;display:flex;gap:14px;align-items:flex-start;margin-bottom:12px}
+    .rule-de{background:linear-gradient(135deg,var(--gold),var(--gold-lt));color:#000;font-weight:900;font-size:15px;padding:6px 12px;border-radius:8px;min-width:52px;text-align:center;font-family:'Playfair Display',serif;flex-shrink:0}
+    .rule-fa{font-size:14px;line-height:1.8;color:var(--text)}
+    .rule-example{font-size:12px;color:var(--muted);margin-top:4px}
+    .rule-persian{color:var(--gold-lt);font-size:15px}
+    .alpha-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:10px}
+    .alpha-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 6px;text-align:center;cursor:pointer;transition:all .2s}
+    .alpha-card:hover{border-color:var(--gold);background:rgba(212,168,67,.08)}
+    .alpha-de{font-size:22px;font-family:'Playfair Display',serif;font-weight:700;color:var(--gold-lt)}
+    .alpha-fa{font-size:13px;color:var(--muted);margin-top:4px}
+    .video-link{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#1a1028,#0e1a2e);border:1px solid var(--gold);border-radius:16px;padding:16px 20px;text-decoration:none;color:var(--text);transition:all .25s}
+    .video-link:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,168,67,.2)}
+    .play-btn{width:48px;height:48px;background:linear-gradient(135deg,var(--gold),var(--gold-lt));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+    .video-info{flex:1}
+    .video-title{font-weight:700;font-size:15px;margin-bottom:3px}
+    .video-desc{font-size:12px;color:var(--muted)}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .animate-in{animation:fadeIn .35s ease forwards}
+    .xp-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(212,168,67,.15);border:1px solid rgba(212,168,67,.3);color:var(--gold-lt);font-size:12px;padding:4px 10px;border-radius:20px}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon">🇩🇪</div>
+    <div>
+      <div class="logo-text">Lern Deutsch mit Arash</div>
+      <span class="logo-sub">آلمانی یاد بگیر با آراش</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- HOME -->
+<section id="sec-home" class="active animate-in">
+  <div class="hero">
+    <h1>Lern Deutsch mit Arash 🇩🇪</h1>
+    <p>از صفر تا روان صحبت کردن – گام به گام، با توضیحات فارسی</p>
+  </div>
+  <div class="path-list">
+    <div class="path-card step0" onclick="openLesson('lesson0')">
+      <div class="card-num">🔤</div>
+      <div class="card-info">
+        <div class="card-title">گام ۰: الفبای آلمانی</div>
+        <div class="card-desc">حروف، تلفظ و رازهای صدایی زبان آلمانی</div>
+        <div style="margin-top:8px"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:100%;background:linear-gradient(90deg,var(--green),#7ef0b0)"></div></div><span style="font-size:11px;color:var(--muted)">تکمیل شده ✓</span></div>
+      </div>
+      <div class="card-arrow">‹</div>
+    </div>
+    <div class="path-card step1" onclick="openLesson('lesson1')">
+      <div class="card-num">👋</div>
+      <div class="card-info">
+        <div class="card-title"><span class="badge-new">جدید</span>گام ۱: Ich heiße Minoo</div>
+        <div class="card-desc">ضمایر، معرفی خود، ملیت، زبان – ۴ بازی یادگیری</div>
+        <div style="margin-top:8px"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:0%"></div></div><span style="font-size:11px;color:var(--muted)">شروع نشده</span></div>
+      </div>
+      <div class="card-arrow">‹</div>
+    </div>
+    <div class="path-card step2" onclick="openLesson('lesson2')">
+      <div class="card-num">📰</div>
+      <div class="card-info">
+        <div class="card-title"><span class="badge-new">جدید</span>گام ۲: Das ist ein Tisch</div>
+        <div class="card-desc">حال ساده پیشرفته • سیستم حرف تعریف • متن و تمرین</div>
+        <div style="margin-top:8px"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:0%;background:linear-gradient(90deg,#5B9BD5,#90c8f0)"></div></div><span style="font-size:11px;color:var(--muted)">شروع نشده</span></div>
+      </div>
+      <div class="card-arrow">‹</div>
+    </div>
+    <div class="path-card step3" onclick="openLesson('lesson3')">
+      <div class="card-num">👨‍👩‍👧</div>
+      <div class="card-info">
+        <div class="card-title"><span class="badge-new">جدید</span>گام ۳: Ich habe eine Schwester</div>
+        <div class="card-desc">haben • آکوزاتیو • خانواده و مالکیت</div>
+        <div style="margin-top:8px"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:0%;background:linear-gradient(90deg,#E05C5C,#f09090)"></div></div><span style="font-size:11px;color:var(--muted)">شروع نشده</span></div>
+      </div>
+      <div class="card-arrow">‹</div>
+    </div>
+    <div class="path-card" style="cursor:pointer" onclick="openLesson('lesson4')">
+      <div class="card-num" style="background:linear-gradient(135deg,#2a5a3f,#1a3a2f)">❓</div>
+      <div class="card-info">
+        <div class="card-title"><span class="badge-new">جدید</span>گام ۴: Wohin gehst du?</div>
+        <div class="card-desc">سؤال‌سازی • حروف اضافه مکانی: aus, von, zu, in, auf</div>
+        <div style="margin-top:8px"><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:0%;background:linear-gradient(90deg,#D4A843,#F0C96A)"></div></div><span style="font-size:11px;color:var(--muted)">شروع نشده</span></div>
+      </div>
+      <div class="card-arrow">‹</div>
+    </div>
+  </div>
+</section>
+
+<!-- LESSON 0 -->
+<section id="sec-lesson0" class="animate-in">
+  <div class="lesson-header">
+    <button class="back-btn" onclick="closeLesson()">›</button>
+    <div><div class="lesson-title">گام ۰: الفبای آلمانی</div><div class="lesson-subtitle">Das deutsche Alphabet</div></div>
+  </div>
+  <div class="block">
+    <div class="block-label">📹 ویدیوی تلفظ</div>
+    <a href="https://www.youtube.com/watch?v=axQGCdGCjAk" target="_blank" class="video-link">
+      <div class="play-btn">▶</div>
+      <div class="video-info"><div class="video-title">تلفظ کامل الفبای آلمانی</div><div class="video-desc">ویدیوی YouTube – با صدای اصلی آلمانی یاد بگیر</div></div>
+      <span style="color:var(--gold);font-size:18px;">↗</span>
+    </a>
+  </div>
+  <div class="block">
+    <div class="block-label">📖 مقدمه</div>
+    <div class="info-box highlight">زبان آلمانی ۲۶ حرف دارد که همگی از الفبای لاتین می‌آیند. علاوه بر این، ۴ حرف ویژه دارد: <strong>Ä  Ö  Ü  ß</strong><br><br>خبر خوب اینه که تلفظ آلمانی <strong>بسیار منظم</strong> است!</div>
+  </div>
+  <div class="block"><div class="block-label">🔤 همه حروف</div><div class="alpha-grid" id="alphaGrid"></div></div>
+  <div class="block">
+    <div class="block-label">⭐ حروف ویژه</div>
+    <div class="sound-rule"><div class="rule-de">Ä ä</div><div><div class="rule-fa">مثل <span class="rule-persian">اِ</span> کشیده</div><div class="rule-example">Bär (خرس) = بِر</div></div></div>
+    <div class="sound-rule"><div class="rule-de">Ö ö</div><div><div class="rule-fa">لب برای «اُ»، صدای «اِ»</div><div class="rule-example">schön = شؤن</div></div></div>
+    <div class="sound-rule"><div class="rule-de">Ü ü</div><div><div class="rule-fa">لب برای «اُ»، صدای «اِی»</div><div class="rule-example">über = اؤبِر</div></div></div>
+    <div class="sound-rule"><div class="rule-de">ß</div><div><div class="rule-fa">«س» کشیده، مثل ss</div><div class="rule-example">Straße = شتراسِه</div></div></div>
+  </div>
+  <div class="block"><div class="block-label">🎵 قوانین صدایی</div><div id="soundRules"></div></div>
+  <div class="block">
+    <div class="block-label">💡 نکات تکمیلی</div>
+    <div class="tip-box"><strong>تکیه:</strong> معمولاً هجای اول — DAN-ke, BIT-te<br><strong>حروف بزرگ اسم‌ها:</strong> das Haus, der Mann<br><strong>W</strong> = «و» | <strong>J</strong> = «ی»</div>
+  </div>
+  <div class="block center"><button class="primary-btn" onclick="startQuiz0()">🎯 شروع آزمون گام ۰</button></div>
+</section>
+
+<!-- LESSON 1 -->
+<section id="sec-lesson1" class="animate-in">
+  <div class="lesson-header">
+    <button class="back-btn" onclick="closeLesson()">›</button>
+    <div><div class="lesson-title">گام ۱: Ich heiße Minoo</div><div class="lesson-subtitle">معرفی خود • ضمایر • صرف فعل</div></div>
+  </div>
+  <div class="sub-tabs">
+    <button class="sub-tab active" onclick="switchSubTab(0)">📖 درس</button>
+    <button class="sub-tab" onclick="switchSubTab(1)">🧩 جمله‌سازی</button>
+    <button class="sub-tab" onclick="switchSubTab(2)">✏️ لغزان</button>
+    <button class="sub-tab" onclick="switchSubTab(3)">🃏 جفت واژه</button>
+    <button class="sub-tab" onclick="switchSubTab(4)">🔀 جفت صرف</button>
+    <button class="sub-tab" onclick="switchSubTab(5)">🎯 آزمون نهایی</button>
+  </div>
+
+  <!-- TAB 0: درس -->
+  <div id="l1tab0">
+    <div class="block">
+      <div class="block-label">🗣 گفتگوی نمونه</div>
+      <div class="dialogue">
+        <div class="bubble right"><div class="bubble-name">Minoo</div><div class="bubble-de">Hallo! Ich heiße Minoo.</div><div class="bubble-fa">سلام! اسمم مینو است.</div></div>
+        <div class="bubble left"><div class="bubble-name">Thomas</div><div class="bubble-de">Hallo! Ich heiße Thomas. Woher kommst du?</div><div class="bubble-fa">سلام! اسمم توماس است. اهل کجایی؟</div></div>
+        <div class="bubble right"><div class="bubble-name">Minoo</div><div class="bubble-de">Ich komme aus dem Iran. Ich spreche Persisch und Deutsch.</div><div class="bubble-fa">من از ایران هستم. فارسی و آلمانی صحبت می‌کنم.</div></div>
+        <div class="bubble left"><div class="bubble-name">Thomas</div><div class="bubble-de">Toll! Bist du Studentin?</div><div class="bubble-fa">عالیه! آیا دانشجو هستی؟</div></div>
+        <div class="bubble right"><div class="bubble-name">Minoo</div><div class="bubble-de">Ja, ich bin Studentin. Und du?</div><div class="bubble-fa">بله، من دانشجو هستم. و تو؟</div></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-label">👤 ضمایر شخصی – Personalpronomen</div>
+      <div class="info-box" style="margin-bottom:12px">در آلمانی هر ضمیر صرف فعل خاص خودش دارد. <span class="note-inline">مهم</span> «<strong>Sie</strong>» با حرف بزرگ = شما رسمی | «<strong>sie</strong>» = او/آن‌ها</div>
+      <table class="pronoun-table">
+        <tr><th>ضمیر</th><th>معنی فارسی</th><th>توضیح</th></tr>
+        <tr><td><span class="pronoun-de">ich</span></td><td><span class="pronoun-fa">من</span></td><td><span class="pronoun-fa">همیشه i کوچک</span></td></tr>
+        <tr><td><span class="pronoun-de">du</span></td><td><span class="pronoun-fa">تو</span></td><td><span class="pronoun-fa">غیررسمی</span></td></tr>
+        <tr><td><span class="pronoun-de">er</span></td><td><span class="pronoun-fa">او ♂</span></td><td><span class="pronoun-fa">مذکر</span></td></tr>
+        <tr><td><span class="pronoun-de">sie</span></td><td><span class="pronoun-fa">او ♀</span></td><td><span class="pronoun-fa">مؤنث</span></td></tr>
+        <tr><td><span class="pronoun-de">es</span></td><td><span class="pronoun-fa">آن</span></td><td><span class="pronoun-fa">خنثی</span></td></tr>
+        <tr><td><span class="pronoun-de">wir</span></td><td><span class="pronoun-fa">ما</span></td><td></td></tr>
+        <tr><td><span class="pronoun-de">ihr</span></td><td><span class="pronoun-fa">شما (جمع غیررسمی)</span></td><td><span class="pronoun-fa">چند نفر آشنا</span></td></tr>
+        <tr><td><span class="pronoun-de">sie</span></td><td><span class="pronoun-fa">آن‌ها</span></td><td><span class="pronoun-fa">جمع</span></td></tr>
+        <tr><td><span class="pronoun-de">Sie</span></td><td><span class="pronoun-fa">شما (رسمی)</span></td><td><span class="pronoun-fa"><span class="note-inline">S بزرگ</span>با غریبه‌ها</span></td></tr>
+      </table>
+    </div>
+
+    <div class="block">
+      <div class="block-label">🔧 صرف: heißen – نام داشتن</div>
+      <div class="conj-wrap">
+        <div class="conj-verb-title">heißen</div><div class="conj-verb-fa">اسمم ... است</div>
+        <table class="conj-table">
+          <tr class="conj-highlight"><td><span class="conj-pro">ich</span></td><td><span class="conj-form">heiße</span></td><td style="font-size:13px;color:var(--muted)">اسمم ... است</td></tr>
+          <tr><td><span class="conj-pro">du</span></td><td><span class="conj-form">heißt</span></td><td style="font-size:13px;color:var(--muted)">اسمت ... است</td></tr>
+          <tr><td><span class="conj-pro">er/sie/es</span></td><td><span class="conj-form">heißt</span></td><td style="font-size:13px;color:var(--muted)">اسمش ... است</td></tr>
+          <tr><td><span class="conj-pro">wir</span></td><td><span class="conj-form">heißen</span></td><td style="font-size:13px;color:var(--muted)">اسممان ... است</td></tr>
+          <tr><td><span class="conj-pro">ihr</span></td><td><span class="conj-form">heißt</span></td><td style="font-size:13px;color:var(--muted)">اسمتان ... است</td></tr>
+          <tr><td><span class="conj-pro">sie/Sie</span></td><td><span class="conj-form">heißen</span></td><td style="font-size:13px;color:var(--muted)">اسمشان / اسم شما</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-label">🔧 صرف: kommen – آمدن / اهل بودن</div>
+      <div class="conj-wrap">
+        <div class="conj-verb-title">kommen</div><div class="conj-verb-fa">آمدن – ریشه: komm + پسوند</div>
+        <div class="tip-box" style="margin-bottom:10px;font-size:13px">🧠 قانون: ریشه = komm ← فقط پسوند تغییر می‌کند</div>
+        <table class="conj-table">
+          <tr class="conj-highlight"><td><span class="conj-pro">ich</span></td><td><span class="conj-form">komme</span></td><td style="font-size:13px;color:var(--muted)">من از ... هستم</td></tr>
+          <tr><td><span class="conj-pro">du</span></td><td><span class="conj-form">kommst</span></td><td style="font-size:13px;color:var(--muted)">تو از ... هستی</td></tr>
+          <tr><td><span class="conj-pro">er/sie/es</span></td><td><span class="conj-form">kommt</span></td><td style="font-size:13px;color:var(--muted)">او از ... است</td></tr>
+          <tr><td><span class="conj-pro">wir</span></td><td><span class="conj-form">kommen</span></td><td style="font-size:13px;color:var(--muted)">ما از ... هستیم</td></tr>
+          <tr><td><span class="conj-pro">ihr</span></td><td><span class="conj-form">kommt</span></td><td style="font-size:13px;color:var(--muted)">شما از ... هستید</td></tr>
+          <tr><td><span class="conj-pro">sie/Sie</span></td><td><span class="conj-form">kommen</span></td><td style="font-size:13px;color:var(--muted)">آن‌ها / شما</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-label">🔧 صرف: sprechen – صحبت کردن ⚠️ نامنظم</div>
+      <div class="conj-wrap">
+        <div class="conj-verb-title">sprechen</div><div class="conj-verb-fa">صحبت کردن – نامنظم: e→i در du و er</div>
+        <div class="tip-box" style="margin-bottom:10px;font-size:13px">⚠️ در صیغه‌های <strong>du</strong> و <strong>er/sie/es</strong>: sp<span style="color:var(--red)">e</span>chen → sp<span style="color:var(--red)">i</span>cht</div>
+        <table class="conj-table">
+          <tr class="conj-highlight"><td><span class="conj-pro">ich</span></td><td><span class="conj-form">spreche</span></td><td style="font-size:13px;color:var(--muted)">من صحبت می‌کنم</td></tr>
+          <tr><td><span class="conj-pro">du</span></td><td><span class="conj-form" style="color:var(--red)">sprichst</span><div class="conj-note">e → i !</div></td><td style="font-size:13px;color:var(--muted)">تو صحبت می‌کنی</td></tr>
+          <tr><td><span class="conj-pro">er/sie/es</span></td><td><span class="conj-form" style="color:var(--red)">spricht</span><div class="conj-note">e → i !</div></td><td style="font-size:13px;color:var(--muted)">او صحبت می‌کند</td></tr>
+          <tr><td><span class="conj-pro">wir</span></td><td><span class="conj-form">sprechen</span></td><td style="font-size:13px;color:var(--muted)">ما صحبت می‌کنیم</td></tr>
+          <tr><td><span class="conj-pro">ihr</span></td><td><span class="conj-form">sprecht</span></td><td style="font-size:13px;color:var(--muted)">شما صحبت می‌کنید</td></tr>
+          <tr><td><span class="conj-pro">sie/Sie</span></td><td><span class="conj-form">sprechen</span></td><td style="font-size:13px;color:var(--muted)">آن‌ها / شما</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-label">🔧 صرف: sein – بودن ⚠️ کاملاً نامنظم</div>
+      <div class="conj-wrap">
+        <div class="conj-verb-title">sein</div><div class="conj-verb-fa">بودن – مهم‌ترین فعل آلمانی – باید حفظ کرد!</div>
+        <div class="tip-box" style="margin-bottom:10px;font-size:13px">مقایسه با فارسی: هستم، هستی، است، هستیم، هستید، هستند</div>
+        <table class="conj-table">
+          <tr class="conj-highlight"><td><span class="conj-pro">ich</span></td><td><span class="conj-form">bin</span></td><td style="font-size:13px;color:var(--muted)">من هستم / ... ام</td></tr>
+          <tr><td><span class="conj-pro">du</span></td><td><span class="conj-form">bist</span></td><td style="font-size:13px;color:var(--muted)">تو هستی / ... ی</td></tr>
+          <tr><td><span class="conj-pro">er/sie/es</span></td><td><span class="conj-form">ist</span></td><td style="font-size:13px;color:var(--muted)">او است / ... است</td></tr>
+          <tr><td><span class="conj-pro">wir</span></td><td><span class="conj-form">sind</span></td><td style="font-size:13px;color:var(--muted)">ما هستیم</td></tr>
+          <tr><td><span class="conj-pro">ihr</span></td><td><span class="conj-form">seid</span></td><td style="font-size:13px;color:var(--muted)">شما هستید</td></tr>
+          <tr><td><span class="conj-pro">sie/Sie</span></td><td><span class="conj-form">sind</span></td><td style="font-size:13px;color:var(--muted)">آن‌ها / شما هستند</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-label">🌍 عبارات مفید</div>
+      <div class="sound-rule"><div class="rule-de" style="font-size:11px;min-width:66px">aus + کشور</div><div><div class="rule-fa">اهل بودن</div><div class="rule-example">Ich komme aus dem Iran = من از ایران هستم</div></div></div>
+      <div class="sound-rule"><div class="rule-de" style="font-size:11px;min-width:66px">Woher?</div><div><div class="rule-fa">از کجا؟</div><div class="rule-example">Woher kommst du? / Woher kommen Sie?</div></div></div>
+      <div class="sound-rule"><div class="rule-de" style="font-size:11px;min-width:66px">Wie heißt</div><div><div class="rule-fa">چه نامی داری؟</div><div class="rule-example">Wie heißt du? / Wie heißen Sie? (رسمی)</div></div></div>
+    </div>
+    <div class="block center"><button class="primary-btn" onclick="switchSubTab(1)">بریم بازی کنیم! 🎮</button></div>
+  </div>
+
+  <div id="l1tab1" style="display:none"><div id="sentenceBuilderContainer"></div></div>
+  <div id="l1tab2" style="display:none"><div id="fillBlankContainer"></div></div>
+  <div id="l1tab3" style="display:none"><div id="matchVocabContainer"></div></div>
+  <div id="l1tab4" style="display:none"><div id="matchConjContainer"></div></div>
+  <div id="l1tab5" style="display:none"><div id="quiz1Container"></div></div>
+</section>
+
+<!-- ══════════ LESSON 2 ══════════ -->
+<section id="sec-lesson2" class="animate-in">
+  <div class="lesson-header">
+    <button class="back-btn" onclick="closeLesson()">›</button>
+    <div><div class="lesson-title">گام ۲: Das ist ein Tisch</div><div class="lesson-subtitle">حال ساده • حرف تعریف • متن</div></div>
+  </div>
+  <div class="sub-tabs">
+    <button class="sub-tab active" onclick="switchSubTab2(0)">📖 گرامر ۱</button>
+    <button class="sub-tab" onclick="switchSubTab2(1)">📖 گرامر ۲</button>
+    <button class="sub-tab" onclick="switchSubTab2(2)">📝 متن</button>
+    <button class="sub-tab" onclick="switchSubTab2(3)">✏️ لغزان</button>
+    <button class="sub-tab" onclick="switchSubTab2(4)">🃏 جفت‌یابی</button>
+    <button class="sub-tab" onclick="switchSubTab2(5)">🎯 آزمون</button>
+  </div>
+  <!-- TAB 0: Präsens Vertiefung -->
+  <div id="l2tab0">
+    <div class="block">
+      <div class="block-label">🔧 گرامر: ساختن زمان حال (Präsens) – مرور و تعمیق</div>
+      <div class="info-box highlight" style="margin-bottom:14px">
+        در زمان حال آلمانی، ریشه فعل (Stamm) را می‌گیریم و پسوند اضافه می‌کنیم.<br>
+        مثال: <strong>spielen</strong> (بازی کردن) → ریشه: <strong>spiel</strong>
+      </div>
+      <table class="pronoun-table">
+        <tr><th>ضمیر</th><th>پسوند</th><th>مثال: spielen</th></tr>
+        <tr><td><span class="pronoun-de">ich</span></td><td><span style="color:var(--gold-lt);font-family:Playfair Display,serif;font-weight:700">-e</span></td><td><span class="pronoun-de">spiel<span style="color:var(--green)">e</span></span></td></tr>
+        <tr><td><span class="pronoun-de">du</span></td><td><span style="color:var(--gold-lt);font-family:Playfair Display,serif;font-weight:700">-st</span></td><td><span class="pronoun-de">spiel<span style="color:var(--green)">st</span></span></td></tr>
+        <tr><td><span class="pronoun-de">er/sie/es</span></td><td><span style="color:var(--gold-lt);font-family:Playfair Display,serif;font-weight:700">-t</span></td><td><span class="pronoun-de">spiel<span style="color:var(--green)">t</span></span></td></tr>
+        <tr><td><span class="pronoun-de">wir</span></td><td><span style="color:var(--gold-lt);font-family:Playfair Display,serif;font-weight:700">-en</span></td><td><span class="pronoun-de">spiel<span style="color:var(--green)">en</span></span></td></tr>
+        <tr><td><span class="pronoun-de">ihr</span></td><td><span style="color:var(--gold-lt);font-family:Playfair Display,serif;font-weight:700">-t</span></td><td><span class="pronoun-de">spiel<span style="color:var(--green)">t</span></span></td></tr>
+        <tr><td><span class="pronoun-de">sie/Sie</span></td><td><span style="color:var(--gold-lt);font-family:Playfair Display,serif;font-weight:700">-en</span></td><td><span class="pronoun-de">spiel<span style="color:var(--green)">en</span></span></td></tr>
+      </table>
+    </div>
+
+    <div class="block">
+      <div class="block-label">⚠️ استثناهای مهم در صیغه «du»</div>
+      <div class="tip-box" style="margin-bottom:14px">وقتی ریشه فعل به <strong>z، s، ß، x</strong> ختم شود، در صیغه «du» فقط <strong>‑t</strong> اضافه می‌شود (نه -st) چون دو صدای s کنار هم نمی‌آیند!</div>
+      <div class="sound-rule">
+        <div class="rule-de" style="min-width:60px;font-size:12px">ریشه +z</div>
+        <div>
+          <div class="rule-fa">tanzen (رقصیدن) → ریشه: tanz</div>
+          <div class="rule-example">du tanz<span style="color:var(--red)">t</span> (نه: tanzsst!) | sitzen → du sitz<span style="color:var(--red)">t</span></div>
+        </div>
+      </div>
+      <div class="sound-rule">
+        <div class="rule-de" style="min-width:60px;font-size:12px">ریشه +s</div>
+        <div>
+          <div class="rule-fa">lesen (خواندن) → ریشه: les</div>
+          <div class="rule-example">du lie<span style="color:var(--red)">st</span> – ولی اینجا فعل نامنظم است | reisen → du reis<span style="color:var(--red)">t</span></div>
+        </div>
+      </div>
+      <div class="sound-rule">
+        <div class="rule-de" style="min-width:60px;font-size:12px">ریشه +ß</div>
+        <div>
+          <div class="rule-fa">heißen → ریشه: heiß</div>
+          <div class="rule-example">du heiß<span style="color:var(--red)">t</span> (نه: heißst) – همین قانون!</div>
+        </div>
+      </div>
+      <div class="sound-rule">
+        <div class="rule-de" style="min-width:60px;font-size:12px">ریشه +d/t</div>
+        <div>
+          <div class="rule-fa">ریشه به d یا t ختم شود → یک <strong>e</strong> اضافه می‌شود</div>
+          <div class="rule-example">arbeiten (کار کردن) → du arbeit<span style="color:var(--blue)">e</span>st | warten → du wart<span style="color:var(--blue)">e</span>st</div>
+        </div>
+      </div>
+    </div>
+    <div class="block center"><button class="primary-btn" onclick="switchSubTab2(1)">گرامر ۲: حرف تعریف ›</button></div>
+  </div>
+
+  <!-- TAB 1: Artikel -->
+  <div id="l2tab1" style="display:none">
+    <div class="block">
+      <div class="block-label">📌 سیستم حرف تعریف در آلمانی (Nominativ)</div>
+      <div class="info-box" style="margin-bottom:14px">
+        در فارسی اسم‌ها به‌طور پیشفرض <strong>معین</strong> هستند و با «یک» یا «ی» نامعین می‌شوند:<br>
+        «<strong>کتاب</strong>» = The book | «<strong>یک کتاب</strong>» یا «<strong>کتابی</strong>» = A book<br><br>
+        در آلمانی برعکس: باید <strong>حرف تعریف</strong> بگذاری و هر اسم جنس (Gender) دارد:
+      </div>
+      <table class="pronoun-table">
+        <tr><th>جنس</th><th>حرف تعریف معین</th><th>حرف تعریف نامعین</th><th>مثال</th></tr>
+        <tr>
+          <td><span style="color:var(--blue);font-weight:700">مذکر</span> 🔵</td>
+          <td><span class="pronoun-de" style="color:var(--blue)">der</span></td>
+          <td><span class="pronoun-de" style="color:var(--blue)">ein</span></td>
+          <td><span class="pronoun-de">der Tisch / ein Tisch</span><span class="pronoun-fa"> (میز)</span></td>
+        </tr>
+        <tr>
+          <td><span style="color:var(--red);font-weight:700">مؤنث</span> 🔴</td>
+          <td><span class="pronoun-de" style="color:var(--red)">die</span></td>
+          <td><span class="pronoun-de" style="color:var(--red)">eine</span></td>
+          <td><span class="pronoun-de">die Ärztin / eine Ärztin</span><span class="pronoun-fa"> (پزشک خانم)</span></td>
+        </tr>
+        <tr>
+          <td><span style="color:var(--green);font-weight:700">خنثی</span> 🟢</td>
+          <td><span class="pronoun-de" style="color:var(--green)">das</span></td>
+          <td><span class="pronoun-de" style="color:var(--green)">ein</span></td>
+          <td><span class="pronoun-de">das Kind / ein Kind</span><span class="pronoun-fa"> (کودک)</span></td>
+        </tr>
+        <tr>
+          <td><span style="color:var(--gold);font-weight:700">جمع</span></td>
+          <td><span class="pronoun-de" style="color:var(--gold)">die</span></td>
+          <td><span style="color:var(--muted);font-size:13px">— (جمع نامعین نداریم)</span></td>
+          <td><span class="pronoun-de">die Tische</span><span class="pronoun-fa"> (میزها)</span></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="block">
+      <div class="block-label">🚨 نکته مهم: «Das ist» در معرفی</div>
+      <div class="tip-box" style="margin-bottom:14px">
+        برای معرفی اشیاء و اشخاص، «<strong>Das ist</strong>» استفاده می‌شود – حتی اگر اسم مؤنث یا مذکر باشد!<br>
+        <strong>Das ist ein Arzt.</strong> (این یک پزشک است – آقا)<br>
+        <strong>Das ist eine Ärztin.</strong> (این یک پزشک است – خانم)<br>
+        <strong>Das ist ein Tisch.</strong> (این یک میز است)<br><br>
+        اما وقتی صفت می‌دهیم، از حرف تعریف درست استفاده می‌کنیم:<br>
+        <strong>Der Tisch ist blau.</strong> (میز آبی است)<br>
+        <strong>Die Ärztin ist nett.</strong> (دکتر (خانم) مهربان است)
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-label">🚫 چرا با نامعین نمی‌شود؟</div>
+      <div class="info-box">
+        وقتی صفت می‌دهیم، اسم قبلاً مشخص شده – پس از حرف تعریف معین استفاده می‌کنیم:<br>
+        ✅ <span style="color:var(--green);font-family:Playfair Display,serif;font-weight:700">Der Tisch ist blau.</span> (درست)<br>
+        ❌ <span style="color:var(--red);font-family:Playfair Display,serif;font-weight:700">Ein Tisch ist blau.</span> (نادرست در این معنا – این جمله یعنی «یک میز آبی است» که مشخص نیست کدام میز!)<br><br>
+        در فارسی: «<strong>میز</strong> آبی است» = The table is blue ← آلمانی: <strong>Der</strong> Tisch ist blau.
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-label">💡 چطور جنس اسم را بدانیم؟</div>
+      <div class="sound-rule"><div class="rule-de" style="min-width:60px;font-size:11px">-er, -ling, -ig</div><div><div class="rule-fa">معمولاً <span style="color:var(--blue);font-weight:700">مذکر (der)</span></div><div class="rule-example">der Lehrer, der Frühling, der König</div></div></div>
+      <div class="sound-rule"><div class="rule-de" style="min-width:60px;font-size:11px">-ung, -heit, -keit, -in</div><div><div class="rule-fa">معمولاً <span style="color:var(--red);font-weight:700">مؤنث (die)</span></div><div class="rule-example">die Wohnung, die Freiheit, die Ärztin</div></div></div>
+      <div class="sound-rule"><div class="rule-de" style="min-width:60px;font-size:11px">-chen, -lein, -um</div><div><div class="rule-fa">معمولاً <span style="color:var(--green);font-weight:700">خنثی (das)</span></div><div class="rule-example">das Mädchen, das Museum</div></div></div>
+      <div class="tip-box" style="margin-top:10px;font-size:13px">⚠️ هیچ قانون کاملی وجود ندارد – بهترین روش اینه که هر اسم را همراه حرف تعریفش حفظ کنی!</div>
+    </div>
+    <div class="block center"><button class="primary-btn" onclick="switchSubTab2(2)">متن: در کافه ›</button></div>
+  </div>
+
+  <!-- TAB 2: Text -->
+  <div id="l2tab2" style="display:none">
+    <div class="block">
+      <div class="block-label">📝 متن کوتاه: Im Café (در کافه)</div>
+      <div class="info-box" style="direction:ltr;text-align:left;line-height:2.2;font-family:'Playfair Display',serif;font-size:15px">
+        Das ist ein Café. <span style="font-size:12px;color:var(--muted);font-family:Vazirmatn,sans-serif">(این یک کافه است)</span><br>
+        <span style="color:var(--blue)">Der</span> Tisch ist groß. <span style="font-size:12px;color:var(--muted);font-family:Vazirmatn,sans-serif">(میز بزرگ است)</span><br>
+        <span style="color:var(--red)">Die</span> Tasse ist klein. <span style="font-size:12px;color:var(--muted);font-family:Vazirmatn,sans-serif">(فنجان کوچک است)</span><br>
+        <span style="color:var(--green)">Das</span> Fenster ist offen. <span style="font-size:12px;color:var(--muted);font-family:Vazirmatn,sans-serif">(پنجره باز است)</span><br>
+        <br>
+        Minoo sitzt am Tisch. <span style="font-size:12px;color:var(--muted);font-family:Vazirmatn,sans-serif">(مینو پشت میز می‌نشیند)</span><br>
+        Sie trinkt einen Kaffee. <span style="font-size:12px;color:var(--muted);font-family:Vazirmatn,sans-serif">(او یک قهوه می‌نوشد)</span><br>
+        <br>
+        Ein Mann kommt ins Café. <span style="font-size:12px;color:var(--muted);font-family:Vazirmatn,sans-serif">(یک آقا وارد کافه می‌شود)</span><br>
+        Er heißt Thomas. Er ist Arzt. <span style="font-size:12px;color:var(--muted);font-family:Vazirmatn,sans-serif">(اسمش توماس است. او پزشک است.)</span><br>
+        <br>
+        „Das ist ein schönes Café!", sagt er. <span style="font-size:12px;color:var(--muted);font-family:Vazirmatn,sans-serif">(«این یک کافه قشنگه!» می‌گوید)</span><br>
+        „Ja, die Tasse Kaffee ist auch gut!", antwortet Minoo. <span style="font-size:12px;color:var(--muted);font-family:Vazirmatn,sans-serif">(مینو جواب می‌دهد)</span>
+      </div>
+    </div>
+    <div class="block">
+      <div class="block-label">🔍 تحلیل متن</div>
+      <div class="sound-rule"><div class="rule-de" style="min-width:60px;font-size:11px;background:linear-gradient(135deg,#2a5a7f,#1a3a5f)">sitzen</div><div><div class="rule-fa">نشستن – نامنظم: du sitzt (s+t → فقط t)</div><div class="rule-example">ich sitze, du sitzt, er sitzt, wir sitzen</div></div></div>
+      <div class="sound-rule"><div class="rule-de" style="min-width:60px;font-size:11px;background:linear-gradient(135deg,#2a5a7f,#1a3a5f)">trinken</div><div><div class="rule-fa">نوشیدن – منظم</div><div class="rule-example">ich trinke, du trinkst, er trinkt</div></div></div>
+      <div class="sound-rule"><div class="rule-de" style="min-width:60px;font-size:11px;background:linear-gradient(135deg,#2a5a7f,#1a3a5f)">sagen</div><div><div class="rule-fa">گفتن – منظم</div><div class="rule-example">er sagt, sie sagt, wir sagen</div></div></div>
+    </div>
+    <div class="block center"><button class="primary-btn" onclick="switchSubTab2(3)">تمرین: لغزان ›</button></div>
+  </div>
+
+  <!-- TAB 3: Fill Blank -->
+  <div id="l2tab3" style="display:none"><div id="fill2Container"></div></div>
+  <!-- TAB 4: Match -->
+  <div id="l2tab4" style="display:none"><div id="match2Container"></div></div>
+  <!-- TAB 5: Quiz -->
+  <div id="l2tab5" style="display:none"><div id="quiz2Container"></div></div>
+</section>
+
+<!-- ══════════ LESSON 3 ══════════ -->
+<section id="sec-lesson3" class="animate-in">
+  <div class="lesson-header">
+    <button class="back-btn" onclick="closeLesson()">›</button>
+    <div><div class="lesson-title">گام ۳: Ich habe eine Schwester</div><div class="lesson-subtitle">haben • آکوزاتیو • خانواده</div></div>
+  </div>
+  <div class="sub-tabs">
+    <button class="sub-tab active" onclick="switchSubTab3(0)">📖 haben</button>
+    <button class="sub-tab" onclick="switchSubTab3(1)">📖 Akkusativ</button>
+    <button class="sub-tab" onclick="switchSubTab3(2)">👨‍👩‍👧 خانواده</button>
+    <button class="sub-tab" onclick="switchSubTab3(3)">✏️ لغزان</button>
+    <button class="sub-tab" onclick="switchSubTab3(4)">🧩 جمله‌سازی</button>
+    <button class="sub-tab" onclick="switchSubTab3(5)">🎯 آزمون</button>
+  </div>
+  <!-- TAB 0: haben -->
+  <div id="l3tab0">
+    <div class="block">
+      <div class="block-label">🔧 صرف: haben – داشتن</div>
+      <div class="conj-wrap">
+        <div class="conj-verb-title">haben</div><div class="conj-verb-fa">داشتن – فعل مهم و نیمه‌نامنظم</div>
+        <div class="tip-box" style="margin-bottom:10px;font-size:13px">⚠️ در صیغه‌های <strong>du</strong> و <strong>er/sie/es</strong>: <span style="color:var(--red)">b حذف می‌شود!</span></div>
+        <table class="conj-table">
+          <tr class="conj-highlight"><td><span class="conj-pro">ich</span></td><td><span class="conj-form">habe</span></td><td style="font-size:13px;color:var(--muted)">من دارم</td></tr>
+          <tr><td><span class="conj-pro">du</span></td><td><span class="conj-form" style="color:var(--red)">hast</span><div class="conj-note">ha<span style="color:var(--red)">b</span>e → ha<span style="color:var(--red)">st</span></div></td><td style="font-size:13px;color:var(--muted)">تو داری</td></tr>
+          <tr><td><span class="conj-pro">er/sie/es</span></td><td><span class="conj-form" style="color:var(--red)">hat</span><div class="conj-note">b حذف می‌شود!</div></td><td style="font-size:13px;color:var(--muted)">او دارد</td></tr>
+          <tr><td><span class="conj-pro">wir</span></td><td><span class="conj-form">haben</span></td><td style="font-size:13px;color:var(--muted)">ما داریم</td></tr>
+          <tr><td><span class="conj-pro">ihr</span></td><td><span class="conj-form">habt</span></td><td style="font-size:13px;color:var(--muted)">شما دارید</td></tr>
+          <tr><td><span class="conj-pro">sie/Sie</span></td><td><span class="conj-form">haben</span></td><td style="font-size:13px;color:var(--muted)">آن‌ها / شما دارند</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="block">
+      <div class="block-label">💬 مثال‌های کاربردی</div>
+      <div class="dialogue">
+        <div class="bubble right"><div class="bubble-name">Minoo</div><div class="bubble-de">Ich habe eine Schwester und einen Bruder.</div><div class="bubble-fa">من یک خواهر و یک برادر دارم.</div></div>
+        <div class="bubble left"><div class="bubble-name">Thomas</div><div class="bubble-de">Ich habe keine Geschwister. Hast du ein Haustier?</div><div class="bubble-fa">من هیچ خواهر و برادری ندارم. آیا حیوان خانگی داری؟</div></div>
+        <div class="bubble right"><div class="bubble-name">Minoo</div><div class="bubble-de">Ja! Wir haben eine Katze. Sie heißt Mochi.</div><div class="bubble-fa">بله! ما یک گربه داریم. اسمش موچی است.</div></div>
+      </div>
+    </div>
+    <div class="block center"><button class="primary-btn" onclick="switchSubTab3(1)">آکوزاتیو ›</button></div>
+  </div>
+  <!-- TAB 1: Akkusativ -->
+  <div id="l3tab1" style="display:none">
+    <div class="block">
+      <div class="block-label">📌 آکوزاتیو (Akkusativ) – مفعول مستقیم</div>
+      <div class="info-box highlight" style="margin-bottom:14px">
+        در فارسی مفعول مستقیم با «<strong>را</strong>» مشخص می‌شود:<br>
+        «من <strong>کتاب را</strong> می‌خوانم» → Ich lese <strong>das Buch</strong>.<br><br>
+        در آلمانی وقتی اسم <strong>مفعول مستقیم</strong> است (بعد از فعل می‌آید)، حرف تعریف تغییر می‌کند – ولی فقط در <strong>مذکر!</strong>
+      </div>
+      <table class="pronoun-table">
+        <tr><th>جنس</th><th>فاعل (Nom.)</th><th>مفعول (Akk.)</th><th>تغییر؟</th></tr>
+        <tr>
+          <td><span style="color:var(--blue);font-weight:700">مذکر 🔵</span></td>
+          <td><span class="pronoun-de" style="color:var(--blue)">der / ein</span></td>
+          <td><span class="pronoun-de" style="color:var(--red)">den / einen</span></td>
+          <td><span style="color:var(--red);font-weight:700">✗ تغییر می‌کند!</span></td>
+        </tr>
+        <tr>
+          <td><span style="color:var(--red);font-weight:700">مؤنث 🔴</span></td>
+          <td><span class="pronoun-de" style="color:var(--red)">die / eine</span></td>
+          <td><span class="pronoun-de" style="color:var(--red)">die / eine</span></td>
+          <td><span style="color:var(--green)">✓ تغییر نمی‌کند</span></td>
+        </tr>
+        <tr>
+          <td><span style="color:var(--green);font-weight:700">خنثی 🟢</span></td>
+          <td><span class="pronoun-de" style="color:var(--green)">das / ein</span></td>
+          <td><span class="pronoun-de" style="color:var(--green)">das / ein</span></td>
+          <td><span style="color:var(--green)">✓ تغییر نمی‌کند</span></td>
+        </tr>
+        <tr>
+          <td><span style="color:var(--gold);font-weight:700">جمع</span></td>
+          <td><span class="pronoun-de" style="color:var(--gold)">die</span></td>
+          <td><span class="pronoun-de" style="color:var(--gold)">die</span></td>
+          <td><span style="color:var(--green)">✓ تغییر نمی‌کند</span></td>
+        </tr>
+      </table>
+    </div>
+    <div class="block">
+      <div class="block-label">📝 مثال‌های آکوزاتیو</div>
+      <div class="info-box" style="direction:ltr;text-align:left;font-family:'Playfair Display',serif;line-height:2.4">
+        Ich habe <span style="color:var(--blue)">einen</span> Bruder. <span style="font-size:12px;color:var(--muted);font-family:Vazirmatn,sans-serif">(برادر = مذکر → einen!)</span><br>
+        Ich habe <span style="color:var(--red)">eine</span> Schwester. <span style="font-size:12px;color:var(--muted);font-family:Vazirmatn,sans-serif">(خواهر = مؤنث → eine)</span><br>
+        Ich habe <span style="color:var(--green)">ein</span> Kind. <span style="font-size:12px;color:var(--muted);font-family:Vazirmatn,sans-serif">(فرزند = خنثی → ein)</span><br>
+        Er trinkt <span style="color:var(--blue)">den</span> Kaffee. <span style="font-size:12px;color:var(--muted);font-family:Vazirmatn,sans-serif">(قهوه معین = den)</span><br>
+        Sie kauft <span style="color:var(--green)">das</span> Buch. <span style="font-size:12px;color:var(--muted);font-family:Vazirmatn,sans-serif">(کتاب = خنثی، تغییر نمی‌کند)</span>
+      </div>
+    </div>
+    <div class="block">
+      <div class="block-label">🚫 kein/keine – نداشتن</div>
+      <div class="info-box">
+        <strong>kein</strong> = نه / هیچ (منفی‌کردن اسم‌ها با حرف تعریف)<br>
+        مثل <strong>ein/eine</strong> صرف می‌شود:<br>
+        <span style="direction:ltr;display:block;font-family:'Playfair Display',serif;margin-top:8px">
+        Ich habe k<strong>einen</strong> Bruder. 🔵 (آقا ندارم)<br>
+        Ich habe k<strong>eine</strong> Schwester. 🔴 (خواهر ندارم)<br>
+        Ich habe k<strong>ein</strong> Auto. 🟢 (ماشین ندارم)
+        </span>
+      </div>
+    </div>
+    <div class="block center"><button class="primary-btn" onclick="switchSubTab3(2)">واژه‌های خانواده ›</button></div>
+  </div>
+  <!-- TAB 2: Familie -->
+  <div id="l3tab2" style="display:none">
+    <div class="block">
+      <div class="block-label">👨‍👩‍👧 اعضای خانواده – die Familie</div>
+      <div id="familyVocab"></div>
+    </div>
+    <div class="block">
+      <div class="block-label">💬 گفتگو: über die Familie</div>
+      <div class="dialogue">
+        <div class="bubble left"><div class="bubble-name">Thomas</div><div class="bubble-de">Hast du Geschwister?</div><div class="bubble-fa">آیا خواهر یا برادر داری؟</div></div>
+        <div class="bubble right"><div class="bubble-name">Minoo</div><div class="bubble-de">Ja, ich habe einen Bruder. Er heißt Darius. Er ist Ingenieur.</div><div class="bubble-fa">بله، یک برادر دارم. اسمش داریوش است. او مهندس است.</div></div>
+        <div class="bubble left"><div class="bubble-name">Thomas</div><div class="bubble-de">Ist deine Mutter auch berufstätig?</div><div class="bubble-fa">مادرت هم کار می‌کند؟</div></div>
+        <div class="bubble right"><div class="bubble-name">Minoo</div><div class="bubble-de">Ja, sie ist Lehrerin. Mein Vater hat ein Geschäft.</div><div class="bubble-fa">بله، او معلم است. پدرم یک مغازه دارد.</div></div>
+      </div>
+    </div>
+    <div class="block center"><button class="primary-btn" onclick="switchSubTab3(3)">تمرین: لغزان ›</button></div>
+  </div>
+  <div id="l3tab3" style="display:none"><div id="fill3Container"></div></div>
+  <div id="l3tab4" style="display:none"><div id="sb3Container"></div></div>
+  <div id="l3tab5" style="display:none"><div id="quiz3Container"></div></div>
+</section>
+
+<!-- ══════════ LESSON 4 ══════════ -->
+<section id="sec-lesson4" class="animate-in">
+  <div class="lesson-header">
+    <button class="back-btn" onclick="closeLesson()">›</button>
+    <div><div class="lesson-title">گام ۴: Wohin gehst du?</div><div class="lesson-subtitle">سؤال‌سازی • حروف اضافه مکانی</div></div>
+  </div>
+  <div class="sub-tabs">
+    <button class="sub-tab active" onclick="switchSubTab4(0)">❓ سؤال‌سازی</button>
+    <button class="sub-tab" onclick="switchSubTab4(1)">📍 حروف اضافه</button>
+    <button class="sub-tab" onclick="switchSubTab4(2)">📝 متن</button>
+    <button class="sub-tab" onclick="switchSubTab4(3)">✏️ لغزان</button>
+    <button class="sub-tab" onclick="switchSubTab4(4)">🃏 جفت‌یابی</button>
+    <button class="sub-tab" onclick="switchSubTab4(5)">🎯 آزمون</button>
+  </div>
+  <!-- TAB 0: Fragen -->
+  <div id="l4tab0">
+    <div class="block">
+      <div class="block-label">❓ سؤال‌سازی در آلمانی</div>
+      <div class="info-box highlight" style="margin-bottom:14px">
+        در آلمانی دو نوع سؤال داریم:<br>
+        <strong>۱. سؤال بله/خیر (Ja/Nein-Frage)</strong> – فعل به اول جمله می‌آید<br>
+        <strong>۲. سؤال با کلمه پرسشی (W-Frage)</strong> – با یک کلمه W شروع می‌شود
+      </div>
+    </div>
+    <div class="block">
+      <div class="block-label">✅ سؤال بله/خیر</div>
+      <div class="sound-rule"><div class="rule-de" style="min-width:66px;font-size:11px">فعل + فاعل</div><div><div class="rule-fa">فعل به ابتدای جمله می‌رود</div><div class="rule-example">Kommst du aus Iran? (آیا از ایران هستی؟)<br>Ist er Student? (آیا او دانشجو است؟)<br>Hast du eine Schwester? (آیا خواهر داری؟)</div></div></div>
+    </div>
+    <div class="block">
+      <div class="block-label">🔤 کلمات پرسشی (W-Fragen)</div>
+      <table class="pronoun-table">
+        <tr><th>کلمه پرسشی</th><th>معنی</th><th>مثال</th></tr>
+        <tr><td><span class="pronoun-de">Wer?</span></td><td><span class="pronoun-fa">کی؟ (شخص)</span></td><td><span class="pronoun-de">Wer ist das?</span></td></tr>
+        <tr><td><span class="pronoun-de">Was?</span></td><td><span class="pronoun-fa">چی؟ (چیز)</span></td><td><span class="pronoun-de">Was ist das?</span></td></tr>
+        <tr><td><span class="pronoun-de">Wo?</span></td><td><span class="pronoun-fa">کجا؟ (مکان)</span></td><td><span class="pronoun-de">Wo wohnst du?</span></td></tr>
+        <tr><td><span class="pronoun-de">Woher?</span></td><td><span class="pronoun-fa">از کجا؟</span></td><td><span class="pronoun-de">Woher kommst du?</span></td></tr>
+        <tr><td><span class="pronoun-de">Wohin?</span></td><td><span class="pronoun-fa">به کجا؟</span></td><td><span class="pronoun-de">Wohin gehst du?</span></td></tr>
+        <tr><td><span class="pronoun-de">Wann?</span></td><td><span class="pronoun-fa">کی؟ (زمان)</span></td><td><span class="pronoun-de">Wann kommst du?</span></td></tr>
+        <tr><td><span class="pronoun-de">Wie?</span></td><td><span class="pronoun-fa">چطور؟ / چند؟</span></td><td><span class="pronoun-de">Wie heißt du?</span></td></tr>
+        <tr><td><span class="pronoun-de">Wie viel?</span></td><td><span class="pronoun-fa">چقدر؟ / چند تا؟</span></td><td><span class="pronoun-de">Wie viel kostet das?</span></td></tr>
+        <tr><td><span class="pronoun-de">Warum?</span></td><td><span class="pronoun-fa">چرا؟</span></td><td><span class="pronoun-de">Warum lernst du Deutsch?</span></td></tr>
+      </table>
+    </div>
+    <div class="block">
+      <div class="block-label">📐 ساختار جمله سؤالی</div>
+      <div class="tip-box">
+        <strong>W-Frage:</strong> کلمه پرسشی + فعل + فاعل + بقیه جمله<br>
+        <span style="direction:ltr;display:block;font-family:'Playfair Display',serif;margin-top:8px">
+        Wo <span style="color:var(--gold)">wohnst</span> <span style="color:var(--blue)">du</span>? ← Wo + wohnst + du<br>
+        Wohin <span style="color:var(--gold)">geht</span> <span style="color:var(--blue)">sie</span>? ← Wohin + geht + sie<br>
+        Warum <span style="color:var(--gold)">lernst</span> <span style="color:var(--blue)">du</span> Deutsch?
+        </span>
+      </div>
+    </div>
+    <div class="block center"><button class="primary-btn" onclick="switchSubTab4(1)">حروف اضافه مکانی ›</button></div>
+  </div>
+  <!-- TAB 1: Lokalpronomina -->
+  <div id="l4tab1" style="display:none">
+    <div class="block">
+      <div class="block-label">📍 حروف اضافه مکانی – Lokalpräpositionen</div>
+      <div class="info-box highlight" style="margin-bottom:14px">
+        این حروف اضافه نشان می‌دهند که کجا هستیم یا به کجا می‌رویم. تفاوت‌های ظریفی دارند که باید یاد بگیریم.
+      </div>
+    </div>
+    <div class="block">
+      <div class="sound-rule">
+        <div class="rule-de" style="min-width:52px">aus</div>
+        <div>
+          <div class="rule-fa"><strong>از (داخل به بیرون)</strong> – حرکت از درون یک مکان بسته به بیرون</div>
+          <div class="rule-example">Ich komme aus dem Iran. (از ایران هستم)<br>Er kommt gerade aus dem Zimmer. (تازه از اتاق بیرون آمد)<br>Sie trinkt aus der Tasse. (از فنجان می‌نوشد)</div>
+          <div style="font-size:12px;color:var(--blue);margin-top:6px">💡 معمولاً برای خروج از یک فضای بسته یا اهل یک کشور/شهر بودن</div>
+        </div>
+      </div>
+      <div class="sound-rule">
+        <div class="rule-de" style="min-width:52px">von</div>
+        <div>
+          <div class="rule-fa"><strong>از (عمومی‌تر)</strong> – مبدأ کلی، نقطه شروع، مالکیت</div>
+          <div class="rule-example">Ich komme von der Arbeit. (از سر کار می‌آیم)<br>Das ist ein Buch von Kafka. (این کتاب کافکا است)<br>Der Bus fährt von Berlin nach München. (از برلین به مونیخ)</div>
+          <div style="font-size:12px;color:var(--blue);margin-top:6px">💡 از/ازطرف – مبدأ عمومی (نه لزوماً از داخل)</div>
+        </div>
+      </div>
+      <div class="sound-rule">
+        <div class="rule-de" style="min-width:52px">zu</div>
+        <div>
+          <div class="rule-fa"><strong>به سوی (مقصد)</strong> – رفتن به سمت یک مکان یا شخص</div>
+          <div class="rule-example">Ich gehe zum Arzt. (به دکتر می‌روم)<br>Komm zu mir! (بیا پیشم!)<br>Sie fährt zur Schule. (به مدرسه می‌رود)</div>
+          <div style="font-size:12px;color:var(--blue);margin-top:6px">💡 zu + dem = <strong>zum</strong> (مذکر/خنثی) | zu + der = <strong>zur</strong> (مؤنث)</div>
+        </div>
+      </div>
+      <div class="sound-rule">
+        <div class="rule-de" style="min-width:52px">in</div>
+        <div>
+          <div class="rule-fa"><strong>در / داخل</strong> – بودن در یک مکان (Dativ) یا رفتن به داخل (Akkusativ)</div>
+          <div class="rule-example">Ich bin in der Schule. (در مدرسه هستم) ← Dativ<br>Ich gehe in die Schule. (به مدرسه می‌روم) ← Akkusativ<br>Er wohnt in Berlin. (در برلین زندگی می‌کند)</div>
+          <div style="font-size:12px;color:var(--blue);margin-top:6px">💡 in + dem = <strong>im</strong> | in + das = <strong>ins</strong></div>
+        </div>
+      </div>
+      <div class="sound-rule">
+        <div class="rule-de" style="min-width:52px">auf</div>
+        <div>
+          <div class="rule-fa"><strong>روی (سطح)</strong> – روی یک سطح افقی بودن یا رفتن</div>
+          <div class="rule-example">Das Buch liegt auf dem Tisch. (کتاب روی میز است) ← Dativ<br>Sie stellt die Tasse auf den Tisch. (فنجان را روی میز می‌گذارد) ← Akkusativ<br>auf der Straße (توی خیابان – سطح)</div>
+          <div style="font-size:12px;color:var(--blue);margin-top:6px">💡 برای سطوح افقی مثل Tisch, Boden, Straße</div>
+        </div>
+      </div>
+    </div>
+    <div class="block">
+      <div class="block-label">🧠 خلاصه تفاوت‌ها</div>
+      <div class="tip-box" style="direction:ltr;text-align:left;font-family:'Playfair Display',serif;font-size:13px;line-height:2">
+        <span style="color:var(--gold)">aus</span> Iran ← اهل / خروج از داخل<br>
+        <span style="color:var(--gold)">von</span> der Arbeit ← از سر کار (مبدأ عمومی)<br>
+        <span style="color:var(--gold)">zu</span>m Arzt gehen ← رفتن به سمت<br>
+        <span style="color:var(--gold)">in</span> der Schule sein ← در مدرسه بودن<br>
+        <span style="color:var(--gold)">in</span> die Schule gehen ← به مدرسه رفتن<br>
+        <span style="color:var(--gold)">auf</span> dem Tisch ← روی میز (سطح)
+      </div>
+    </div>
+    <div class="block center"><button class="primary-btn" onclick="switchSubTab4(2)">متن ›</button></div>
+  </div>
+  <!-- TAB 2: Text -->
+  <div id="l4tab2" style="display:none">
+    <div class="block">
+      <div class="block-label">📝 متن: Ein Tag in der Stadt (یک روز در شهر)</div>
+      <div class="info-box" style="direction:ltr;text-align:left;line-height:2.2;font-family:'Playfair Display',serif;font-size:14.5px">
+        Minoo wohnt <span style="color:var(--gold)">in</span> Berlin. <span style="font-size:12px;color:var(--muted);font-family:Vazirmatn,sans-serif">(مینو در برلین زندگی می‌کند)</span><br>
+        Heute geht sie <span style="color:var(--gold)">zum</span> Arzt. <span style="font-size:12px;color:var(--muted);font-family:Vazirmatn,sans-serif">(امروز به دکتر می‌رود)</span><br>
+        <br>
+        „<span style="color:var(--gold)">Wohin</span> gehst du?", fragt Thomas. <span style="font-size:12px;color:var(--muted);font-family:Vazirmatn,sans-serif">(توماس می‌پرسد: کجا می‌روی؟)</span><br>
+        „Ich gehe <span style="color:var(--gold)">zum</span> Arzt. <span style="color:var(--gold)">Von</span> dort gehe ich <span style="color:var(--gold)">in</span> die Bibliothek.", antwortet Minoo.<br>
+        <span style="font-size:12px;color:var(--muted);font-family:Vazirmatn,sans-serif">(از اونجا به کتابخونه می‌رم)</span><br>
+        <br>
+        „<span style="color:var(--gold)">Wo</span> ist die Bibliothek?" <span style="font-size:12px;color:var(--muted);font-family:Vazirmatn,sans-serif">(کتابخانه کجاست؟)</span><br>
+        „Sie ist <span style="color:var(--gold)">auf</span> der Hauptstraße, neben dem Café." <span style="font-size:12px;color:var(--muted);font-family:Vazirmatn,sans-serif">(در خیابان اصلی، کنار کافه)</span><br>
+        <br>
+        Thomas kommt <span style="color:var(--gold)">aus</span> dem Supermarkt. <span style="font-size:12px;color:var(--muted);font-family:Vazirmatn,sans-serif">(توماس از سوپرمارکت می‌آید)</span><br>
+        Er hat ein Buch <span style="color:var(--gold)">von</span> Goethe <span style="color:var(--gold)">auf</span> dem Tisch. <span style="font-size:12px;color:var(--muted);font-family:Vazirmatn,sans-serif">(یک کتاب از گوته روی میز دارد)</span>
+      </div>
+    </div>
+    <div class="block center"><button class="primary-btn" onclick="switchSubTab4(3)">تمرین: لغزان ›</button></div>
+  </div>
+  <div id="l4tab3" style="display:none"><div id="fill4Container"></div></div>
+  <div id="l4tab4" style="display:none"><div id="match4Container"></div></div>
+  <div id="l4tab5" style="display:none"><div id="quiz4Container"></div></div>
+</section>
+
+<!-- QUIZ 0 -->
+<section id="sec-quiz0" class="animate-in">
+  <div class="lesson-header">
+    <button class="back-btn" onclick="showSection('lesson0')">›</button>
+    <div><div class="lesson-title">آزمون: الفبا و تلفظ</div><div class="lesson-subtitle">چقدر یاد گرفتی؟</div></div>
+  </div>
+  <div id="quizContent0"></div>
+</section>
+
+<!-- GLOSSARY -->
+<section id="sec-glossary" class="animate-in">
+  <div class="hero" style="padding:24px 0 20px;">
+    <h1 style="font-size:24px;">واژه‌نامه 📚</h1>
+    <p style="font-size:13px;">تمام کلمات درس‌ها – الفبایی</p>
+  </div>
+  <input class="gloss-search" type="text" placeholder="جستجو به فارسی یا آلمانی..." id="glossSearch" oninput="filterGloss()" />
+  <div class="alpha-tabs" id="alphaTabs"></div>
+  <div id="glossContainer"></div>
+</section>
+
+</main>
+
+<div class="bottom-nav">
+  <button class="bnav-item active" id="bnav-home" onclick="switchTab('home')"><span>🏠</span><span>خانه</span></button>
+  <button class="bnav-item" id="bnav-glossary" onclick="switchTab('glossary')"><span>📖</span><span>واژه‌نامه</span></button>
+</div>
+
+<div style="position:fixed;bottom:68px;left:0;right:0;text-align:center;font-size:10px;color:var(--muted);pointer-events:none;z-index:99;letter-spacing:.5px">
+  Entwickelt von <span style="color:var(--gold);font-weight:600">Arash Guitoo</span>
+</div>
+
+<script>
+// ══ DATA ══════════════════════════════════════
+const ALPHABET=[
+  {l:'A',fa:'آ / اَ'},{l:'B',fa:'ب'},{l:'C',fa:'تس / ک'},{l:'D',fa:'د'},
+  {l:'E',fa:'اِ'},{l:'F',fa:'ف'},{l:'G',fa:'گ'},{l:'H',fa:'ه / –'},
+  {l:'I',fa:'ای'},{l:'J',fa:'ی'},{l:'K',fa:'ک'},{l:'L',fa:'ل'},
+  {l:'M',fa:'م'},{l:'N',fa:'ن'},{l:'O',fa:'اُ'},{l:'P',fa:'پ'},
+  {l:'Q',fa:'ک (کوو)'},{l:'R',fa:'ر'},{l:'S',fa:'ز / س'},{l:'T',fa:'ت'},
+  {l:'U',fa:'اوو'},{l:'V',fa:'ف'},{l:'W',fa:'و'},{l:'X',fa:'کس'},
+  {l:'Y',fa:'اوپسیلون'},{l:'Z',fa:'تس'},
+  {l:'Ä',fa:'اِ (کشیده)'},{l:'Ö',fa:'اؤ'},{l:'Ü',fa:'اؤی'},{l:'ß',fa:'س (کشیده)'}
+];
+const SOUND_RULES=[
+  {de:'SCH',fa:'همیشه <span class="rule-persian">ش</span>',ex:'Schule=شوله | Schön=شؤن'},
+  {de:'CH',fa:'بعد از E,I,Ä: <span class="rule-persian">ش</span> ملایم — بعد از A,O,U: <span class="rule-persian">خ</span>',ex:'ich=ایش | ach=آخ | Buch=بوخ'},
+  {de:'C / Z',fa:'هر دو تقریباً <span class="rule-persian">تس</span>',ex:'Zehn=تسِن'},
+  {de:'S',fa:'اکثراً <span class="rule-persian">ز</span> – قبل از T یا P: <span class="rule-persian">ش</span>',ex:'Sonne=زونه | Stein=شتاین'},
+  {de:'H',fa:'اول کلمه: <span class="rule-persian">ه</span> — وسط/آخر: بی‌صدا، مصوت را کشیده می‌کند',ex:'Haus=هاوس | Bahn=بان (آ کشیده)'},
+  {de:'V',fa:'اکثراً <span class="rule-persian">ف</span> — کلمات خارجی: «و»',ex:'Vater=فاتر | Villa=ویلا'},
+  {de:'W',fa:'همیشه <span class="rule-persian">و</span>',ex:'Wasser=واسر'},
+  {de:'R',fa:'از ته گلو مثل <span class="rule-persian">غ</span> ملایم',ex:'rot=غوت'},
+  {de:'IE',fa:'همیشه <span class="rule-persian">ای</span> کشیده',ex:'Liebe=لیبه'},
+  {de:'EI/AI',fa:'صدای <span class="rule-persian">آی</span>',ex:'ein=آین'},
+  {de:'ST/SP',fa:'اول کلمه: <span class="rule-persian">شت / شپ</span>',ex:'Stadt=شتات | Sprache=شپراخه'}
+];
+
+const GLOSSARY=[
+  // Gam 0
+  {de:'Alphabet',fa:'الفبا',src:'گام ۰'},{de:'Aussprache',fa:'تلفظ',src:'گام ۰'},
+  {de:'Buchstabe',fa:'حرف',src:'گام ۰'},{de:'Vokal',fa:'مصوت',src:'گام ۰'},
+  {de:'Konsonant',fa:'صامت',src:'گام ۰'},{de:'Umlaut',fa:'حرف تغییریافته (Ä/Ö/Ü)',src:'گام ۰'},
+  {de:'Bahn',fa:'قطار / مسیر',src:'گام ۰'},{de:'Bär',fa:'خرس',src:'گام ۰'},
+  {de:'Brot',fa:'نان',src:'گام ۰'},{de:'Buch',fa:'کتاب',src:'گام ۰'},
+  {de:'Haus',fa:'خانه',src:'گام ۰'},{de:'ja',fa:'بله',src:'گام ۰'},
+  {de:'lang',fa:'بلند / طولانی',src:'گام ۰'},{de:'Liebe',fa:'عشق / محبت',src:'گام ۰'},
+  {de:'Mann',fa:'مرد',src:'گام ۰'},{de:'rot',fa:'قرمز',src:'گام ۰'},
+  {de:'schön',fa:'زیبا',src:'گام ۰'},{de:'Schule',fa:'مدرسه',src:'گام ۰'},
+  {de:'Sonne',fa:'خورشید',src:'گام ۰'},{de:'Sprache',fa:'زبان',src:'گام ۰'},
+  {de:'Stadt',fa:'شهر',src:'گام ۰'},{de:'Stein',fa:'سنگ',src:'گام ۰'},
+  {de:'Straße',fa:'خیابان',src:'گام ۰'},{de:'über',fa:'روی / بالاتر از',src:'گام ۰'},
+  {de:'Vater',fa:'پدر',src:'گام ۰'},{de:'Vogel',fa:'پرنده',src:'گام ۰'},
+  {de:'Wasser',fa:'آب',src:'گام ۰'},{de:'Winter',fa:'زمستان',src:'گام ۰'},
+  {de:'Zehn',fa:'عدد ده',src:'گام ۰'},
+  // Gam 1
+  {de:'ich',fa:'من',src:'گام ۱'},{de:'du',fa:'تو',src:'گام ۱'},
+  {de:'er',fa:'او (مذکر)',src:'گام ۱'},{de:'sie',fa:'او (مؤنث) / آن‌ها',src:'گام ۱'},
+  {de:'es',fa:'آن (خنثی)',src:'گام ۱'},{de:'wir',fa:'ما',src:'گام ۱'},
+  {de:'ihr',fa:'شما (غیررسمی/جمع)',src:'گام ۱'},{de:'Sie',fa:'شما (رسمی)',src:'گام ۱'},
+  {de:'heißen',fa:'نام داشتن',src:'گام ۱'},{de:'kommen',fa:'آمدن / اهل جایی بودن',src:'گام ۱'},
+  {de:'sprechen',fa:'صحبت کردن',src:'گام ۱'},{de:'sein',fa:'بودن',src:'گام ۱'},
+  {de:'bin',fa:'هستم (ich bin)',src:'گام ۱'},{de:'bist',fa:'هستی (du bist)',src:'گام ۱'},
+  {de:'ist',fa:'است (er/sie/es ist)',src:'گام ۱'},{de:'sind',fa:'هستیم/هستند (wir/sie sind)',src:'گام ۱'},
+  {de:'seid',fa:'هستید (ihr seid)',src:'گام ۱'},{de:'Hallo',fa:'سلام',src:'گام ۱'},
+  {de:'Woher',fa:'از کجا',src:'گام ۱'},{de:'aus',fa:'از (برای مکان)',src:'گام ۱'},
+  {de:'Iran',fa:'ایران',src:'گام ۱'},{de:'Deutschland',fa:'آلمان',src:'گام ۱'},
+  {de:'Österreich',fa:'اتریش',src:'گام ۱'},{de:'Persisch',fa:'فارسی (زبان)',src:'گام ۱'},
+  {de:'Deutsch',fa:'آلمانی (زبان/صفت)',src:'گام ۱'},{de:'Englisch',fa:'انگلیسی',src:'گام ۱'},
+  {de:'Studentin',fa:'دانشجو (خانم)',src:'گام ۱'},{de:'Student',fa:'دانشجو (آقا)',src:'گام ۱'},
+  {de:'Name',fa:'نام / اسم',src:'گام ۱'},{de:'Toll',fa:'عالی!',src:'گام ۱'},
+  {de:'und',fa:'و',src:'گام ۱'},{de:'Ja',fa:'بله',src:'گام ۱'},
+  {de:'Nein',fa:'نه',src:'گام ۱'},
+];
+
+const QUIZ0=[
+  {q:'SCH در آلمانی چه صدایی دارد؟',opts:['ص','ش','چ','ژ'],ans:1},
+  {q:'V در کلمات آلمانی مثل Vater چه صدایی دارد؟',opts:['و','ب','ف','پ'],ans:2},
+  {q:'H در وسط کلمه مثل Bahn چه تأثیری دارد؟',opts:['صدای ه می‌دهد','بی‌صدا است و مصوت را کشیده می‌کند','صدای خ می‌دهد','حذف می‌شود'],ans:1},
+  {q:'W در آلمانی چه صدایی دارد؟',opts:['دبلیو','ف','و','ب'],ans:2},
+  {q:'ترکیب IE در Liebe چه صدایی دارد؟',opts:['اِ','ای کشیده','اِی','اِئِ'],ans:1},
+  {q:'Z در Zehn چه صدایی دارد؟',opts:['ز','ژ','تس','س'],ans:2},
+  {q:'EI در ein چه صدایی دارد؟',opts:['اِی','آی','ای','اَی'],ans:1},
+  {q:'CH بعد از A, O, U چه صدایی دارد؟',opts:['ش','چ','خ','ک'],ans:2},
+];
+
+const QUIZ1=[
+  {q:'Ich ___ Minoo.',fa:'من مینو هستم (اسم)',opts:['heiße','heißt','heißen','bin'],ans:0},
+  {q:'Du ___ aus Iran.',fa:'تو از ایران هستی',opts:['kommt','kommen','kommst','komme'],ans:2},
+  {q:'Er ___ Deutsch.',fa:'او آلمانی صحبت می‌کند',opts:['spreche','sprichst','sprecht','spricht'],ans:3},
+  {q:'Wir ___ Studenten.',fa:'ما دانشجو هستیم',opts:['sind','bin','bist','ist'],ans:0},
+  {q:'Ihr ___ aus Deutschland.',fa:'شما از آلمان هستید',opts:['kommt','kommen','kommst','komme'],ans:0},
+  {q:'Wie ___ Sie?',fa:'اسم شما چیست؟ (رسمی)',opts:['heiße','heißen','heißt','heißtet'],ans:1},
+  {q:'Ich ___ Studentin.',fa:'من دانشجو هستم',opts:['bist','sind','bin','ist'],ans:2},
+  {q:'Sie ___ Persisch.',fa:'او (خانم) فارسی صحبت می‌کند',opts:['spreche','sprichst','sprechen','spricht'],ans:3},
+  {q:'«du» چه معنی‌ای دارد؟',fa:'',opts:['من','تو','ما','او'],ans:1},
+  {q:'«Sie» با حرف بزرگ یعنی؟',fa:'',opts:['آن‌ها','او (خانم)','شما (رسمی)','ما'],ans:2},
+];
+
+const SENTENCE_EXERCISES=[
+  {fa:'من مینو هستم (اسم دارم).',correct:['Ich','heiße','Minoo','.'],pool:['Ich','heiße','Minoo','du','heißt','komme','.']},
+  {fa:'تو از ایران می‌آیی.',correct:['Du','kommst','aus','dem','Iran','.'],pool:['Du','kommst','aus','dem','Iran','Ich','komme','.']},
+  {fa:'ما آلمانی صحبت می‌کنیم.',correct:['Wir','sprechen','Deutsch','.'],pool:['Wir','sprechen','Deutsch','spricht','Ihr','sprecht','.']},
+  {fa:'او (مذکر) دانشجو است.',correct:['Er','ist','Student','.'],pool:['Er','ist','Student','bin','bist','Studentin','.']},
+  {fa:'اسم شما (رسمی) چیست؟',correct:['Wie','heißen','Sie','?'],pool:['Wie','heißen','Sie','heißt','du','Woher','?']},
+];
+
+const FILL_EXERCISES=[
+  {before:'Ich',blank:'komme',after:'aus dem Iran.',hint:'kommen – ich → ___e'},
+  {before:'Du',blank:'heißt',after:'Thomas.',hint:'heißen – du → ___t'},
+  {before:'Er',blank:'spricht',after:'Deutsch.',hint:'sprechen – er (نامنظم: e→i)'},
+  {before:'Wir',blank:'sind',after:'Studenten.',hint:'sein – wir → s___d'},
+  {before:'Ihr',blank:'kommt',after:'aus Deutschland.',hint:'kommen – ihr → ___t'},
+  {before:'Sie (رسمی)',blank:'heißen',after:'Müller.',hint:'heißen – Sie رسمی = مثل مصدر'},
+  {before:'Ich',blank:'bin',after:'Studentin.',hint:'sein – ich → b__'},
+  {before:'Du',blank:'sprichst',after:'Persisch.',hint:'sprechen – du (نامنظم: e→i)'},
+];
+
+const MATCH_VOCAB=[
+  {de:'sprechen',fa:'صحبت کردن'},
+  {de:'kommen',fa:'آمدن'},
+  {de:'heißen',fa:'نام داشتن'},
+  {de:'sein',fa:'بودن'},
+  {de:'Woher',fa:'از کجا'},
+  {de:'Toll',fa:'عالی'},
+  {de:'aus',fa:'از (مکان)'},
+  {de:'Name',fa:'نام / اسم'},
+];
+
+const MATCH_CONJ=[
+  {pro:'ich',form:'bin',verb:'sein'},
+  {pro:'du',form:'bist',verb:'sein'},
+  {pro:'er/sie/es',form:'ist',verb:'sein'},
+  {pro:'wir',form:'sind',verb:'sein'},
+  {pro:'ihr',form:'seid',verb:'sein'},
+  {pro:'ich',form:'komme',verb:'kommen'},
+  {pro:'du',form:'kommst',verb:'kommen'},
+  {pro:'er/sie/es',form:'spricht',verb:'sprechen'},
+];
+
+// ══ NAVIGATION ════════════════════════════════
+function switchTab(tab){
+  document.querySelectorAll('.bnav-item').forEach(b=>b.classList.remove('active'));
+  document.getElementById('bnav-'+tab).classList.add('active');
+  showSection(tab);
+}
+function showSection(id){
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+  document.getElementById('sec-'+id).classList.add('active');
+  window.scrollTo(0,0);
+}
+function openLesson(id){showSection(id);}
+function closeLesson(){showSection('home');}
+
+function switchSubTab(idx){
+  document.querySelectorAll('.sub-tab').forEach((t,i)=>t.classList.toggle('active',i===idx));
+  for(let i=0;i<6;i++){const el=document.getElementById('l1tab'+i);if(el)el.style.display=(i===idx)?'block':'none';}
+  window.scrollTo(0,0);
+  if(idx===1&&!sbState.built)buildSB();
+  if(idx===2&&!fbState.built)buildFB();
+  if(idx===3&&!mvState.built)buildMV();
+  if(idx===4&&!mcState.built)buildMC();
+  if(idx===5)startQuiz1();
+}
+
+// ══ L0 HELPERS ════════════════════════════════
+function buildAlphaGrid(){
+  document.getElementById('alphaGrid').innerHTML=ALPHABET.map(a=>`<div class="alpha-card"><div class="alpha-de">${a.l}</div><div class="alpha-fa">${a.fa}</div></div>`).join('');
+}
+function buildSoundRules(){
+  document.getElementById('soundRules').innerHTML=SOUND_RULES.map(r=>`<div class="sound-rule"><div class="rule-de">${r.de}</div><div><div class="rule-fa">${r.fa}</div><div class="rule-example">${r.ex}</div></div></div>`).join('');
+}
+
+// ══ GAME 1: SENTENCE BUILDER ══════════════════
+let sbState={idx:0,built:false,dropped:[]};
+function buildSB(){sbState={idx:0,built:true,dropped:[]};renderSB();}
+function renderSB(){
+  const ex=SENTENCE_EXERCISES[sbState.idx];
+  sbState.dropped=[];
+  document.getElementById('sentenceBuilderContainer').innerHTML=`
+    <div class="game-box animate-in">
+      <div class="game-title">🧩 جمله‌سازی با کلیک</div>
+      <div class="game-desc">کلمات را به ترتیب درست کلیک کن:<br><span style="font-size:12px;color:var(--gold)">🇮🇷 ${ex.fa}</span></div>
+      <div class="drop-zone" id="sbDrop"></div>
+      <div class="word-chips" id="sbChips"></div>
+      <div class="game-feedback" id="sbFb"></div>
+      <div class="game-btn-row">
+        <button class="primary-btn" onclick="checkSB()">✓ بررسی</button>
+        <button class="sec-btn" onclick="renderSB()">↺ پاک</button>
+        ${sbState.idx>0?'<button class="sec-btn" onclick="sbState.idx--;renderSB()">‹ قبلی</button>':''}
+      </div>
+      <div style="font-size:12px;color:var(--muted);margin-top:10px;text-align:center">${sbState.idx+1} / ${SENTENCE_EXERCISES.length}</div>
+    </div>`;
+  const pool=shuffleArr([...ex.pool]);
+  document.getElementById('sbChips').innerHTML=pool.map((w,i)=>`<span class="chip" id="chip_${i}" onclick="addSB(${i},'${w.replace(/'/g,"\\'")}',this)">${w}</span>`).join('');
+}
+function addSB(i,w,el){
+  if(el.classList.contains('placed'))return;
+  el.classList.add('placed');
+  sbState.dropped.push({i,w});
+  const s=document.createElement('span');
+  s.className='chip in-drop';s.textContent=w;s.dataset.i=i;
+  s.onclick=function(){sbState.dropped=sbState.dropped.filter(d=>d.i!==i);s.remove();document.getElementById('chip_'+i).classList.remove('placed');};
+  document.getElementById('sbDrop').appendChild(s);
+}
+function checkSB(){
+  const ex=SENTENCE_EXERCISES[sbState.idx];
+  const ok=sbState.dropped.map(d=>d.w).join(' ')===ex.correct.join(' ');
+  const fb=document.getElementById('sbFb'),dz=document.getElementById('sbDrop');
+  fb.style.display='block';
+  if(ok){
+    fb.className='game-feedback show ok';fb.innerHTML='✅ عالی!';dz.classList.add('success');
+    setTimeout(()=>{if(sbState.idx<SENTENCE_EXERCISES.length-1){sbState.idx++;renderSB();}else{sbDone();}},1400);
+  }else{
+    fb.className='game-feedback show bad';fb.innerHTML=`❌ جواب درست: <strong style="direction:ltr;display:inline-block">${ex.correct.join(' ')}</strong>`;dz.classList.add('error');
+    setTimeout(()=>{renderSB();},2200);
+  }
+}
+function sbDone(){document.getElementById('sentenceBuilderContainer').innerHTML=`<div class="game-box animate-in center"><div style="font-size:48px">🏆</div><div class="quiz-score">تمام!</div><div class="quiz-sub">همه ۵ جمله ساخته شدند!</div><div class="mt16"><button class="primary-btn" onclick="buildSB()">🔄 دوباره</button> <button class="sec-btn" onclick="switchSubTab(2)">بعدی ›</button></div></div>`;}
+
+// ══ GAME 2: FILL BLANK ════════════════════════
+let fbState={idx:0,built:false};
+function buildFB(){fbState={idx:0,built:true};renderFB();}
+function renderFB(){
+  const ex=FILL_EXERCISES[fbState.idx];
+  document.getElementById('fillBlankContainer').innerHTML=`
+    <div class="game-box animate-in">
+      <div class="game-title">✏️ جای خالی را پر کن</div>
+      <div class="game-desc">فعل صرف‌شده درست را تایپ کن:<br><span style="font-size:12px;color:var(--blue)">💡 ${ex.hint}</span></div>
+      <div class="blank-sentence">${ex.before} <input class="blank-input" id="fbIn" placeholder="?" autocomplete="off" autocorrect="off" spellcheck="false"/> ${ex.after}</div>
+      <div class="game-feedback" id="fbFb"></div>
+      <div class="game-btn-row">
+        <button class="primary-btn" onclick="checkFB()">✓ بررسی</button>
+        <button class="sec-btn" onclick="showFBHint()">💡 جواب</button>
+        ${fbState.idx>0?'<button class="sec-btn" onclick="fbState.idx--;renderFB()">‹ قبلی</button>':''}
+      </div>
+      <div style="font-size:12px;color:var(--muted);margin-top:10px;text-align:center">${fbState.idx+1} / ${FILL_EXERCISES.length}</div>
+    </div>`;
+  const inp=document.getElementById('fbIn');
+  inp.addEventListener('keydown',e=>{if(e.key==='Enter')checkFB();});
+  setTimeout(()=>inp.focus(),100);
+}
+function checkFB(){
+  const ex=FILL_EXERCISES[fbState.idx];
+  const val=(document.getElementById('fbIn').value||'').trim().toLowerCase();
+  const ok=val===ex.blank.toLowerCase();
+  const inp=document.getElementById('fbIn'),fb=document.getElementById('fbFb');
+  fb.style.display='block';inp.classList.remove('correct','wrong');
+  if(ok){
+    inp.classList.add('correct');inp.value=ex.blank;
+    fb.className='game-feedback show ok';fb.innerHTML=`✅ درست!`;
+    setTimeout(()=>{if(fbState.idx<FILL_EXERCISES.length-1){fbState.idx++;renderFB();}else{fbDone();}},1300);
+  }else{
+    inp.classList.add('wrong');fb.className='game-feedback show bad';fb.innerHTML='❌ دوباره امتحان کن';
+    setTimeout(()=>{inp.classList.remove('wrong');fb.style.display='none';inp.value='';inp.focus();},1400);
+  }
+}
+function showFBHint(){
+  const ex=FILL_EXERCISES[fbState.idx];
+  const inp=document.getElementById('fbIn');inp.value=ex.blank;inp.classList.add('correct');
+  const fb=document.getElementById('fbFb');fb.className='game-feedback show ok';fb.style.display='block';
+  fb.innerHTML=`💡 <strong style="direction:ltr;display:inline-block">${ex.blank}</strong>`;
+  setTimeout(()=>{if(fbState.idx<FILL_EXERCISES.length-1){fbState.idx++;renderFB();}else{fbDone();}},1500);
+}
+function fbDone(){document.getElementById('fillBlankContainer').innerHTML=`<div class="game-box animate-in center"><div style="font-size:48px">🌟</div><div class="quiz-score">تمام!</div><div class="quiz-sub">همه فعل‌ها پر شدند!</div><div class="mt16"><button class="primary-btn" onclick="buildFB()">🔄 دوباره</button> <button class="sec-btn" onclick="switchSubTab(3)">بعدی ›</button></div></div>`;}
+
+// ══ GAME 3: MATCH VOCAB ═══════════════════════
+let mvState={built:false,sel:null,matched:[]};
+function buildMV(){mvState={built:true,sel:null,matched:[]};renderMV();}
+function renderMV(){
+  const pairs=shuffleArr([...MATCH_VOCAB]).slice(0,6);
+  const deList=shuffleArr(pairs.map(p=>({t:p.de,k:p.de,s:'de'})));
+  const faList=shuffleArr(pairs.map(p=>({t:p.fa,k:p.de,s:'fa'})));
+  document.getElementById('matchVocabContainer').innerHTML=`
+    <div class="game-box animate-in">
+      <div class="game-title">🃏 جفت‌یابی واژه‌ها</div>
+      <div class="game-desc">یک کلمه آلمانی و معنی فارسی آن را جفت کن:</div>
+      <div class="match-grid">
+        <div><div class="match-col-label">🇩🇪 آلمانی</div>${deList.map((it,i)=>`<div class="match-card" id="mvd${i}" data-k="${it.k}" data-s="de" onclick="selMV('mvd${i}','${it.k}','de')"><span class="match-card-de">${it.t}</span></div>`).join('')}</div>
+        <div><div class="match-col-label">🇮🇷 فارسی</div>${faList.map((it,i)=>`<div class="match-card" id="mvf${i}" data-k="${it.k}" data-s="fa" onclick="selMV('mvf${i}','${it.k}','fa')">${it.t}</div>`).join('')}</div>
+      </div>
+      <div class="game-feedback" id="mvFb"></div>
+      <div style="font-size:12px;color:var(--muted);margin-top:10px;text-align:center" id="mvSc">جفت‌های پیدا شده: 0 / 6</div>
+    </div>`;
+  mvState.pairs=pairs;mvState.matched=[];mvState.sel=null;
+}
+function selMV(id,key,side){
+  const el=document.getElementById(id);
+  if(el.classList.contains('matched'))return;
+  if(mvState.sel&&mvState.sel.id===id){el.classList.remove('selected');mvState.sel=null;return;}
+  if(mvState.sel){
+    const p=mvState.sel;
+    if(p.key===key&&p.side!==side){
+      document.getElementById(p.id).classList.remove('selected');
+      document.getElementById(p.id).classList.add('matched');
+      el.classList.add('matched');
+      mvState.matched.push(key);mvState.sel=null;
+      const fb=document.getElementById('mvFb');fb.className='game-feedback show ok';fb.style.display='block';fb.innerHTML='✅';
+      setTimeout(()=>{fb.style.display='none';},600);
+      document.getElementById('mvSc').textContent=`جفت‌های پیدا شده: ${mvState.matched.length} / 6`;
+      if(mvState.matched.length===6)setTimeout(mvDone,700);
+    }else{
+      [el,document.getElementById(p.id)].forEach(e=>{e.classList.add('wrong-shake');setTimeout(()=>e.classList.remove('wrong-shake','selected'),400);});
+      mvState.sel=null;
+    }
+  }else{el.classList.add('selected');mvState.sel={id,key,side};}
+}
+function mvDone(){document.getElementById('matchVocabContainer').innerHTML=`<div class="game-box animate-in center"><div style="font-size:48px">🎉</div><div class="quiz-score">کامل!</div><div class="quiz-sub">همه ۶ جفت پیدا شدند!</div><div class="mt16"><button class="primary-btn" onclick="buildMV()">🔄 دوباره</button> <button class="sec-btn" onclick="switchSubTab(4)">بعدی ›</button></div></div>`;}
+
+// ══ GAME 4: MATCH CONJ ════════════════════════
+let mcState={built:false,sel:null,matched:[]};
+function buildMC(){mcState={built:true,sel:null,matched:[]};renderMC();}
+function renderMC(){
+  const raw=shuffleArr([...MATCH_CONJ]).slice(0,6);
+  const keyed=raw.map((p,i)=>({...p,uid:`${i}_${p.pro}_${p.form}`}));
+  const left=shuffleArr(keyed.map(p=>({t:p.pro,uid:p.uid,s:'pro'})));
+  const right=shuffleArr(keyed.map(p=>({t:p.form,uid:p.uid,s:'form'})));
+  document.getElementById('matchConjContainer').innerHTML=`
+    <div class="game-box animate-in">
+      <div class="game-title">🔀 جفت‌یابی صرف فعل</div>
+      <div class="game-desc">ضمیر را با شکل فعل مناسبش جفت کن:</div>
+      <div class="match-grid">
+        <div><div class="match-col-label">ضمیر</div>${left.map((it,i)=>`<div class="match-card" id="mcl${i}" data-uid="${it.uid}" data-s="pro" onclick="selMC('mcl${i}','${it.uid}','pro')"><span class="match-card-de">${it.t}</span></div>`).join('')}</div>
+        <div><div class="match-col-label">فعل صرف‌شده</div>${right.map((it,i)=>`<div class="match-card" id="mcr${i}" data-uid="${it.uid}" data-s="form" onclick="selMC('mcr${i}','${it.uid}','form')"><span class="match-card-de">${it.t}</span></div>`).join('')}</div>
+      </div>
+      <div class="game-feedback" id="mcFb"></div>
+      <div style="font-size:12px;color:var(--muted);margin-top:10px;text-align:center" id="mcSc">جفت‌های پیدا شده: 0 / 6</div>
+    </div>`;
+  mcState.matched=[];mcState.sel=null;
+}
+function selMC(id,uid,side){
+  const el=document.getElementById(id);
+  if(el.classList.contains('matched'))return;
+  if(mcState.sel&&mcState.sel.id===id){el.classList.remove('selected');mcState.sel=null;return;}
+  if(mcState.sel){
+    const p=mcState.sel;
+    if(p.uid===uid&&p.side!==side){
+      document.getElementById(p.id).classList.remove('selected');
+      document.getElementById(p.id).classList.add('matched');
+      el.classList.add('matched');
+      mcState.matched.push(uid);mcState.sel=null;
+      const fb=document.getElementById('mcFb');fb.className='game-feedback show ok';fb.style.display='block';fb.innerHTML='✅';
+      setTimeout(()=>{fb.style.display='none';},600);
+      document.getElementById('mcSc').textContent=`جفت‌های پیدا شده: ${mcState.matched.length} / 6`;
+      if(mcState.matched.length===6)setTimeout(mcDone,700);
+    }else{
+      [el,document.getElementById(p.id)].forEach(e=>{e.classList.add('wrong-shake');setTimeout(()=>e.classList.remove('wrong-shake','selected'),400);});
+      mcState.sel=null;
+    }
+  }else{el.classList.add('selected');mcState.sel={id,uid,side};}
+}
+function mcDone(){document.getElementById('matchConjContainer').innerHTML=`<div class="game-box animate-in center"><div style="font-size:48px">🌈</div><div class="quiz-score">آفرین!</div><div class="quiz-sub">صرف فعل‌ها رو کامل یاد گرفتی!</div><div class="mt16"><button class="primary-btn" onclick="switchSubTab(5)">آزمون نهایی 🎯</button> <button class="sec-btn" onclick="buildMC()">🔄 دوباره</button></div></div>`;}
+
+// ══ QUIZ 0 ════════════════════════════════════
+let qS0={};
+function startQuiz0(){qS0={idx:0,score:0,answered:false,qs:shuffleArr([...QUIZ0]).slice(0,6)};showSection('quiz0');renderQ0();}
+function renderQ0(){
+  const{idx,qs,score}=qS0,c=document.getElementById('quizContent0');
+  if(idx>=qs.length){c.innerHTML=`<div class="quiz-box animate-in"><div style="font-size:48px">${score>=5?'🏆':score>=3?'👍':'📚'}</div><div class="quiz-score">${score}/${qs.length}</div><div class="quiz-sub">${score>=5?'عالی!':score>=3?'خوب بود!':'یه بار دیگه مرور کن'}</div><div class="mt16"><button class="primary-btn" onclick="startQuiz0()">🔄 دوباره</button></div><div class="mt16"><button class="sec-btn" onclick="showSection('lesson0')">← برگشت</button></div></div>`;return;}
+  const q=qs[idx];
+  c.innerHTML=`<div class="quiz-box animate-in"><div class="quiz-progress"><div class="quiz-progress-fill" style="width:${idx/qs.length*100}%"></div></div><div style="font-size:12px;color:var(--muted);margin-bottom:16px">سؤال ${idx+1} از ${qs.length}</div><div class="quiz-question">${q.q}</div><div class="quiz-sub">گزینه درست را انتخاب کن</div><div class="quiz-options">${q.opts.map((o,i)=>`<button class="quiz-opt" id="q0o${i}" onclick="ansQ0(${i})">${o}</button>`).join('')}</div></div>`;
+}
+function ansQ0(ch){
+  if(qS0.answered)return;qS0.answered=true;const q=qS0.qs[qS0.idx];
+  document.querySelectorAll('#quizContent0 .quiz-opt').forEach((el,i)=>{el.disabled=true;if(i===q.ans)el.classList.add('correct');else if(i===ch)el.classList.add('wrong');});
+  if(ch===q.ans)qS0.score++;
+  setTimeout(()=>{qS0.idx++;qS0.answered=false;renderQ0();},1200);
+}
+
+// ══ QUIZ 1 ════════════════════════════════════
+let qS1={};
+function startQuiz1(){qS1={idx:0,score:0,answered:false,qs:shuffleArr([...QUIZ1]).slice(0,8)};renderQ1();}
+function renderQ1(){
+  const{idx,qs,score}=qS1,c=document.getElementById('quiz1Container');
+  if(idx>=qs.length){c.innerHTML=`<div class="quiz-box animate-in center"><div style="font-size:48px">${score>=7?'🏆':score>=5?'👍':'📚'}</div><div class="quiz-score">${score}/${qs.length}</div><div class="quiz-sub">${score>=7?'عالی! گام ۱ کامل شد!':score>=5?'خوب بود! یه بار دیگه مرور کن':'درس رو یه بار دیگه بخون'}</div><div class="xp-badge" style="margin:16px auto;display:flex;width:fit-content">⭐ +${score*10} امتیاز</div><div class="mt16"><button class="primary-btn" onclick="startQuiz1()">🔄 دوباره</button></div><div class="mt16"><button class="sec-btn" onclick="switchSubTab(0)">← برگشت به درس</button></div></div>`;return;}
+  const q=qs[idx];
+  c.innerHTML=`<div class="quiz-box animate-in"><div class="quiz-progress"><div class="quiz-progress-fill" style="width:${idx/qs.length*100}%"></div></div><div style="font-size:12px;color:var(--muted);margin-bottom:12px">سؤال ${idx+1} از ${qs.length}</div><div class="quiz-question">${q.q}</div>${q.fa?`<div class="quiz-question-fa">${q.fa}</div>`:'<div style="margin-bottom:20px"></div>'}<div class="quiz-options">${q.opts.map((o,i)=>`<button class="quiz-opt" id="q1o${i}" onclick="ansQ1(${i})">${o}</button>`).join('')}</div></div>`;
+}
+function ansQ1(ch){
+  if(qS1.answered)return;qS1.answered=true;const q=qS1.qs[qS1.idx];
+  document.querySelectorAll('#quiz1Container .quiz-opt').forEach((el,i)=>{el.disabled=true;if(i===q.ans)el.classList.add('correct');else if(i===ch)el.classList.add('wrong');});
+  if(ch===q.ans)qS1.score++;
+  setTimeout(()=>{qS1.idx++;qS1.answered=false;renderQ1();},1200);
+}
+
+// ══ GLOSSARY ══════════════════════════════════
+function buildGlossary(f='',l=''){
+  let items=[...GLOSSARY].sort((a,b)=>a.de.localeCompare(b.de));
+  if(f){const q=f.toLowerCase();items=items.filter(i=>i.de.toLowerCase().includes(q)||i.fa.includes(q));}
+  if(l)items=items.filter(i=>i.de[0].toUpperCase()===l);
+  const g={};items.forEach(i=>{const k=i.de[0].toUpperCase();if(!g[k])g[k]=[];g[k].push(i);});
+  const c=document.getElementById('glossContainer');
+  if(!Object.keys(g).length){c.innerHTML='<div class="info-box center" style="margin-top:20px">نتیجه‌ای پیدا نشد</div>';return;}
+  c.innerHTML=Object.keys(g).sort().map(k=>`<div class="gloss-section"><div class="gloss-letter">${k}</div>${g[k].map(i=>`<div class="gloss-item"><div><div class="gloss-de">${i.de}</div><div class="gloss-fa">${i.fa}</div></div><div class="gloss-source">${i.src}</div></div>`).join('')}</div>`).join('');
+}
+function buildAlphaTabs(){
+  const letters=[...new Set(GLOSSARY.map(i=>i.de[0].toUpperCase()))].sort();
+  document.getElementById('alphaTabs').innerHTML=`<button class="alpha-tab active" onclick="filterByLetter('')">همه</button>`+letters.map(l=>`<button class="alpha-tab" onclick="filterByLetter('${l}')">${l}</button>`).join('');
+}
+let aLF='';
+function filterByLetter(l){aLF=l;document.querySelectorAll('.alpha-tab').forEach(t=>t.classList.toggle('active',t.textContent===(l||'همه')));buildGlossary(document.getElementById('glossSearch').value,l);}
+function filterGloss(){buildGlossary(document.getElementById('glossSearch').value,aLF);}
+function shuffleArr(a){return a.sort(()=>Math.random()-.5);}
+
+// ══ LESSON 2-4 DATA ══════════════════════════
+
+const FAMILY_VOCAB=[
+  {de:'der Vater',fa:'پدر',art:'der',pl:'die Väter'},
+  {de:'die Mutter',fa:'مادر',art:'die',pl:'die Mütter'},
+  {de:'der Bruder',fa:'برادر',art:'der',pl:'die Brüder'},
+  {de:'die Schwester',fa:'خواهر',art:'die',pl:'die Schwestern'},
+  {de:'der Sohn',fa:'پسر',art:'der',pl:'die Söhne'},
+  {de:'die Tochter',fa:'دختر',art:'die',pl:'die Töchter'},
+  {de:'die Eltern',fa:'والدین',art:'die (pl)'},
+  {de:'die Geschwister',fa:'خواهر و برادر',art:'die (pl)'},
+  {de:'der Großvater',fa:'پدربزرگ',art:'der'},
+  {de:'die Großmutter',fa:'مادربزرگ',art:'die'},
+  {de:'der Onkel',fa:'عمو / دایی',art:'der'},
+  {de:'die Tante',fa:'عمه / خاله',art:'die'},
+  {de:'das Baby',fa:'نوزاد',art:'das'},
+  {de:'die Katze',fa:'گربه',art:'die'},
+  {de:'der Hund',fa:'سگ',art:'der'},
+];
+
+const FILL2=[
+  {before:'Du',blank:'tanzt',after:'sehr gut.',hint:'tanzen – du (ریشه tanz + t)'},
+  {before:'Er',blank:'sitzt',after:'am Tisch.',hint:'sitzen – er (ریشه sitz + t)'},
+  {before:'Das',blank:'ist',after:'eine Ärztin.',hint:'sein – Das ist = معرفی'},
+  {before:'Der Tisch',blank:'ist',after:'groß.',hint:'sein – der Tisch ist...'},
+  {before:'Sie',blank:'trinkt',after:'einen Kaffee.',hint:'trinken – sie (er/sie/es + t)'},
+  {before:'Ich',blank:'lese',after:'ein Buch.',hint:'lesen – ich (منظم با e)'},
+  {before:'Du',blank:'heißt',after:'Thomas.',hint:'heißen – du (ß+t → nur t!)'},
+  {before:'Wir',blank:'spielen',after:'Fußball.',hint:'spielen – wir (مثل مصدر)'},
+];
+
+const MATCH2=[
+  {de:'ein Arzt',fa:'یک پزشک (آقا)'},
+  {de:'eine Ärztin',fa:'یک پزشک (خانم)'},
+  {de:'der Tisch',fa:'میز (معین)'},
+  {de:'das Fenster',fa:'پنجره'},
+  {de:'die Tasse',fa:'فنجان'},
+  {de:'ein Café',fa:'یک کافه'},
+  {de:'groß',fa:'بزرگ'},
+  {de:'klein',fa:'کوچک'},
+];
+
+const QUIZ2=[
+  {q:'du tanz___',fa:'چه پسوندی لازم است؟ (tanzen)',opts:['st','t','en','e'],ans:1},
+  {q:'Das ist ___ Arzt.',fa:'یک پزشک (آقا) – نامعین',opts:['der','ein','einen','die'],ans:1},
+  {q:'___ Tisch ist blau.',fa:'میز آبی است (معین)',opts:['Ein','Das','Der','Die'],ans:2},
+  {q:'Das ist ___ Ärztin.',fa:'یک پزشک (خانم)',opts:['ein','eine','der','das'],ans:1},
+  {q:'Sie sitz___ am Tisch.',fa:'sitzen – er/sie/es',opts:['e','st','t','en'],ans:2},
+  {q:'die → جمع در آلمانی چه حرف تعریفی دارد؟',fa:'',opts:['der','das','die','ein'],ans:2},
+  {q:'du arbeit___',fa:'arbeiten – استثنا با e',opts:['st','t','est','en'],ans:2},
+  {q:'Das Buch ist auf ___ Tisch.',fa:'روی میز (مذکر،Dativ نه امتحان)',opts:['der','dem','den','das'],ans:1},
+];
+
+const FILL3=[
+  {before:'Ich',blank:'habe',after:'eine Schwester.',hint:'haben – ich'},
+  {before:'Du',blank:'hast',after:'einen Bruder.',hint:'haben – du (b حذف!)'},
+  {before:'Er',blank:'hat',after:'ein Auto.',hint:'haben – er (b حذف!)'},
+  {before:'Wir',blank:'haben',after:'eine Katze.',hint:'haben – wir'},
+  {before:'Ich habe',blank:'einen',after:'Bruder.',hint:'Bruder = مذکر → مفعول → einen!'},
+  {before:'Sie hat',blank:'keine',after:'Schwester.',hint:'Schwester = مؤنث → keine'},
+  {before:'Er hat',blank:'ein',after:'Kind.',hint:'Kind = خنثی → ein'},
+  {before:'Ich habe',blank:'keinen',after:'Hund.',hint:'Hund = مذکر → keinen (نداشتن)'},
+];
+
+const SB3=[
+  {fa:'من یک خواهر دارم.',correct:['Ich','habe','eine','Schwester','.'],pool:['Ich','habe','eine','Schwester','einen','Bruder','.']},
+  {fa:'تو یک برادر داری؟',correct:['Hast','du','einen','Bruder','?'],pool:['Hast','du','einen','Bruder','hast','Schwester','?']},
+  {fa:'او (مذکر) هیچ گربه‌ای ندارد.',correct:['Er','hat','keine','Katze','.'],pool:['Er','hat','keine','Katze','kein','Hund','.']},
+  {fa:'ما یک سگ داریم.',correct:['Wir','haben','einen','Hund','.'],pool:['Wir','haben','einen','Hund','eine','Katze','.']},
+];
+
+const QUIZ3=[
+  {q:'Ich ___ eine Schwester.',fa:'داشتن – من',opts:['hast','hat','habe','haben'],ans:2},
+  {q:'Du ___ einen Bruder.',fa:'داشتن – تو',opts:['habe','hast','hat','habt'],ans:1},
+  {q:'Ich habe ___ Bruder.',fa:'یک برادر (مذکر، مفعول)',opts:['ein','eine','einen','kein'],ans:2},
+  {q:'Er hat ___ Schwester.',fa:'یک خواهر (مؤنث، مفعول)',opts:['einen','ein','eine','keine'],ans:2},
+  {q:'Ich habe ___ Hund.',fa:'هیچ سگی ندارم (مذکر)',opts:['kein','keine','keinen','nicht'],ans:2},
+  {q:'«die Mutter» جمعش چیست؟',fa:'',opts:['die Mutters','die Mütter','die Mutter','die Muttern'],ans:1},
+  {q:'Wir ___ keine Geschwister.',fa:'داشتن – ما',opts:['haben','hast','habt','hat'],ans:0},
+  {q:'«ihr» با haben چه شکلی؟',fa:'',opts:['haben','hast','habt','hat'],ans:2},
+];
+
+const FILL4=[
+  {before:'Ich komme',blank:'aus',after:'dem Iran.',hint:'اهل ایران بودن'},
+  {before:'Er kommt',blank:'von',after:'der Arbeit.',hint:'از سر کار آمدن – مبدأ عمومی'},
+  {before:'Ich gehe',blank:'zum',after:'Arzt.',hint:'zu + dem = zum (رفتن به سمت)'},
+  {before:'Sie wohnt',blank:'in',after:'Berlin.',hint:'در یک شهر زندگی کردن'},
+  {before:'Das Buch liegt',blank:'auf',after:'dem Tisch.',hint:'روی میز (سطح)'},
+  {before:'Wohin',blank:'gehst',after:'du?',hint:'سؤال با Wohin + فعل + فاعل'},
+  {before:'Er kommt',blank:'aus',after:'dem Zimmer.',hint:'خروج از داخل یک اتاق'},
+  {before:'Wir fahren',blank:'von',after:'Berlin nach München.',hint:'از مبدأ... به مقصد'},
+];
+
+const MATCH4=[
+  {de:'Wer?',fa:'کی؟ (شخص)'},
+  {de:'Woher?',fa:'از کجا؟'},
+  {de:'Wohin?',fa:'به کجا؟'},
+  {de:'Wann?',fa:'کی؟ (زمان)'},
+  {de:'Warum?',fa:'چرا؟'},
+  {de:'zum Arzt',fa:'به دکتر'},
+  {de:'aus dem Iran',fa:'از ایران'},
+  {de:'auf dem Tisch',fa:'روی میز'},
+];
+
+const QUIZ4=[
+  {q:'___ gehst du?',fa:'به کجا می‌روی؟',opts:['Wo','Woher','Wohin','Wann'],ans:2},
+  {q:'Ich komme ___ dem Iran.',fa:'از ایران هستم',opts:['von','zu','aus','in'],ans:2},
+  {q:'Er kommt ___ der Arbeit.',fa:'از سر کار می‌آید',opts:['aus','von','zu','in'],ans:1},
+  {q:'Ich gehe ___ Arzt.',fa:'به دکتر می‌روم (zu+dem)',opts:['zum','zur','vom','aus dem'],ans:0},
+  {q:'___ wohnst du?',fa:'کجا زندگی می‌کنی؟',opts:['Wohin','Woher','Wo','Was'],ans:2},
+  {q:'Das Buch liegt ___ dem Tisch.',fa:'روی میز',opts:['in','von','auf','zu'],ans:2},
+  {q:'zu + der = ?',fa:'مؤنث',opts:['zum','zur','ins','im'],ans:1},
+  {q:'in + das = ?',fa:'',opts:['im','ins','inn','into'],ans:1},
+];
+
+// ══ GLOSSARY ADDITIONS (Gam 2-4) ════════════════
+const GLOSSARY_EXTRA=[
+  {de:'der Arzt',fa:'پزشک (آقا)',src:'گام ۲'},
+  {de:'die Ärztin',fa:'پزشک (خانم)',src:'گام ۲'},
+  {de:'der Tisch',fa:'میز',src:'گام ۲'},
+  {de:'die Tasse',fa:'فنجان',src:'گام ۲'},
+  {de:'das Fenster',fa:'پنجره',src:'گام ۲'},
+  {de:'das Café',fa:'کافه',src:'گام ۲'},
+  {de:'groß',fa:'بزرگ',src:'گام ۲'},
+  {de:'klein',fa:'کوچک',src:'گام ۲'},
+  {de:'offen',fa:'باز',src:'گام ۲'},
+  {de:'trinken',fa:'نوشیدن',src:'گام ۲'},
+  {de:'sitzen',fa:'نشستن',src:'گام ۲'},
+  {de:'tanzen',fa:'رقصیدن',src:'گام ۲'},
+  {de:'lesen',fa:'خواندن',src:'گام ۲'},
+  {de:'haben',fa:'داشتن',src:'گام ۳'},
+  {de:'habe',fa:'دارم (ich habe)',src:'گام ۳'},
+  {de:'hast',fa:'داری (du hast)',src:'گام ۳'},
+  {de:'hat',fa:'دارد (er/sie/es hat)',src:'گام ۳'},
+  {de:'der Bruder',fa:'برادر',src:'گام ۳'},
+  {de:'die Schwester',fa:'خواهر',src:'گام ۳'},
+  {de:'die Mutter',fa:'مادر',src:'گام ۳'},
+  {de:'die Geschwister',fa:'خواهر و برادر',src:'گام ۳'},
+  {de:'die Tochter',fa:'دختر',src:'گام ۳'},
+  {de:'der Sohn',fa:'پسر',src:'گام ۳'},
+  {de:'die Eltern',fa:'والدین',src:'گام ۳'},
+  {de:'die Katze',fa:'گربه',src:'گام ۳'},
+  {de:'der Hund',fa:'سگ',src:'گام ۳'},
+  {de:'kein/keine',fa:'هیچ / نه (نامعین)',src:'گام ۳'},
+  {de:'Wer',fa:'کی؟ (شخص)',src:'گام ۴'},
+  {de:'Was',fa:'چی؟',src:'گام ۴'},
+  {de:'Wo',fa:'کجا؟',src:'گام ۴'},
+  {de:'Wohin',fa:'به کجا؟',src:'گام ۴'},
+  {de:'Wann',fa:'کی؟ (زمان)',src:'گام ۴'},
+  {de:'Wie',fa:'چطور؟',src:'گام ۴'},
+  {de:'Warum',fa:'چرا؟',src:'گام ۴'},
+  {de:'auf',fa:'روی (سطح)',src:'گام ۴'},
+  {de:'in',fa:'در / داخل',src:'گام ۴'},
+  {de:'von',fa:'از (مبدأ عمومی)',src:'گام ۴'},
+  {de:'zu',fa:'به سوی',src:'گام ۴'},
+  {de:'zum',fa:'zu + dem (مذکر/خنثی)',src:'گام ۴'},
+  {de:'zur',fa:'zu + der (مؤنث)',src:'گام ۴'},
+  {de:'gehen',fa:'رفتن (پیاده)',src:'گام ۴'},
+  {de:'wohnen',fa:'زندگی کردن / ساکن بودن',src:'گام ۴'},
+  {de:'die Bibliothek',fa:'کتابخانه',src:'گام ۴'},
+];
+
+// ══ SUBTAB CONTROLLERS FOR L2-4 ══════════════
+
+function switchSubTab2(idx){
+  document.querySelectorAll('#sec-lesson2 .sub-tab').forEach((t,i)=>t.classList.toggle('active',i===idx));
+  for(let i=0;i<6;i++){const el=document.getElementById('l2tab'+i);if(el)el.style.display=(i===idx)?'block':'none';}
+  window.scrollTo(0,0);
+  if(idx===3&&!st2.fb)buildFill('fill2Container',FILL2,st2,'fb',()=>switchSubTab2(4));
+  if(idx===4&&!st2.mv)buildMatch('match2Container',MATCH2,st2,'mv',()=>switchSubTab2(5));
+  if(idx===5&&!st2.qz)startGenQuiz('quiz2Container',QUIZ2,st2,'qz',()=>switchSubTab2(0),'lesson2');
+}
+function switchSubTab3(idx){
+  document.querySelectorAll('#sec-lesson3 .sub-tab').forEach((t,i)=>t.classList.toggle('active',i===idx));
+  for(let i=0;i<6;i++){const el=document.getElementById('l3tab'+i);if(el)el.style.display=(i===idx)?'block':'none';}
+  window.scrollTo(0,0);
+  if(idx===2&&!st3.fv)buildFamilyVocab();
+  if(idx===3&&!st3.fb)buildFill('fill3Container',FILL3,st3,'fb',()=>switchSubTab3(4));
+  if(idx===4&&!st3.sb)buildSBGen('sb3Container',SB3,st3,'sb',()=>switchSubTab3(5));
+  if(idx===5&&!st3.qz)startGenQuiz('quiz3Container',QUIZ3,st3,'qz',()=>switchSubTab3(0),'lesson3');
+}
+function switchSubTab4(idx){
+  document.querySelectorAll('#sec-lesson4 .sub-tab').forEach((t,i)=>t.classList.toggle('active',i===idx));
+  for(let i=0;i<6;i++){const el=document.getElementById('l4tab'+i);if(el)el.style.display=(i===idx)?'block':'none';}
+  window.scrollTo(0,0);
+  if(idx===3&&!st4.fb)buildFill('fill4Container',FILL4,st4,'fb',()=>switchSubTab4(4));
+  if(idx===4&&!st4.mv)buildMatch('match4Container',MATCH4,st4,'mv',()=>switchSubTab4(5));
+  if(idx===5&&!st4.qz)startGenQuiz('quiz4Container',QUIZ4,st4,'qz',()=>switchSubTab4(0),'lesson4');
+}
+const st2={},st3={},st4={};
+
+// ══ FAMILY VOCAB BUILDER ══════════════════════
+function buildFamilyVocab(){
+  st3.fv=true;
+  document.getElementById('familyVocab').innerHTML=FAMILY_VOCAB.map(v=>{
+    const color=v.art==='der'?'var(--blue)':v.art==='die'?'var(--red)':v.art==='das'?'var(--green)':'var(--gold)';
+    return `<div class="gloss-item"><div><div class="gloss-de" style="color:${color}">${v.de}</div><div class="gloss-fa">${v.fa}</div></div>${v.pl?`<div class="gloss-source">${v.pl}</div>`:'<div class="gloss-source" style="color:var(--gold)">جمع</div>'}</div>`;
+  }).join('');
+}
+
+// ══ GENERIC FILL BLANK ════════════════════════
+function buildFill(containerId, data, stObj, key, nextFn){
+  stObj[key]=true;
+  stObj[key+'idx']=0;
+  renderFillGen(containerId,data,stObj,key,nextFn);
+}
+function renderFillGen(containerId,data,stObj,key,nextFn){
+  const idx=stObj[key+'idx'];
+  const ex=data[idx];
+  const c=document.getElementById(containerId);
+  c.innerHTML=`<div class="game-box animate-in">
+    <div class="game-title">✏️ جای خالی را پر کن</div>
+    <div class="game-desc">💡 ${ex.hint}</div>
+    <div class="blank-sentence">${ex.before} <input class="blank-input" id="fgIn" placeholder="?" autocomplete="off" autocorrect="off" spellcheck="false"/> ${ex.after}</div>
+    <div class="game-feedback" id="fgFb"></div>
+    <div class="game-btn-row">
+      <button class="primary-btn" onclick="checkFillGen('${containerId}',${JSON.stringify(data).replace(/'/g,'&apos;')},window._stRef['${containerId}'],'${key}',window._nextRef['${containerId}'])">✓ بررسی</button>
+      <button class="sec-btn" onclick="showFillHintGen('${containerId}',${JSON.stringify(data).replace(/'/g,'&apos;')},window._stRef['${containerId}'],'${key}',window._nextRef['${containerId}'])">💡 جواب</button>
+    </div>
+    <div style="font-size:12px;color:var(--muted);margin-top:10px;text-align:center">${idx+1} / ${data.length}</div>
+  </div>`;
+  window._stRef=window._stRef||{};window._nextRef=window._nextRef||{};
+  window._stRef[containerId]=stObj;window._nextRef[containerId]=nextFn;
+  window._fillData=window._fillData||{};window._fillData[containerId]=data;
+  const inp=document.getElementById('fgIn');
+  inp.addEventListener('keydown',e=>{if(e.key==='Enter')checkFillGen(containerId,data,stObj,key,nextFn);});
+  setTimeout(()=>inp.focus(),100);
+}
+function checkFillGen(cid,data,stObj,key,nextFn){
+  data=window._fillData[cid]||data;
+  const idx=stObj[key+'idx'],ex=data[idx];
+  const val=(document.getElementById('fgIn').value||'').trim().toLowerCase();
+  const ok=val===ex.blank.toLowerCase();
+  const inp=document.getElementById('fgIn'),fb=document.getElementById('fgFb');
+  fb.style.display='block';inp.classList.remove('correct','wrong');
+  if(ok){inp.classList.add('correct');fb.className='game-feedback show ok';fb.innerHTML='✅ درست!';
+    setTimeout(()=>{if(stObj[key+'idx']<data.length-1){stObj[key+'idx']++;renderFillGen(cid,data,stObj,key,nextFn);}else{fillDoneGen(cid,nextFn);}},1300);
+  }else{inp.classList.add('wrong');fb.className='game-feedback show bad';fb.innerHTML='❌ دوباره امتحان کن';
+    setTimeout(()=>{inp.classList.remove('wrong');fb.style.display='none';inp.value='';inp.focus();},1400);}
+}
+function showFillHintGen(cid,data,stObj,key,nextFn){
+  data=window._fillData[cid]||data;
+  const ex=data[stObj[key+'idx']];
+  document.getElementById('fgIn').value=ex.blank;document.getElementById('fgIn').classList.add('correct');
+  const fb=document.getElementById('fgFb');fb.className='game-feedback show ok';fb.style.display='block';
+  fb.innerHTML=`💡 <strong style="direction:ltr;display:inline-block">${ex.blank}</strong>`;
+  setTimeout(()=>{if(stObj[key+'idx']<data.length-1){stObj[key+'idx']++;renderFillGen(cid,data,stObj,key,nextFn);}else{fillDoneGen(cid,nextFn);}},1500);
+}
+function fillDoneGen(cid,nextFn){
+  document.getElementById(cid).innerHTML=`<div class="game-box animate-in center"><div style="font-size:48px">🌟</div><div class="quiz-score">تمام!</div><div class="quiz-sub">همه جاهای خالی پر شدند!</div><div class="mt16"><button class="primary-btn" onclick="nextFn && nextFn()">بعدی ›</button></div></div>`;
+  document.querySelector(`#${cid} .primary-btn`).onclick=nextFn;
+}
+
+// ══ GENERIC MATCH ═════════════════════════════
+function buildMatch(cid,data,stObj,key,nextFn){
+  stObj[key]=true;stObj[key+'matched']=[];stObj[key+'sel']=null;
+  const pairs=shuffleArr([...data]).slice(0,6);
+  const left=shuffleArr(pairs.map(p=>({t:p.de,k:p.de,s:'de'})));
+  const right=shuffleArr(pairs.map(p=>({t:p.fa,k:p.de,s:'fa'})));
+  document.getElementById(cid).innerHTML=`<div class="game-box animate-in">
+    <div class="game-title">🃏 جفت‌یابی</div>
+    <div class="game-desc">هر کارت را با جفتش پیدا کن:</div>
+    <div class="match-grid">
+      <div><div class="match-col-label">🇩🇪 آلمانی</div>${left.map((it,i)=>`<div class="match-card" id="${cid}d${i}" onclick="selGenMatch('${cid}','${cid}d${i}','${it.k.replace(/'/g,"\\'")}','de')"><span class="match-card-de">${it.t}</span></div>`).join('')}</div>
+      <div><div class="match-col-label">🇮🇷 فارسی</div>${right.map((it,i)=>`<div class="match-card" id="${cid}f${i}" onclick="selGenMatch('${cid}','${cid}f${i}','${it.k.replace(/'/g,"\\'")}','fa')">${it.t}</div>`).join('')}</div>
+    </div>
+    <div class="game-feedback" id="${cid}fb"></div>
+    <div style="font-size:12px;color:var(--muted);margin-top:10px;text-align:center" id="${cid}sc">جفت: 0 / 6</div>
+  </div>`;
+  window._matchState=window._matchState||{};window._matchNext=window._matchNext||{};
+  window._matchState[cid]={matched:[],sel:null};window._matchNext[cid]=nextFn;
+}
+function selGenMatch(cid,id,key,side){
+  const el=document.getElementById(id);
+  if(!el||el.classList.contains('matched'))return;
+  const state=window._matchState[cid];
+  if(state.sel&&state.sel.id===id){el.classList.remove('selected');state.sel=null;return;}
+  if(state.sel){
+    const p=state.sel;
+    if(p.key===key&&p.side!==side){
+      [document.getElementById(p.id),el].forEach(e=>{e.classList.remove('selected');e.classList.add('matched');});
+      state.matched.push(key);state.sel=null;
+      const fb=document.getElementById(cid+'fb');fb.className='game-feedback show ok';fb.style.display='block';fb.innerHTML='✅';
+      setTimeout(()=>{fb.style.display='none';},600);
+      document.getElementById(cid+'sc').textContent=`جفت: ${state.matched.length} / 6`;
+      if(state.matched.length===6)setTimeout(()=>matchDoneGen(cid),700);
+    }else{
+      [el,document.getElementById(p.id)].forEach(e=>{e.classList.add('wrong-shake');setTimeout(()=>e.classList.remove('wrong-shake','selected'),400);});
+      state.sel=null;
+    }
+  }else{el.classList.add('selected');state.sel={id,key,side};}
+}
+function matchDoneGen(cid){
+  const nextFn=window._matchNext[cid];
+  document.getElementById(cid).innerHTML=`<div class="game-box animate-in center"><div style="font-size:48px">🎉</div><div class="quiz-score">کامل!</div><div class="quiz-sub">همه ۶ جفت پیدا شدند!</div><div class="mt16"><button class="primary-btn">بعدی ›</button></div></div>`;
+  document.querySelector(`#${cid} .primary-btn`).onclick=nextFn;
+}
+
+// ══ GENERIC SENTENCE BUILDER ════════════════
+function buildSBGen(cid,data,stObj,key,nextFn){
+  stObj[key]=true;stObj[key+'idx']=0;stObj[key+'dropped']=[];
+  window._sbData=window._sbData||{};window._sbData[cid]=data;
+  window._sbNext=window._sbNext||{};window._sbNext[cid]=nextFn;
+  window._sbSt=window._sbSt||{};window._sbSt[cid]=stObj;
+  window._sbKey=window._sbKey||{};window._sbKey[cid]=key;
+  renderSBGen(cid);
+}
+function renderSBGen(cid){
+  const data=window._sbData[cid],stObj=window._sbSt[cid],key=window._sbKey[cid];
+  const idx=stObj[key+'idx'],ex=data[idx];
+  stObj[key+'dropped']=[];
+  document.getElementById(cid).innerHTML=`<div class="game-box animate-in">
+    <div class="game-title">🧩 جمله‌سازی</div>
+    <div class="game-desc"><span style="color:var(--gold)">🇮🇷 ${ex.fa}</span></div>
+    <div class="drop-zone" id="${cid}drop"></div>
+    <div class="word-chips" id="${cid}chips"></div>
+    <div class="game-feedback" id="${cid}fb"></div>
+    <div class="game-btn-row">
+      <button class="primary-btn" onclick="checkSBGen('${cid}')">✓ بررسی</button>
+      <button class="sec-btn" onclick="renderSBGen('${cid}')">↺ پاک</button>
+    </div>
+    <div style="font-size:12px;color:var(--muted);margin-top:10px;text-align:center">${idx+1} / ${data.length}</div>
+  </div>`;
+  shuffleArr([...ex.pool]).forEach((w,i)=>{
+    const s=document.createElement('span');s.className='chip';s.id=`${cid}c${i}`;s.textContent=w;
+    s.onclick=function(){
+      if(s.classList.contains('placed'))return;
+      s.classList.add('placed');stObj[key+'dropped'].push({i,w});
+      const sp=document.createElement('span');sp.className='chip in-drop';sp.textContent=w;
+      sp.onclick=()=>{stObj[key+'dropped']=stObj[key+'dropped'].filter(d=>d.i!==i);sp.remove();s.classList.remove('placed');};
+      document.getElementById(cid+'drop').appendChild(sp);
+    };
+    document.getElementById(cid+'chips').appendChild(s);
+  });
+}
+function checkSBGen(cid){
+  const data=window._sbData[cid],stObj=window._sbSt[cid],key=window._sbKey[cid];
+  const ex=data[stObj[key+'idx']];
+  const ans=stObj[key+'dropped'].map(d=>d.w);
+  const ok=ans.join(' ')===ex.correct.join(' ');
+  const fb=document.getElementById(cid+'fb'),dz=document.getElementById(cid+'drop');
+  fb.style.display='block';
+  if(ok){fb.className='game-feedback show ok';fb.innerHTML='✅ عالی!';dz.classList.add('success');
+    setTimeout(()=>{if(stObj[key+'idx']<data.length-1){stObj[key+'idx']++;renderSBGen(cid);}else{sbDoneGen(cid);}},1400);
+  }else{fb.className='game-feedback show bad';fb.innerHTML=`❌ جواب: <strong style="direction:ltr;display:inline-block">${ex.correct.join(' ')}</strong>`;dz.classList.add('error');
+    setTimeout(()=>renderSBGen(cid),2200);}
+}
+function sbDoneGen(cid){
+  const nextFn=window._sbNext[cid];
+  document.getElementById(cid).innerHTML=`<div class="game-box animate-in center"><div style="font-size:48px">🏆</div><div class="quiz-score">تمام!</div><div class="mt16"><button class="primary-btn">بعدی ›</button></div></div>`;
+  document.querySelector(`#${cid} .primary-btn`).onclick=nextFn;
+}
+
+// ══ GENERIC QUIZ ════════════════════════════
+function startGenQuiz(cid,data,stObj,key,backFn,lessonId){
+  stObj[key]=true;
+  const qs=shuffleArr([...data]).slice(0,Math.min(8,data.length));
+  window._gqData=window._gqData||{};window._gqData[cid]={idx:0,score:0,answered:false,qs,backFn,lessonId};
+  renderGenQuiz(cid);
+}
+function renderGenQuiz(cid){
+  const s=window._gqData[cid],{idx,qs,score}=s,c=document.getElementById(cid);
+  if(idx>=qs.length){
+    c.innerHTML=`<div class="quiz-box animate-in center"><div style="font-size:48px">${score>=7?'🏆':score>=5?'👍':'📚'}</div><div class="quiz-score">${score}/${qs.length}</div><div class="quiz-sub">${score>=7?'عالی!':score>=5?'خوب بود!':'یه بار دیگه مرور کن'}</div><div class="xp-badge" style="margin:16px auto;display:flex;width:fit-content">⭐ +${score*10} امتیاز</div><div class="mt16"><button class="primary-btn" onclick="startGenQuiz('${cid}',window._gqData['${cid}'].qs,{},'' ,window._gqData['${cid}'].backFn,'${s.lessonId}')">🔄 دوباره</button></div><div class="mt16"><button class="sec-btn" onclick="showSection('${s.lessonId}')">← برگشت به درس</button></div></div>`;
+    return;
+  }
+  const q=qs[idx];
+  c.innerHTML=`<div class="quiz-box animate-in"><div class="quiz-progress"><div class="quiz-progress-fill" style="width:${idx/qs.length*100}%"></div></div><div style="font-size:12px;color:var(--muted);margin-bottom:12px">سؤال ${idx+1} از ${qs.length}</div><div class="quiz-question">${q.q}</div>${q.fa?`<div class="quiz-question-fa">${q.fa}</div>`:'<div style="margin-bottom:20px"></div>'}<div class="quiz-options">${q.opts.map((o,i)=>`<button class="quiz-opt" onclick="ansGenQuiz('${cid}',${i})">${o}</button>`).join('')}</div></div>`;
+}
+function ansGenQuiz(cid,ch){
+  const s=window._gqData[cid];if(s.answered)return;s.answered=true;
+  const q=s.qs[s.idx];
+  document.querySelectorAll(`#${cid} .quiz-opt`).forEach((el,i)=>{el.disabled=true;if(i===q.ans)el.classList.add('correct');else if(i===ch)el.classList.add('wrong');});
+  if(ch===q.ans)s.score++;
+  setTimeout(()=>{s.idx++;s.answered=false;renderGenQuiz(cid);},1200);
+}
+
+// ══ EXTEND GLOSSARY WITH NEW DATA ════════════
+GLOSSARY.push(...GLOSSARY_EXTRA);
+
+// ══ INIT ══════════════════════════════════════
+buildAlphaGrid();
+buildSoundRules();
+buildAlphaTabs();
+buildGlossary();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>واژه‌نامه – Lern Deutsch mit Arash</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold:#D4A843;--gold-lt:#F0C96A;--dark:#0E0E14;--dark2:#16161F;
+      --card:#1E1E2C;--border:#2E2E42;--text:#EDE9DD;--muted:#8A8499;
+      --green:#4CAF82;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Vazirmatn',sans-serif;background:var(--dark);color:var(--text);min-height:100vh}
+    header{background:linear-gradient(135deg,#1a1028,#0e1a2e);border-bottom:1px solid var(--border);padding:16px 20px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:100}
+    .back-link{color:var(--gold);text-decoration:none;font-size:14px;display:flex;align-items:center;gap:6px}
+    h1{font-size:20px;font-weight:700;background:linear-gradient(90deg,var(--gold),var(--gold-lt));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    main{padding:20px 16px 40px;max-width:680px;margin:0 auto}
+    .stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:20px}
+    .stat-box{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 12px;text-align:center}
+    .stat-num{font-size:24px;font-weight:900;color:var(--gold);font-family:'Playfair Display',serif}
+    .stat-label{font-size:11px;color:var(--muted);margin-top:3px}
+    .search-box{width:100%;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 16px;color:var(--text);font-family:'Vazirmatn',sans-serif;font-size:14px;margin-bottom:16px;outline:none;direction:rtl}
+    .search-box:focus{border-color:var(--gold)}
+    .search-box::placeholder{color:var(--muted)}
+    .filter-row{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+    .filter-btn{background:var(--card);border:1px solid var(--border);color:var(--muted);padding:5px 12px;border-radius:20px;font-size:12px;cursor:pointer;font-family:'Vazirmatn',sans-serif;transition:all .2s}
+    .filter-btn.active,.filter-btn:hover{background:var(--gold);color:#000;border-color:var(--gold);font-weight:700}
+    .alpha-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
+    .alpha-tab{background:var(--card);border:1px solid var(--border);color:var(--muted);padding:4px 10px;border-radius:8px;font-size:12px;cursor:pointer;font-family:'Playfair Display',serif;font-weight:700;transition:all .2s}
+    .alpha-tab.active,.alpha-tab:hover{background:var(--gold);color:#000;border-color:var(--gold)}
+    .gloss-section{margin-bottom:24px}
+    .gloss-letter{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:var(--gold);margin-bottom:10px;padding-right:4px}
+    .gloss-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 16px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .gloss-de{font-weight:700;font-size:15px;font-family:'Playfair Display',serif;direction:ltr}
+    .gloss-fa{font-size:14px;color:var(--gold-lt)}
+    .badge{display:inline-block;font-size:10px;padding:2px 8px;border-radius:20px;background:rgba(212,168,67,.15);color:var(--gold-lt);border:1px solid rgba(212,168,67,.3);white-space:nowrap}
+    .empty{text-align:center;padding:40px 20px;color:var(--muted);font-size:15px}
+  </style>
+</head>
+<body>
+<header>
+  <a class="back-link" href="index.html">‹ بازگشت</a>
+  <h1>واژه‌نامه کامل</h1>
+</header>
+<main>
+  <div class="stats">
+    <div class="stat-box"><div class="stat-num" id="totalWords">0</div><div class="stat-label">کل کلمات</div></div>
+    <div class="stat-box"><div class="stat-num" id="totalLessons">0</div><div class="stat-label">درس‌ها</div></div>
+    <div class="stat-box"><div class="stat-num" id="totalLetters">0</div><div class="stat-label">حروف</div></div>
+  </div>
+
+  <input class="search-box" type="text" placeholder="جستجو به فارسی یا آلمانی..." id="glossSearch" oninput="filterGloss()" />
+
+  <div class="filter-row" id="lessonFilters"></div>
+  <div class="alpha-tabs" id="alphaTabs"></div>
+  <div id="glossContainer"></div>
+</main>
+
+<script>
+// ─── SHARED GLOSSARY DATA (همیشه با index.html همگام) ───
+const GLOSSARY=[
+  // Gam 0
+  {de:'Alphabet',fa:'الفبا',src:'گام ۰'},{de:'Aussprache',fa:'تلفظ',src:'گام ۰'},
+  {de:'Buchstabe',fa:'حرف',src:'گام ۰'},{de:'Vokal',fa:'مصوت',src:'گام ۰'},
+  {de:'Konsonant',fa:'صامت',src:'گام ۰'},{de:'Umlaut',fa:'حرف تغییریافته (Ä/Ö/Ü)',src:'گام ۰'},
+  {de:'Bahn',fa:'قطار / مسیر',src:'گام ۰'},{de:'Bär',fa:'خرس',src:'گام ۰'},
+  {de:'Brot',fa:'نان',src:'گام ۰'},{de:'Buch',fa:'کتاب',src:'گام ۰'},
+  {de:'Haus',fa:'خانه',src:'گام ۰'},{de:'ja',fa:'بله',src:'گام ۰'},
+  {de:'lang',fa:'بلند / طولانی',src:'گام ۰'},{de:'Liebe',fa:'عشق / محبت',src:'گام ۰'},
+  {de:'Mann',fa:'مرد',src:'گام ۰'},{de:'rot',fa:'قرمز',src:'گام ۰'},
+  {de:'schön',fa:'زیبا',src:'گام ۰'},{de:'Schule',fa:'مدرسه',src:'گام ۰'},
+  {de:'Sonne',fa:'خورشید',src:'گام ۰'},{de:'Sprache',fa:'زبان',src:'گام ۰'},
+  {de:'Stadt',fa:'شهر',src:'گام ۰'},{de:'Stein',fa:'سنگ',src:'گام ۰'},
+  {de:'Straße',fa:'خیابان',src:'گام ۰'},{de:'über',fa:'روی / بالاتر از',src:'گام ۰'},
+  {de:'Vater',fa:'پدر',src:'گام ۰'},{de:'Vogel',fa:'پرنده',src:'گام ۰'},
+  {de:'Wasser',fa:'آب',src:'گام ۰'},{de:'Winter',fa:'زمستان',src:'گام ۰'},
+  {de:'Zehn',fa:'عدد ده',src:'گام ۰'},
+  // Gam 1
+  {de:'ich',fa:'من',src:'گام ۱'},{de:'du',fa:'تو',src:'گام ۱'},
+  {de:'er',fa:'او (مذکر)',src:'گام ۱'},{de:'sie',fa:'او (مؤنث) / آن‌ها',src:'گام ۱'},
+  {de:'es',fa:'آن (خنثی)',src:'گام ۱'},{de:'wir',fa:'ما',src:'گام ۱'},
+  {de:'ihr',fa:'شما (غیررسمی/جمع)',src:'گام ۱'},{de:'Sie',fa:'شما (رسمی)',src:'گام ۱'},
+  {de:'heißen',fa:'نام داشتن',src:'گام ۱'},{de:'kommen',fa:'آمدن / اهل جایی بودن',src:'گام ۱'},
+  {de:'sprechen',fa:'صحبت کردن',src:'گام ۱'},{de:'sein',fa:'بودن',src:'گام ۱'},
+  {de:'bin',fa:'هستم (ich bin)',src:'گام ۱'},{de:'bist',fa:'هستی (du bist)',src:'گام ۱'},
+  {de:'ist',fa:'است (er/sie/es ist)',src:'گام ۱'},{de:'sind',fa:'هستیم/هستند (wir/sie sind)',src:'گام ۱'},
+  {de:'seid',fa:'هستید (ihr seid)',src:'گام ۱'},{de:'Hallo',fa:'سلام',src:'گام ۱'},
+  {de:'Woher',fa:'از کجا',src:'گام ۱'},{de:'aus',fa:'از (برای مکان)',src:'گام ۱'},
+  {de:'Iran',fa:'ایران',src:'گام ۱'},{de:'Deutschland',fa:'آلمان',src:'گام ۱'},
+  {de:'Österreich',fa:'اتریش',src:'گام ۱'},{de:'Persisch',fa:'فارسی (زبان)',src:'گام ۱'},
+  {de:'Deutsch',fa:'آلمانی (زبان/صفت)',src:'گام ۱'},{de:'Englisch',fa:'انگلیسی',src:'گام ۱'},
+  {de:'Studentin',fa:'دانشجو (خانم)',src:'گام ۱'},{de:'Student',fa:'دانشجو (آقا)',src:'گام ۱'},
+  {de:'Name',fa:'نام / اسم',src:'گام ۱'},{de:'Toll',fa:'عالی!',src:'گام ۱'},
+  {de:'und',fa:'و',src:'گام ۱'},{de:'Ja',fa:'بله',src:'گام ۱'},
+  {de:'Nein',fa:'نه',src:'گام ۱'},
+  // Gam 2
+  {de:'der Arzt',fa:'پزشک (آقا)',src:'گام ۲'},{de:'die Ärztin',fa:'پزشک (خانم)',src:'گام ۲'},
+  {de:'der Tisch',fa:'میز',src:'گام ۲'},{de:'die Tasse',fa:'فنجان',src:'گام ۲'},
+  {de:'das Fenster',fa:'پنجره',src:'گام ۲'},{de:'das Café',fa:'کافه',src:'گام ۲'},
+  {de:'groß',fa:'بزرگ',src:'گام ۲'},{de:'klein',fa:'کوچک',src:'گام ۲'},
+  {de:'trinken',fa:'نوشیدن',src:'گام ۲'},{de:'sitzen',fa:'نشستن',src:'گام ۲'},
+  // Gam 3
+  {de:'haben',fa:'داشتن',src:'گام ۳'},{de:'der Bruder',fa:'برادر',src:'گام ۳'},
+  {de:'die Schwester',fa:'خواهر',src:'گام ۳'},{de:'die Mutter',fa:'مادر',src:'گام ۳'},
+  {de:'die Geschwister',fa:'خواهر و برادر',src:'گام ۳'},{de:'die Eltern',fa:'والدین',src:'گام ۳'},
+  {de:'die Katze',fa:'گربه',src:'گام ۳'},{de:'der Hund',fa:'سگ',src:'گام ۳'},
+  {de:'kein/keine',fa:'هیچ / نه (نامعین)',src:'گام ۳'},
+  // Gam 4
+  {de:'Wer',fa:'کی؟ (شخص)',src:'گام ۴'},{de:'Was',fa:'چی؟',src:'گام ۴'},
+  {de:'Wo',fa:'کجا؟',src:'گام ۴'},{de:'Wohin',fa:'به کجا؟',src:'گام ۴'},
+  {de:'Wann',fa:'کی؟ (زمان)',src:'گام ۴'},{de:'Warum',fa:'چرا؟',src:'گام ۴'},
+  {de:'auf',fa:'روی (سطح)',src:'گام ۴'},{de:'von',fa:'از (مبدأ عمومی)',src:'گام ۴'},
+  {de:'zu',fa:'به سوی',src:'گام ۴'},{de:'gehen',fa:'رفتن',src:'گام ۴'},
+  {de:'wohnen',fa:'زندگی کردن',src:'گام ۴'},
+];
+
+let activeLetterFilter = '';
+let activeLessonFilter = '';
+
+function init() {
+  const lessons = [...new Set(GLOSSARY.map(i=>i.src))];
+  const letters = [...new Set(GLOSSARY.map(i=>i.de[0].toUpperCase()))].sort();
+
+  document.getElementById('totalWords').textContent   = GLOSSARY.length;
+  document.getElementById('totalLessons').textContent = lessons.length;
+  document.getElementById('totalLetters').textContent = letters.length;
+
+  // Lesson filters
+  const lf = document.getElementById('lessonFilters');
+  lf.innerHTML = `<button class="filter-btn active" onclick="filterByLesson('')">همه درس‌ها</button>` +
+    lessons.map(l=>`<button class="filter-btn" onclick="filterByLesson('${l}')">${l}</button>`).join('');
+
+  // Alpha tabs
+  const at = document.getElementById('alphaTabs');
+  at.innerHTML = `<button class="alpha-tab active" onclick="filterByLetter('')">همه</button>` +
+    letters.map(l=>`<button class="alpha-tab" onclick="filterByLetter('${l}')">${l}</button>`).join('');
+
+  buildGlossary();
+}
+
+function filterByLesson(l) {
+  activeLessonFilter=l;
+  document.querySelectorAll('#lessonFilters .filter-btn').forEach(b=>{
+    b.classList.toggle('active', b.textContent===(l||'همه درس‌ها'));
+  });
+  buildGlossary();
+}
+
+function filterByLetter(l) {
+  activeLetterFilter=l;
+  document.querySelectorAll('#alphaTabs .alpha-tab').forEach(b=>{
+    b.classList.toggle('active', b.textContent===(l||'همه'));
+  });
+  buildGlossary();
+}
+
+function filterGloss() { buildGlossary(); }
+
+function buildGlossary() {
+  const q = document.getElementById('glossSearch').value.toLowerCase();
+  const sorted = [...GLOSSARY].sort((a,b)=>a.de.localeCompare(b.de));
+  let items = sorted;
+  if(q) items=items.filter(i=>i.de.toLowerCase().includes(q)||i.fa.includes(q));
+  if(activeLessonFilter) items=items.filter(i=>i.src===activeLessonFilter);
+  if(activeLetterFilter) items=items.filter(i=>i.de[0].toUpperCase()===activeLetterFilter);
+
+  const groups={};
+  items.forEach(i=>{const l=i.de[0].toUpperCase();if(!groups[l])groups[l]=[];groups[l].push(i);});
+
+  const c=document.getElementById('glossContainer');
+  if(!Object.keys(groups).length){c.innerHTML='<div class="empty">نتیجه‌ای پیدا نشد 🔍</div>';return;}
+
+  c.innerHTML=Object.keys(groups).sort().map(l=>`
+    <div class="gloss-section">
+      <div class="gloss-letter">${l}</div>
+      ${groups[l].map(i=>`
+        <div class="gloss-item">
+          <div>
+            <div class="gloss-de">${i.de}</div>
+            <div class="gloss-fa">${i.fa}</div>
+          </div>
+          <span class="badge">${i.src}</span>
+        </div>
+      `).join('')}
+    </div>
+  `).join('');
+}
+
+init();
+</script>
+<div style="text-align:center;padding:24px 0 12px;font-size:11px;color:#8A8499;letter-spacing:.5px">
+  Entwickelt von <span style="color:#D4A843;font-weight:600">Arash Guitoo</span>
+</div>
+</body>
+</html>
