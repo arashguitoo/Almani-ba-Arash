@@ -40,4 +40,4 @@ In `index.html` ein Objekt in `NEW_STATIONS` ergänzen (gleiches Format wie die 
 
 ## 👨‍💻 Entwickler
 
-**Dr. Arash Guitoo**
+**Arash Guitoo**
