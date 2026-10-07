@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lernpfad-Konsole</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Carlito:wght@400;700&family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#eef2f7; --paper:#fff; --ink:#18213b; --muted:#56607a; --line:#d5dbe7; --soft:#f5f7fb;
+  --ok:#1b7f45; --okbg:#e2f3e9; --warn:#a86a00; --warnbg:#fbf0d9; --bad:#b83227; --badbg:#fbe8e5;
+  --accent:#2f5aa8; --gold:#b7861b;
+  --fde:Calibri, Carlito, "Segoe UI", system-ui, sans-serif; --ffa:Vazirmatn, Tahoma, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --bg:#10152a; --paper:#1a2139; --ink:#e8ecf6; --muted:#a4adc5; --line:#303a58; --soft:#222a45;
+    --ok:#5fd08e; --okbg:#16372a; --warn:#f0b54a; --warnbg:#3a2e14; --bad:#ff8a7a; --badbg:#3e201e; --accent:#6f97e3; --gold:#e3b54a; }
+}
+:root[data-theme="dark"]{ --bg:#10152a; --paper:#1a2139; --ink:#e8ecf6; --muted:#a4adc5; --line:#303a58; --soft:#222a45;
+  --ok:#5fd08e; --okbg:#16372a; --warn:#f0b54a; --warnbg:#3a2e14; --bad:#ff8a7a; --badbg:#3e201e; --accent:#6f97e3; --gold:#e3b54a; }
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--fde);font-size:17px;line-height:1.45}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 18px}
+.fa{font-family:var(--ffa);direction:rtl;unicode-bidi:isolate}
+.muted{color:var(--muted)} .small{font-size:14px}
+header{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+header .wrap{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+.brand{font-weight:700;font-size:19px;margin-right:auto}
+.brand small{display:block;font-weight:400;color:var(--muted);font-size:13px}
+.tabs{display:flex;gap:4px;flex-wrap:wrap}
+.tabs button{background:none;border:0;border-radius:10px;padding:7px 12px;cursor:pointer;color:var(--muted);font-weight:700}
+.tabs button.on{background:var(--soft);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.btn{border:2px solid var(--accent);background:var(--paper);color:var(--accent);border-radius:10px;padding:7px 14px;cursor:pointer;font-weight:700}
+.btn.primary{background:var(--accent);color:#fff}
+.btn.danger{border-color:var(--bad);color:var(--bad)}
+.btn.sm{padding:3px 10px;font-size:14px;border-width:1px}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+main{padding:22px 0 60px}
+h1{font-size:28px;margin:0 0 4px} h2{font-size:21px;margin:0 0 10px} h3{font-size:18px;margin:0 0 8px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.sp{flex:1}
+.learner{display:flex;flex-direction:column;gap:10px;cursor:pointer;text-align:left}
+.learner:hover{border-color:var(--accent)}
+.lhead{display:flex;align-items:center;gap:12px}
+.av{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:19px;flex:0 0 42px}
+.lhead b{font-size:19px;display:block;line-height:1.1}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.kpi{background:var(--soft);border-radius:10px;padding:8px}
+.kpi b{display:block;font-size:20px;line-height:1.1}
+.kpi span{font-size:12px;color:var(--muted)}
+.tag{display:inline-block;border-radius:999px;padding:1px 9px;font-size:13px;font-weight:700;border:1px solid var(--line);color:var(--muted);background:var(--soft)}
+.tag.plus{color:var(--gold);border-color:var(--gold)}
+.tag.warn{color:var(--warn);background:var(--warnbg);border-color:transparent}
+.tag.bad{color:var(--bad);background:var(--badbg);border-color:transparent}
+.tag.ok{color:var(--ok);background:var(--okbg);border-color:transparent}
+.spark{display:flex;align-items:flex-end;gap:3px;height:42px}
+.spark i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px;opacity:.85}
+.spark i.z{background:var(--line);opacity:1}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%}
+th{text-align:left;font-size:13px;color:var(--muted);font-weight:700;padding:7px 8px;border-bottom:2px solid var(--line);white-space:nowrap}
+td{padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:hover td{background:var(--soft)}
+.dot{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:middle}
+.steps{display:flex;gap:3px}
+.steps i{width:16px;height:16px;border-radius:4px;background:var(--line);display:inline-block}
+.steps i.on{background:var(--c)}
+.steps i.x{outline:1px dashed var(--muted);background:transparent}
+.heat td.h{text-align:center;font-weight:700;border-radius:6px;min-width:58px}
+.legend{display:flex;gap:10px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-top:8px}
+.legend span{display:flex;align-items:center;gap:5px}
+.legend i{width:14px;height:14px;border-radius:3px;display:inline-block}
+input[type=text],input[type=email],input[type=password],select{border:1px solid var(--line);background:var(--soft);border-radius:8px;padding:7px 10px}
+.code{font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:700;letter-spacing:2px;font-size:17px}
+.textbox{background:var(--soft);border-radius:10px;padding:10px 12px;white-space:pre-wrap;margin:6px 0}
+.gate{min-height:70vh;display:grid;place-items:center}
+.gate .card{max-width:380px;width:100%}
+.gate label{display:block;margin:10px 0 4px;font-weight:700}
+.gate input{width:100%}
+.err{color:var(--bad);font-weight:700}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:9px 16px;border-radius:10px;opacity:0;transition:opacity .25s;pointer-events:none;z-index:20}
+.toast.show{opacity:1}
+.sec{margin-top:18px}
+.feed td:first-child{white-space:nowrap;color:var(--muted);font-size:14px}
+dialog{border:1px solid var(--line);border-radius:14px;background:var(--paper);color:var(--ink);max-width:520px;width:calc(100% - 30px)}
+dialog::backdrop{background:rgba(10,14,30,.55)}
+.lvlpick{display:flex;gap:6px}
+.lvlpick button{border:1px solid var(--line);background:var(--soft);border-radius:8px;padding:4px 10px;cursor:pointer}
+.lvlpick button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+@media (max-width:600px){ .kpis{grid-template-columns:repeat(2,1fr)} .grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="brand">Lernpfad-Konsole<small>Lern Deutsch mit Arash · Deutsch A1</small></div>
+  <nav class="tabs" id="tabs" hidden>
+    <button data-tab="overview">Übersicht</button>
+    <button data-tab="person">Person</button>
+    <button data-tab="topics">Themen</button>
+    <button data-tab="errors">Fehler</button>
+    <button data-tab="texts">Texte</button>
+    <button data-tab="people">Codes</button>
+  </nav>
+  <button class="btn sm" id="logout" hidden>Abmelden</button>
+</div></header>
+<main class="wrap" id="main"></main>
+<dialog id="dlg"></dialog>
+<div class="toast" id="toast"></div>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+<script>
+const STATIONS = [{"id":"aussprache","de":"Lesen & Aussprache","hex":"#a8431f","plus":false,"plusN":0},{"id":"praesens","de":"Präsens","hex":"#138a8a","plus":true,"plusN":8},{"id":"personal","de":"Personalpronomen","hex":"#8a5a14","plus":true,"plusN":8},{"id":"artikel","de":"Artikel","hex":"#2f5aa8","plus":true,"plusN":8},{"id":"akkusativ","de":"Akkusativ","hex":"#b53a50","plus":true,"plusN":7},{"id":"akkpron","de":"Akkusativpronomen","hex":"#2b7a9e","plus":true,"plusN":8},{"id":"possessiv","de":"Possessivpronomen","hex":"#c47f00","plus":true,"plusN":7},{"id":"modal","de":"Modalverben","hex":"#6d4a9c","plus":true,"plusN":7},{"id":"einkaufen","de":"Einkaufen & Bestellen","hex":"#4f7d2a","plus":true,"plusN":7},{"id":"praeteritum","de":"war & hatte","hex":"#9c3d73","plus":true,"plusN":8},{"id":"perfekt","de":"Perfekt","hex":"#5a6b1f","plus":true,"plusN":10}];
+const firebaseConfig = {
+  apiKey: "AIzaSyBDChXlm34Kr7Gg0Dw458GiiwoLnWJAnxM",
+  authDomain: "lern-deutsch-arash.firebaseapp.com",
+  databaseURL: "https://lern-deutsch-arash-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "lern-deutsch-arash",
+  storageBucket: "lern-deutsch-arash.firebasestorage.app",
+  messagingSenderId: "845503292114",
+  appId: "1:845503292114:web:f76ab5fcde1e978d00c30b"
+};
+const FB_ROOT = "lernpfad";
+const APP_URL_DEFAULT = "https://arashguitoo.github.io/Almani-ba-Arash/";
+const CODE_CHARS = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+const PCOL = ["#2f5aa8","#b53a50","#138a8a","#c47f00","#6d4a9c","#4f7d2a","#9c3d73","#2b7a9e"];
+const ROLES = {sohn:"Sohn", tochter:"Tochter", mutter:"Mutter", vater:"Vater", kind:"Kind", andere:"Andere"};
+const KINDS = {explain:"Erklärung gelesen", match:"Wörter (Paare)", practice:"Üben", build:"Sätze bauen", plus:"Profi-Runde", hw:"Hausaufgabe", duell:"Duell", live:"Live-Raum", import:"Fortschritt übernommen"};
+const STEPN = ["Erklärung","Wörter","Üben","Sätze","Profi","Hausaufgabe"];
+const DAY = 864e5;
+
+const $ = (s, r=document) => r.querySelector(s);
+const $$ = (s, r=document) => [...r.querySelectorAll(s)];
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const pad = n => String(n).padStart(2, "0");
+const fmtTs = ts => { if (!ts) return "–"; const d = new Date(ts); return `${pad(d.getDate())}.${pad(d.getMonth()+1)}. ${pad(d.getHours())}:${pad(d.getMinutes())}`; };
+const fmtDay = ts => { const d = new Date(ts); return `${pad(d.getDate())}.${pad(d.getMonth()+1)}.`; };
+const ago = ts => { if (!ts) return "noch nie"; const m = Math.round((Date.now() - ts) / 6e4); if (m < 2) return "gerade eben"; if (m < 60) return `vor ${m} Min.`; const h = Math.round(m / 60); if (h < 24) return `vor ${h} Std.`; const d = Math.round(h / 24); return d === 1 ? "gestern" : `vor ${d} Tagen`; };
+const mins = sec => Math.round(sec / 60);
+const stName = id => (STATIONS.find(s => s.id === id) || {de:id}).de;
+const stCol = id => (STATIONS.find(s => s.id === id) || {hex:"#56607a"}).hex;
+function colorOf(name){ let h = 0; for (const ch of String(name)) h = (h * 31 + ch.charCodeAt(0)) >>> 0; return PCOL[h % PCOL.length]; }
+function toast(t){ const e = $("#toast"); e.textContent = t; e.classList.add("show"); clearTimeout(toast._t); toast._t = setTimeout(() => e.classList.remove("show"), 2200); }
+const appUrl = () => { try { return localStorage.getItem("lp_appurl") || APP_URL_DEFAULT; } catch(e){ return APP_URL_DEFAULT; } };
+
+let auth = null, db = null;
+try { firebase.initializeApp(firebaseConfig); db = firebase.database(); auth = firebase.auth(); } catch(e){}
+const R = p => db.ref(FB_ROOT + (p ? "/" + p : ""));
+
+/* ---------- Daten ---------- */
+let D = {members:{}, points:{}, seen:{}, progress:{}, best:{}, log:{}};
+let TAB = "overview", PERSON = null, FILTER_ST = "";
+let listening = false;
+function listen(){
+  if (listening) return; listening = true;
+  ["members","points","seen","progress","best","log"].forEach(k => R(k).on("value", s => { D[k] = s.val() || {}; render(); }, err => { $("#main").innerHTML = `<p class="err">Kein Lesezugriff (${esc(err.code || err.message)}).</p>`; }));
+}
+function logsOf(code){ return Object.entries(D.log[code] || {}).map(([id, e]) => Object.assign({id}, e)).filter(e => e.ts).sort((a, b) => a.ts - b.ts); }
+const LEARN = ["practice","build","plus","hw"];
+function statsOf(code){
+  const logs = logsOf(code), now = Date.now();
+  const week = logs.filter(e => e.ts > now - 7 * DAY);
+  const daysActive = new Set(week.map(e => new Date(e.ts).toDateString())).size;
+  const sec = week.reduce((a, e) => a + Math.min(e.sec || 0, 1800), 0);
+  const ln = logs.filter(e => LEARN.includes(e.k) && e.ts > now - 14 * DAY);
+  const c = ln.reduce((a, e) => a + (e.c || 0), 0), n = ln.reduce((a, e) => a + (e.n || 0), 0);
+  const days = []; for (let k = 13; k >= 0; k--){ const d0 = new Date(now - k * DAY); d0.setHours(0, 0, 0, 0); const d1 = d0.getTime() + DAY; days.push({t:d0.getTime(), sec:logs.filter(e => e.ts >= d0.getTime() && e.ts < d1).reduce((a, e) => a + Math.min(e.sec || 0, 1800), 0) || (logs.some(e => e.ts >= d0.getTime() && e.ts < d1) ? 30 : 0)}); }
+  const prog = D.progress[code] || {};
+  const certs = STATIONS.filter(s => prog[s.id] && prog[s.id].hw && prog[s.id].hw.passed).length;
+  const lastLog = logs.length ? logs[logs.length - 1].ts : 0;
+  const failedHw = logs.filter(e => e.k === "hw" && e.ok === false && e.ts > now - 7 * DAY && !logs.some(x => x.k === "hw" && x.ok && x.s === e.s && x.ts > e.ts));
+  return {logs, week, daysActive, sec, acc: n ? Math.round(c / n * 100) : null, tasks:week.filter(e => LEARN.includes(e.k)).length, days, certs, last:Math.max(D.seen[code] || 0, lastLog), failedHw};
+}
+function accOf(code, sid){
+  const ln = logsOf(code).filter(e => LEARN.includes(e.k) && e.s === sid);
+  const c = ln.reduce((a, e) => a + (e.c || 0), 0), n = ln.reduce((a, e) => a + (e.n || 0), 0);
+  return n ? Math.round(c / n * 100) : null;
+}
+const people = () => Object.entries(D.members).map(([code, m]) => Object.assign({code}, m)).sort((a, b) => (a.group || "").localeCompare(b.group || "") || (a.name || "").localeCompare(b.name || ""));
+const activePeople = () => people().filter(p => p.active !== false);
+
+/* ---------- Ansichten ---------- */
+function render(){
+  $$("#tabs [data-tab]").forEach(b => b.classList.toggle("on", b.dataset.tab === TAB));
+  const m = $("#main");
+  const y = window.scrollY;
+  ({overview:vOverview, person:vPerson, topics:vTopics, errors:vErrors, texts:vTexts, people:vPeople})[TAB](m);
+  window.scrollTo(0, y);
+}
+function heatColor(p){ if (p === null) return ["var(--soft)","var(--muted)"]; if (p >= 85) return ["var(--okbg)","var(--ok)"]; if (p >= 65) return ["var(--warnbg)","var(--warn)"]; return ["var(--badbg)","var(--bad)"]; }
+function spark(days){ const mx = Math.max(60, ...days.map(d => d.sec)); return `<div class="spark" title="Lernzeit der letzten 14 Tage">${days.map(d => `<i class="${d.sec ? "" : "z"}" style="height:${d.sec ? Math.max(8, d.sec / mx * 100) : 4}%" title="${fmtDay(d.t)}: ${mins(d.sec)} Min."></i>`).join("")}</div>`; }
+
+function vOverview(m){
+  const ps = activePeople();
+  if (!ps.length){ m.innerHTML = `<h1>Übersicht</h1><div class="card"><p>Noch keine Lernenden. Lege unter <b>Codes</b> die erste Person an.</p><button class="btn primary" id="toPeople">Person anlegen</button></div>`; $("#toPeople").onclick = () => { TAB = "people"; render(); }; return; }
+  const groups = [...new Set(ps.map(p => p.group || ""))];
+  m.innerHTML = `<div class="row"><h1>Übersicht</h1><span class="sp"></span><span class="muted small">Zahlen: letzte 7 Tage · Trefferquote: letzte 14 Tage (erster Versuch)</span></div>` + groups.map(g => `
+    ${groups.length > 1 || g ? `<h2 class="sec">${esc(g || "Ohne Gruppe")}</h2>` : ""}
+    <div class="grid">${ps.filter(p => (p.group || "") === g).map(p => {
+      const s = statsOf(p.code), col = colorOf(p.name);
+      const idle = !s.last || Date.now() - s.last > 4 * DAY;
+      return `<button class="card learner" data-person="${p.code}">
+        <div class="lhead"><span class="av" style="background:${col}">${esc((p.name || "?")[0].toUpperCase())}</span><div><b>${esc(p.name)}</b><span class="muted small">${esc(ROLES[p.role] || "")} · <span class="code" style="font-size:13px">${p.code}</span></span></div><span class="sp"></span>
+        ${p.level === "plus" ? `<span class="tag plus">Profi</span>` : `<span class="tag">Basis</span>`}</div>
+        <div class="kpis">
+          <div class="kpi"><b>${s.daysActive}</b><span>Tage aktiv</span></div>
+          <div class="kpi"><b>${mins(s.sec)}</b><span>Minuten</span></div>
+          <div class="kpi"><b>${s.acc === null ? "–" : s.acc + " %"}</b><span>Treffer</span></div>
+          <div class="kpi"><b>${s.certs}/${STATIONS.length}</b><span>Zertifikate</span></div>
+        </div>
+        ${spark(s.days)}
+        <div class="row small"><span class="muted">Zuletzt aktiv: ${ago(s.last)}</span><span class="sp"></span><span style="color:var(--gold);font-weight:700">★ ${D.points[p.code] || 0}</span></div>
+        <div class="row">${idle ? `<span class="tag warn">seit ${s.last ? Math.floor((Date.now() - s.last) / DAY) + " Tagen" : "Start"} inaktiv</span>` : ""}${s.failedHw.map(e => `<span class="tag bad">Hausaufgabe offen: ${esc(stName(e.s))}</span>`).join("")}${s.acc !== null && s.acc < 65 ? `<span class="tag bad">Trefferquote niedrig</span>` : ""}</div>
+      </button>`; }).join("")}</div>`).join("");
+  $$("[data-person]", m).forEach(b => b.onclick = () => { PERSON = b.dataset.person; TAB = "person"; render(); window.scrollTo(0, 0); });
+}
+
+function personPicker(){
+  const ps = people();
+  if (!PERSON || !D.members[PERSON]) PERSON = ps.length ? ps[0].code : null;
+  return `<select id="pick">${ps.map(p => `<option value="${p.code}" ${p.code === PERSON ? "selected" : ""}>${esc(p.name)} (${p.code})${p.active === false ? " – inaktiv" : ""}</option>`).join("")}</select>`;
+}
+function wirePicker(){ const s = $("#pick"); if (s) s.onchange = () => { PERSON = s.value; render(); }; }
+function feedRow(e){
+  let res = "";
+  if (e.n) res = `${e.c ?? 0}/${e.n}`;
+  if (e.k === "hw") res += e.ok ? ` <span class="tag ok">bestanden</span>` : ` <span class="tag bad">nicht bestanden</span>`;
+  if (e.k === "match" && e.e != null) res = `${e.e} Fehlversuche`;
+  if ((e.k === "duell" || e.k === "live") && e.win) res += ` <span class="tag ok">gewonnen</span>`;
+  const topic = e.s ? String(e.s).split(",").map(stName).join(", ") : "";
+  const wn = (e.w || []).length;
+  return `<tr><td>${fmtTs(e.ts)}</td><td><b>${KINDS[e.k] || e.k}</b>${e.with && e.with.length ? `<span class="muted small"> mit ${esc(e.with.join(", "))}</span>` : ""}</td><td>${e.s && !String(e.s).includes(",") ? `<span class="dot" style="background:${stCol(e.s)}"></span>` : ""}${esc(topic.length > 60 ? topic.slice(0, 60) + " …" : topic)}</td><td>${res}</td><td>${e.sec ? (e.sec < 90 ? e.sec + " s" : mins(e.sec) + " Min.") : ""}</td><td>${wn ? `<button class="btn sm" data-wrong="${e.id}">${wn} Fehler</button>` : ""}</td></tr>`;
+}
+function vPerson(m){
+  if (!people().length){ m.innerHTML = `<h1>Person</h1><p class="muted">Noch keine Personen angelegt.</p>`; return; }
+  const pk = personPicker();
+  const p = D.members[PERSON], s = statsOf(PERSON), prog = D.progress[PERSON] || {}, best = D.best[PERSON] || {};
+  const plus = p.level === "plus";
+  const rows = STATIONS.map(st => {
+    const d = prog[st.id] || {}, steps = Array.isArray(d.steps) ? d.steps : Object.values(d.steps || {});
+    const hw = d.hw, acc = accOf(PERSON, st.id), [bg, fg] = heatColor(acc);
+    const last = s.logs.filter(e => e.s === st.id).pop();
+    return `<tr><td><span class="dot" style="background:${st.hex}"></span><b>${esc(st.de)}</b></td>
+      <td><span class="steps" style="--c:${st.hex}">${[0,1,2,3,4,5].map(k => k === 4 && !st.plus ? `<i class="x" title="kein Profi"></i>` : `<i class="${steps[k] ? "on" : ""}" title="${STEPN[k]}${k === 4 && !plus ? " (freiwillig)" : ""}"></i>`).join("")}</span></td>
+      <td>${st.plus ? (best[st.id] && best[st.id].x != null ? `${best[st.id].x}/${st.plusN}` : "–") : ""}</td>
+      <td>${hw && hw.passed ? `<span class="tag ok">${hw.score}/${hw.total}</span> <span class="muted small">${esc(hw.date || "")}</span>` : "–"}</td>
+      <td><span class="tag" style="background:${bg};color:${fg};border-color:transparent">${acc === null ? "–" : acc + " %"}</span></td>
+      <td class="muted small">${last ? ago(last.ts) : ""}</td></tr>`;
+  }).join("");
+  const feed = s.logs.slice().reverse().slice(0, 60).map(feedRow).join("");
+  m.innerHTML = `<div class="row"><h1>${esc(p.name)}</h1>${pk}<span class="sp"></span>${plus ? `<span class="tag plus">Profi</span>` : `<span class="tag">Basis</span>`}<span style="color:var(--gold);font-weight:700">★ ${D.points[PERSON] || 0}</span></div>
+    <p class="muted" style="margin:0 0 14px">Zuletzt aktiv: ${ago(s.last)} · diese Woche ${s.daysActive} ${s.daysActive === 1 ? "Tag" : "Tage"}, ${mins(s.sec)} Minuten, ${s.tasks} Übungsrunden · Trefferquote ${s.acc === null ? "–" : s.acc + " %"}</p>
+    <div class="card"><h2>Stationen</h2><div class="tw"><table><tr><th>Station</th><th>Schritte</th><th>Profi</th><th>Hausaufgabe</th><th>Treffer</th><th>Zuletzt</th></tr>${rows}</table></div>
+    <div class="legend"><span>Schritte: Erklärung · Wörter · Üben · Sätze · Profi · Hausaufgabe</span><span><i style="background:var(--okbg)"></i>ab 85 %</span><span><i style="background:var(--warnbg)"></i>65–84 %</span><span><i style="background:var(--badbg)"></i>unter 65 %</span></div></div>
+    <div class="card sec"><h2>Lernzeit (14 Tage)</h2>${spark(s.days)}<div class="row small muted"><span>${fmtDay(s.days[0].t)}</span><span class="sp"></span><span>heute</span></div></div>
+    <div class="card sec"><h2>Verlauf</h2>${feed ? `<div class="tw"><table class="feed"><tr><th>Zeit</th><th>Aktivität</th><th>Thema</th><th>Ergebnis</th><th>Dauer</th><th></th></tr>${feed}</table></div>` : `<p class="muted">Noch keine Aktivität.</p>`}</div>`;
+  wirePicker();
+  $$("[data-wrong]", m).forEach(b => b.onclick = () => {
+    const e = s.logs.find(x => x.id === b.dataset.wrong);
+    showDlg(`<h3>Fehler · ${esc(KINDS[e.k] || e.k)} · ${fmtTs(e.ts)}</h3><div class="tw"><table><tr><th>Aufgabe</th><th>Antwort</th><th>Richtig</th></tr>${(e.w || []).map(w => `<tr><td>${esc(w.q)}</td><td style="color:var(--bad)">${esc(w.g)}</td><td style="color:var(--ok)">${esc(w.r)}</td></tr>`).join("")}</table></div>`);
+  });
+}
+
+function vTopics(m){
+  const ps = activePeople();
+  const head = ps.map(p => `<th style="text-align:center">${esc(p.name)}</th>`).join("");
+  const rows = STATIONS.map(st => `<tr><td><span class="dot" style="background:${st.hex}"></span>${esc(st.de)}</td>${ps.map(p => {
+    const a = accOf(p.code, st.id), [bg, fg] = heatColor(a);
+    const hw = ((D.progress[p.code] || {})[st.id] || {}).hw;
+    return `<td class="h" style="background:${bg};color:${fg}">${a === null ? "–" : a + " %"}${hw && hw.passed ? " 🏅" : ""}</td>`;
+  }).join("")}</tr>`).join("");
+  m.innerHTML = `<h1>Themen</h1><p class="muted">Trefferquote im ersten Versuch (Üben, Sätze, Profi, Hausaufgabe) – alle Zeiträume. 🏅 = Zertifikat.</p>
+    <div class="card"><div class="tw"><table class="heat"><tr><th>Station</th>${head}</tr>${rows}</table></div>
+    <div class="legend"><span><i style="background:var(--okbg)"></i>ab 85 %</span><span><i style="background:var(--warnbg)"></i>65–84 %</span><span><i style="background:var(--badbg)"></i>unter 65 %</span></div></div>`;
+}
+
+function vErrors(m){
+  const ps = people();
+  if (!ps.length){ m.innerHTML = `<h1>Fehler</h1><p class="muted">Noch keine Personen.</p>`; return; }
+  const pk = `<select id="pick"><option value="*">Alle Personen</option>${ps.map(p => `<option value="${p.code}" ${p.code === PERSON ? "selected" : ""}>${esc(p.name)}</option>`).join("")}</select>`;
+  const who = PERSON && D.members[PERSON] ? [PERSON] : ps.map(p => p.code);
+  const agg = {};
+  who.forEach(code => logsOf(code).forEach(e => (e.w || []).forEach(w => {
+    if (FILTER_ST && e.s !== FILTER_ST) return;
+    const k = w.r;
+    const a = agg[k] || (agg[k] = {r:w.r, q:w.q, n:0, given:{}, who:new Set(), s:e.s, last:0});
+    a.n++; a.given[w.g] = (a.given[w.g] || 0) + 1; a.who.add(D.members[code] ? D.members[code].name : code); a.last = Math.max(a.last, e.ts);
+  })));
+  const list = Object.values(agg).sort((a, b) => b.n - a.n || b.last - a.last);
+  const stSel = `<select id="stf"><option value="">Alle Stationen</option>${STATIONS.map(s => `<option value="${s.id}" ${s.id === FILTER_ST ? "selected" : ""}>${esc(s.de)}</option>`).join("")}</select>`;
+  m.innerHTML = `<div class="row"><h1>Fehler</h1>${pk}${stSel}</div><p class="muted">Welche Aufgaben werden immer wieder falsch gelöst, und mit welchen falschen Antworten? Am häufigsten zuerst.</p>
+    <div class="card">${list.length ? `<div class="tw"><table><tr><th>×</th><th>Richtige Lösung</th><th>Falsche Antworten</th><th>Station</th><th>Wer</th><th>Zuletzt</th></tr>${list.slice(0, 120).map(a => `<tr><td><b>${a.n}</b></td><td>${esc(a.r)}</td><td style="color:var(--bad)">${Object.entries(a.given).sort((x, y) => y[1] - x[1]).map(([g, c]) => esc(g || "–") + (c > 1 ? ` (${c}×)` : "")).join(" · ")}</td><td>${a.s && !String(a.s).includes(",") ? `<span class="dot" style="background:${stCol(a.s)}"></span>${esc(stName(a.s))}` : "gemischt"}</td><td class="small">${esc([...a.who].join(", "))}</td><td class="small muted">${ago(a.last)}</td></tr>`).join("")}</table></div>` : `<p class="muted">Keine Fehler gespeichert.</p>`}</div>`;
+  $("#pick").onchange = e => { PERSON = e.target.value === "*" ? null : e.target.value; render(); };
+  $("#stf").onchange = e => { FILTER_ST = e.target.value; render(); };
+  if (!(PERSON && D.members[PERSON])) $("#pick").value = "*";
+}
+
+function vTexts(m){
+  const ps = people();
+  const items = [];
+  ps.forEach(p => logsOf(p.code).filter(e => e.k === "hw" && e.ok && e.text).forEach(e => items.push({p, e})));
+  items.sort((a, b) => b.e.ts - a.e.ts);
+  m.innerHTML = `<h1>Texte</h1><p class="muted">Schreibaufgaben aus den Hausaufgaben, neueste zuerst.</p>
+    ${items.length ? items.map(({p, e}) => `<div class="card sec"><div class="row"><span class="dot" style="background:${stCol(e.s)}"></span><b>${esc(stName(e.s))}</b><span class="muted">· ${esc(p.name)} · ${fmtTs(e.ts)} · ${e.c}/${e.n} richtig</span></div><div class="textbox" lang="de">${esc(e.text)}</div></div>`).join("") : `<div class="card"><p class="muted">Noch keine Texte.</p></div>`}`;
+}
+
+function newCode(){
+  for (let t = 0; t < 200; t++){
+    let c = ""; for (let k = 0; k < 5; k++) c += CODE_CHARS[Math.floor(Math.random() * CODE_CHARS.length)];
+    if (!D.members[c]) return c;
+  }
+  return null;
+}
+function accessText(p){
+  return `Lern Deutsch mit Arash\nLink: ${appUrl()}\nDein Code: ${p.code}\n\nلینک را باز کن، روی «Mit Code anmelden» بزن و کدت را بنویس:\n${p.code}`;
+}
+function vPeople(m){
+  const ps = people();
+  const groups = [...new Set(ps.map(p => p.group || "").filter(Boolean))];
+  m.innerHTML = `<h1>Codes</h1>
+    <div class="card"><h2>Neue Person</h2>
+      <form class="row" id="addForm">
+        <input type="text" id="nName" placeholder="Name" required maxlength="30">
+        <select id="nRole">${Object.entries(ROLES).map(([k, v]) => `<option value="${k}">${v}</option>`).join("")}</select>
+        <select id="nLevel"><option value="basis">Basis</option><option value="plus">Profi</option></select>
+        <input type="text" id="nGroup" placeholder="Gruppe (z. B. Nachname)" list="glist" maxlength="40" value="${esc(groups[0] || "")}">
+        <datalist id="glist">${groups.map(g => `<option value="${esc(g)}">`).join("")}</datalist>
+        <button class="btn primary">Anlegen</button>
+      </form>
+      <p class="muted small">Personen in derselben Gruppe sehen sich in der Rangliste. Die Stufe <b>Profi</b> macht die Profi-Runde zum Pflichtschritt und gibt im Duell und Live-Raum schwerere Fragen.</p>
+    </div>
+    <div class="card sec"><h2>Personen</h2>${ps.length ? `<div class="tw"><table><tr><th>Name</th><th>Code</th><th>Rolle</th><th>Stufe</th><th>Gruppe</th><th>Punkte</th><th></th></tr>${ps.map(p => `<tr style="${p.active === false ? "opacity:.55" : ""}">
+      <td><b>${esc(p.name)}</b>${p.active === false ? ` <span class="tag">inaktiv</span>` : ""}</td>
+      <td class="code">${p.code}</td>
+      <td>${esc(ROLES[p.role] || "")}</td>
+      <td><span class="lvlpick">${["basis","plus"].map(l => `<button data-lvl="${l}" data-code="${p.code}" class="${(p.level || "basis") === l ? "on" : ""}">${l === "plus" ? "Profi" : "Basis"}</button>`).join("")}</span></td>
+      <td>${esc(p.group || "")}</td>
+      <td>${D.points[p.code] || 0}</td>
+      <td class="row" style="gap:6px"><button class="btn sm" data-copy="${p.code}">Zugang kopieren</button><button class="btn sm" data-edit="${p.code}">Bearbeiten</button></td></tr>`).join("")}</table></div>` : `<p class="muted">Noch keine Personen.</p>`}</div>
+    <div class="card sec"><h2>Einstellungen</h2>
+      <div class="row"><label for="appurl">Link zur Lern-App</label><input type="text" id="appurl" style="flex:1;min-width:260px" value="${esc(appUrl())}"><button class="btn sm" id="saveUrl">Speichern</button></div>
+      <p class="muted small">Daten liegen in Firebase unter <code>${FB_ROOT}/</code>. Alte Live-Räume räumst du hier auf:</p>
+      <button class="btn sm" id="cleanRooms">Live-Räume älter als 1 Tag löschen</button>
+    </div>`;
+  $("#addForm").onsubmit = async e => {
+    e.preventDefault();
+    const code = newCode(); if (!code){ toast("Kein Code frei"); return; }
+    const p = {name:$("#nName").value.trim(), role:$("#nRole").value, level:$("#nLevel").value, group:$("#nGroup").value.trim(), active:true, created:firebase.database.ServerValue.TIMESTAMP};
+    if (!p.name) return;
+    await R(`members/${code}`).set(p);
+    toast(`${p.name}: Code ${code}`);
+    showDlg(`<h3>${esc(p.name)} ist angelegt</h3><p>Code: <span class="code">${code}</span></p><div class="textbox">${esc(accessText(Object.assign({code}, p)))}</div><div class="row"><button class="btn primary" id="cp">Text kopieren</button></div>`);
+    $("#cp").onclick = () => copy(accessText(Object.assign({code}, p)));
+  };
+  $$("[data-lvl]", m).forEach(b => b.onclick = () => R(`members/${b.dataset.code}/level`).set(b.dataset.lvl).then(() => toast("Stufe geändert")));
+  $$("[data-copy]", m).forEach(b => b.onclick = () => copy(accessText(Object.assign({code:b.dataset.copy}, D.members[b.dataset.copy]))));
+  $$("[data-edit]", m).forEach(b => b.onclick = () => editPerson(b.dataset.edit));
+  $("#saveUrl").onclick = () => { try { localStorage.setItem("lp_appurl", $("#appurl").value.trim()); } catch(e){} toast("Gespeichert"); };
+  $("#cleanRooms").onclick = async () => {
+    const s = (await R("rooms").get()).val() || {};
+    const old = Object.entries(s).filter(([k, v]) => !v.created || Date.now() - v.created > DAY).map(([k]) => k);
+    const upd = {}; old.forEach(k => upd[k] = null);
+    if (old.length) await R("rooms").update(upd);
+    toast(`${old.length} Räume gelöscht`);
+  };
+}
+function editPerson(code){
+  const p = D.members[code];
+  showDlg(`<h3>${esc(p.name)} bearbeiten</h3>
+    <div class="row" style="flex-direction:column;align-items:stretch">
+      <label>Name <input type="text" id="eName" value="${esc(p.name)}" style="width:100%"></label>
+      <label>Rolle <select id="eRole">${Object.entries(ROLES).map(([k, v]) => `<option value="${k}" ${p.role === k ? "selected" : ""}>${v}</option>`).join("")}</select></label>
+      <label>Gruppe <input type="text" id="eGroup" value="${esc(p.group || "")}" style="width:100%"></label>
+    </div>
+    <div class="row" style="margin-top:12px"><button class="btn primary" id="eSave">Speichern</button>
+      <button class="btn" id="eAct">${p.active === false ? "Wieder aktivieren" : "Deaktivieren"}</button>
+      <button class="btn danger" id="eReset">Punkte auf 0</button></div>
+    <p class="muted small">Deaktivieren sperrt den Code; Fortschritt und Verlauf bleiben erhalten.</p>`);
+  $("#eSave").onclick = async () => { await R(`members/${code}`).update({name:$("#eName").value.trim() || p.name, role:$("#eRole").value, group:$("#eGroup").value.trim()}); closeDlg(); toast("Gespeichert"); };
+  $("#eAct").onclick = async () => { await R(`members/${code}/active`).set(p.active === false); closeDlg(); };
+  $("#eReset").onclick = async e => {
+    if (!e.target.dataset.armed){ e.target.dataset.armed = 1; e.target.textContent = "Sicher? Nochmal klicken"; return; }
+    await R(`points/${code}`).set(0); await R(`best/${code}`).remove(); closeDlg(); toast("Punkte zurückgesetzt");
+  };
+}
+function copy(t){ (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => toast("Kopiert"), () => { prompt("Text kopieren:", t); }); }
+function showDlg(html){ const d = $("#dlg"); d.innerHTML = html + `<div class="row" style="margin-top:14px;justify-content:flex-end"><button class="btn" id="dlgX">Schließen</button></div>`; $("#dlgX").onclick = closeDlg; if (d.showModal) d.showModal(); else d.setAttribute("open", ""); }
+function closeDlg(){ const d = $("#dlg"); if (d.close) d.close(); else d.removeAttribute("open"); }
+
+/* ---------- Anmeldung ---------- */
+function gate(msg){
+  $("#tabs").hidden = true; $("#logout").hidden = true;
+  $("#main").innerHTML = `<div class="gate"><form class="card" id="loginForm"><h2>Anmelden</h2><p class="muted small">Gleiche Anmeldung wie in der Liga-Konsole.</p>
+    <label for="lm">E-Mail</label><input type="email" id="lm" autocomplete="username" required>
+    <label for="lp">Passwort</label><input type="password" id="lp" autocomplete="current-password" required>
+    <p class="err" id="lerr">${esc(msg || "")}</p><button class="btn primary" style="width:100%">Anmelden</button></form></div>`;
+  $("#loginForm").onsubmit = e => {
+    e.preventDefault();
+    auth.signInWithEmailAndPassword($("#lm").value.trim(), $("#lp").value).catch(err => {
+      const c = err.code || "";
+      $("#lerr").textContent = /invalid|wrong|not-found/.test(c) ? "E-Mail oder Passwort stimmt nicht." : c.includes("too-many") ? "Zu viele Versuche. Bitte kurz warten." : c.includes("network") ? "Keine Internetverbindung." : "Anmeldung fehlgeschlagen (" + c + ")";
+    });
+  };
+}
+$$("#tabs [data-tab]").forEach(b => b.onclick = () => { TAB = b.dataset.tab; render(); window.scrollTo(0, 0); });
+$("#logout").onclick = () => auth.signOut().then(() => location.reload());
+if (!auth || !db){ $("#main").innerHTML = `<p class="err">Firebase konnte nicht geladen werden.</p>`; }
+else auth.onAuthStateChanged(u => {
+  if (!u) return gate();
+  $("#tabs").hidden = false; $("#logout").hidden = false;
+  $("#main").innerHTML = `<p class="muted">Lädt …</p>`;
+  listen();
+});
+</script>
+</body>
+</html>

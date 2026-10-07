@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lern Deutsch mit Arash – Deutsch A1 Lernstationen</title>
+<title>Lern Deutsch mit Arash – Deutsch A1</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Carlito:wght@400;700&family=Vazirmatn:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -235,22 +235,105 @@ textarea{font:inherit;font-size:20px;width:100%;min-height:170px;padding:12px 14
   .mcard{font-size:17px;padding:8px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ===== Erweiterungen ===== */
+:root{ --s8:#8a5a14; --s9:#2b7a9e; --s10:#9c3d73; --s11:#5a6b1f; --gold:#b7861b; }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --s8:#d6a45a; --s9:#63b4da; --s10:#db7db2; --s11:#a8bd5a; --gold:#e3b54a; } }
+:root[data-theme="dark"]{ --s8:#d6a45a; --s9:#63b4da; --s10:#db7db2; --s11:#a8bd5a; --gold:#e3b54a; }
+
+.top .wrap.topin{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:space-between}
+.brand{background:none;border:0;padding:0;cursor:pointer;text-align:left}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav button{background:none;border:2px solid transparent;border-radius:12px;padding:5px 12px;cursor:pointer;font-weight:700;font-size:17px;line-height:1.15;display:flex;flex-direction:column;align-items:center;color:var(--muted)}
+.nav button .fa{font-size:12px;font-weight:500;line-height:1.5;text-align:center}
+.nav button.on{color:var(--ink);border-color:var(--line);background:var(--soft)}
+.who{display:flex;align-items:center;gap:10px;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:5px 14px 5px 5px;cursor:pointer;font-size:16px}
+.who .av{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;background:var(--c,var(--s2))}
+.who .pt{color:var(--gold);font-weight:700;white-space:nowrap}
+.who .nm{font-weight:700;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media (max-width:760px){ .nav{order:3;width:100%;justify-content:space-between} .nav button{flex:1} }
+
+.page{padding-top:30px;padding-bottom:50px}
+.page h1{font-size:clamp(30px,4.6vw,46px);line-height:1.05;margin:0}
+.page .fa.h{font-size:clamp(18px,2.4vw,22px);font-weight:700;margin:6px 0 0;text-align:left}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:22px}
+.pcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin:18px 0}
+.pcard{display:flex;align-items:center;gap:12px;background:var(--paper);border:2px solid var(--line);border-radius:16px;padding:14px;cursor:pointer;text-align:left}
+.pcard:hover{border-color:var(--c,var(--accent))}
+.pcard .av{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:22px;background:var(--c,var(--s2));flex:0 0 48px}
+.pcard b{display:block;font-size:20px}
+.pcard small{color:var(--muted);font-size:14px}
+.pcard.sel{border-color:var(--c,var(--accent));box-shadow:0 0 0 2px var(--c,var(--accent))}
+.codein{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.codein input{font:inherit;font-size:24px;letter-spacing:4px;text-transform:uppercase;padding:10px 14px;border:2px solid var(--line);border-radius:12px;background:var(--soft);color:var(--ink);width:200px}
+.err{color:var(--bad);font-weight:700;margin:8px 0 0}
+.badge{display:inline-block;border-radius:999px;padding:2px 10px;font-size:14px;font-weight:700;border:1px solid var(--line);background:var(--soft);color:var(--muted);vertical-align:middle}
+.badge.plus{color:var(--gold);border-color:var(--gold)}
+.stepbtn .opt-l{display:block;font-size:12px;color:var(--muted);font-weight:500}
+.ptoast{position:fixed;right:20px;top:80px;background:var(--gold);color:#fff;font-weight:700;font-size:22px;padding:8px 16px;border-radius:14px;opacity:0;transform:translateY(-8px);transition:all .3s;z-index:70;pointer-events:none}
+.ptoast.show{opacity:1;transform:none}
+
+/* Tabelle */
+.rank{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.rank li{display:grid;grid-template-columns:42px 48px 1fr auto;gap:12px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:12px 16px}
+.rank li.me{border-color:var(--c);box-shadow:inset 0 0 0 1px var(--c)}
+.rank .pl{font-size:24px;font-weight:700;color:var(--muted);text-align:center}
+.rank .av{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:22px;background:var(--c)}
+.rank .bar{height:10px;border-radius:5px;background:var(--line);overflow:hidden;margin-top:6px}
+.rank .bar i{display:block;height:100%;background:var(--c)}
+.rank .sc{font-size:26px;font-weight:700;color:var(--gold);text-align:right;line-height:1}
+.rank .sc small{display:block;font-size:13px;color:var(--muted);font-weight:500}
+
+/* Spielen */
+.modecard{display:flex;flex-direction:column;gap:10px;text-align:left;cursor:pointer;border:2px solid var(--line)}
+.modecard:hover{border-color:var(--accent)}
+.modecard h2{margin:0;font-size:26px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chip{border:2px solid var(--line);background:var(--paper);border-radius:999px;padding:6px 14px;cursor:pointer;font-size:17px;font-weight:700}
+.chip.on{background:var(--c,var(--accent));border-color:var(--c,var(--accent));color:#fff}
+.lbl{font-weight:700;margin:18px 0 4px;font-size:19px}
+.lbl .fa{display:inline;font-size:15px;font-weight:500;margin-left:8px}
+.turn{border-radius:22px;padding:30px 24px;text-align:center;color:#fff;background:var(--c)}
+.turn h2{margin:0;font-size:clamp(30px,5vw,46px)}
+.turn .fa{text-align:center;font-size:20px}
+.turn .btn{margin-top:18px;border-color:#fff;color:var(--c);background:#fff}
+.sbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.sbar span{display:flex;align-items:center;gap:8px;border-radius:999px;padding:4px 12px 4px 4px;background:var(--soft);border:2px solid var(--line);font-weight:700}
+.sbar span.on{border-color:var(--c)}
+.sbar i{width:26px;height:26px;border-radius:50%;background:var(--c);display:inline-block}
+.timer{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin:6px 0 14px}
+.timer i{display:block;height:100%;background:var(--accent);width:100%}
+.roomcode{font-size:56px;font-weight:700;letter-spacing:10px;color:var(--accent);line-height:1}
+.podium{display:flex;align-items:flex-end;justify-content:center;gap:12px;margin:20px 0}
+.podium div{flex:0 1 150px;text-align:center}
+.podium .blk{border-radius:12px 12px 0 0;background:var(--c);color:#fff;font-size:30px;font-weight:700;display:grid;place-items:center}
+.podium b{display:block;font-size:19px;margin-bottom:6px}
+.wait{color:var(--muted);font-size:18px;margin-top:14px}
+.dialog .actions{justify-content:flex-start}
+.small-note{font-size:14px;color:var(--muted)}
+
 </style>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
 <script data-goatcounter="https://aguitoo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
 <header class="top">
-  <div class="wrap">
-    <div class="brand">Lern Deutsch mit Arash<small>Deutsch A1 · für Persischsprechende · آلمانی با آرش</small></div>
-    <div class="namebox">
-      <label for="nameTop">Dein Name<span class="fa">نام تو</span></label>
-      <input id="nameTop" autocomplete="name" placeholder="Name">
-    </div>
+  <div class="wrap topin">
+    <button class="brand" id="brandBtn">Lern Deutsch mit Arash<small>Deutsch A1 · آلمانی با آرش</small></button>
+    <nav class="nav" aria-label="Bereiche">
+      <button data-nav="home">Lernpfad<span class="fa">مسیر یادگیری</span></button>
+      <button data-nav="play">Zusammen<span class="fa">با هم</span></button>
+      <button data-nav="table">Rangliste<span class="fa">جدول امتیاز</span></button>
+    </nav>
+    <button class="who" id="whoBtn"></button>
   </div>
 </header>
 <main id="app"></main>
 <div class="modal" id="modal" role="dialog" aria-modal="true"><div class="mbox" id="mbox"></div></div>
 <div class="toast" id="toast" role="status"></div>
+<div class="ptoast" id="ptoast" aria-live="polite"></div>
 
 <script>
 /* ---------- Hilfen ---------- */
@@ -285,6 +368,7 @@ const SND = rows => `<div class="tw"><table class="conj snd"><tr><th>Buchstabe</
 const NOTE = html => `<div class="note fa">${html}</div>`;
 const TABLE = (cap, rows, heads) => `<div class="tw"><table class="conj">${cap ? `<caption>${cap}</caption>` : ""}${heads ? `<tr>${heads.map((h,i) => `<th${/[\u0600-\u06FF]/.test(h) ? ' class="fa"' : ""}>${h}</th>`).join("")}</tr>` : ""}${rows.map(r => `<tr>${r.map(c => /[\u0600-\u06FF]/.test(strip(c)) ? `<td class="fa">${c}</td>` : `<td class="de" lang="de">${c}</td>`).join("")}</tr>`).join("")}</table></div>`;
 const E = s => `<b class="end">${s}</b>`;
+
 
 /* ---------- Inhalte ---------- */
 const STATIONS = [
@@ -860,45 +944,736 @@ const STATIONS = [
 }
 ];
 
+/* ---------- Neue Stationen ---------- */
+const NEW_STATIONS = [
+{
+  id:"personal", color:"var(--s8)", de:"Personalpronomen", sub:"ich, du, er, sie …", fa:"ضمیرهای شخصی",
+  explain: `
+  <section class="ex">
+    <h4>Wer? – die Personalpronomen</h4>
+    <p class="fa">ضمیر شخصی به‌جای اسم یک شخص یا یک چیز می‌آید. در آلمانی ضمیر فاعلی <b>همیشه</b> باید گفته شود. در فارسی می‌گوییم «می‌آیم» و «من» لازم نیست، اما در آلمانی ${D("komme")} تنها کافی نیست: ${D("Ich komme.")}</p>
+    ${TABLE("", [
+      ["ich", "من"],
+      ["du", "تو (خودمانی)"],
+      ["er", "او (مرد) – یا «آن» برای اسم‌های der"],
+      ["sie", "او (زن) – یا «آن» برای اسم‌های die"],
+      ["es", "آن – برای اسم‌های das"],
+      ["wir", "ما"],
+      ["ihr", "شما (جمع، خودمانی)"],
+      ["sie", "آن‌ها"],
+      ["Sie", "شما (رسمی – برای یک نفر یا چند نفر)"]
+    ], ["Pronomen","فارسی"])}
+  </section>
+  <section class="ex">
+    <h4>er oder sie? – anders als im Persischen</h4>
+    ${NOTE(`در فارسی «او» برای مرد و زن یکی است. در آلمانی برای مرد ${D("er")} و برای زن ${D("sie")} می‌گوییم.`)}
+    ${EX("Das ist Reza. Er kommt aus Shiraz.", "این رضاست. او اهل شیراز است.")}
+    ${EX("Das ist Mina. Sie kommt aus Tabriz.", "این میناست. او اهل تبریز است.")}
+    <p class="fa">برای <b>چیزها</b> هم از ${D("er / sie / es")} استفاده می‌کنیم. ملاک، حرف تعریف اسم است – نه جنسیت واقعی:</p>
+    ${TABLE("", [
+      [`<span class="der">der</span> Tisch → <span class="der">er</span>`, "میز → «آن»"],
+      [`<span class="die">die</span> Lampe → <span class="die">sie</span>`, "چراغ → «آن»"],
+      [`<span class="das">das</span> Buch → <span class="das">es</span>`, "کتاب → «آن»"]
+    ], ["Nomen → Pronomen","فارسی"])}
+    ${EX("Wo ist der Schlüssel? – Er ist hier.", "کلید کجاست؟ – اینجاست.")}
+    ${EX("Die Uhr ist alt, aber sie geht gut.", "ساعت قدیمی است، اما خوب کار می‌کند.")}
+  </section>
+  <section class="ex">
+    <h4>du oder Sie?</h4>
+    <p class="fa">${D("du")} مثل «تو» است: برای خانواده، دوستان و بچه‌ها. ${D("Sie")} (همیشه با حرف بزرگ) مثل «شما»ی مؤدبانه است: برای معلم، پزشک، اداره و آدم‌های ناآشنا.</p>
+    ${EX("Mama, kommst du mit?", "مامان، تو هم می‌آیی؟")}
+    ${EX("Herr Weber, kommen Sie aus Kiel?", "آقای وبر، شما اهل کیل هستید؟")}
+    ${NOTE(`سه بار «sie»؟ فعل کمک می‌کند: ${D("sie ist")} = او (زن) است · ${D("sie sind")} = آن‌ها هستند · ${D("Sie sind")} = شما (رسمی) هستید.`)}
+  </section>`,
+  match:[
+    {title:"Personalpronomen", fa:"هر ضمیر آلمانی را به معنی فارسی‌اش وصل کن.", pairs:[["ich","من"],["du","تو"],["er","او (مرد)"],["wir","ما"],["ihr","شما (جمع، خودمانی)"],["Sie","شما (رسمی)"]]},
+    {title:"Wer ist das?", fa:"برای هر اسم، ضمیر درست را پیدا کن.", rightDe:true, pairs:[["Ali","er"],["Sara","sie"],["das Kind","es"],["Ali und ich","wir"],["du und Sara","ihr"],["Herr Müller (formell)","Sie"]]}
+  ],
+  practice:[
+    {t:"c", q:"___ heiße Reza.", o:["Ich","Du","Er"], a:0, fa:"اسم من رضاست.", tip:"heiße ← ich"},
+    {t:"c", q:"Das ist Sara. ___ kommt aus Shiraz.", o:["Sie","Er","Es"], a:0, fa:"این ساراست. او اهل شیراز است.", tip:"سارا زن است ← sie"},
+    {t:"c", q:"Das ist Herr Braun. ___ ist Lehrer.", o:["Er","Sie","Es"], a:0, fa:"این آقای براون است. او معلم است."},
+    {t:"c", q:"Wo ist der Schlüssel? – ___ ist hier.", o:["Er","Sie","Es"], a:0, fa:"کلید کجاست؟ – اینجاست.", tip:"der Schlüssel ← er"},
+    {t:"c", q:"Die Lampe ist neu. ___ ist schön.", o:["Sie","Er","Es"], a:0, fa:"چراغ نو است. قشنگ است.", tip:"die Lampe ← sie"},
+    {t:"c", q:"Das Buch ist gut. ___ ist interessant.", o:["Es","Er","Sie"], a:0, fa:"کتاب خوب است. جالب است.", tip:"das Buch ← es"},
+    {t:"c", q:"Mama und ich kochen. ___ kochen Reis.", o:["Wir","Ihr","Sie"], a:0, fa:"مامان و من آشپزی می‌کنیم. ما برنج می‌پزیم.", tip:"… und ich ← wir"},
+    {t:"c", q:"Herr Müller, kommen ___ aus Kiel?", o:["Sie","du","ihr"], a:0, fa:"آقای مولر، شما اهل کیل هستید؟", tip:"رسمی ← Sie"},
+    {t:"c", q:"Ali, kommst ___ heute?", o:["du","Sie","ihr"], a:0, fa:"علی، امروز می‌آیی؟", tip:"kommst ← du"},
+    {t:"w", q:"Kinder, habt ___ Hunger?", a:["ihr"], fa:"بچه‌ها، گرسنه‌اید؟", tip:"habt ← ihr"},
+    {t:"c", q:"Sara und Ali – ___", o:["Sie wohnen in Kiel.","Sie wohnt in Kiel.","Er wohnen in Kiel."], a:0, fa:"سارا و علی – آن‌ها در کیل زندگی می‌کنند.", tip:"دو نفر ← sie + wohnen"}
+  ],
+  build:[
+    {w:["er","kommt","aus","Teheran"], a:["er kommt aus Teheran"], p:".", fa:"او (مرد) اهل تهران است."},
+    {w:["wir","lernen","zusammen","Deutsch"], a:["wir lernen zusammen Deutsch"], p:".", fa:"ما با هم آلمانی یاد می‌گیریم."},
+    {w:["woher","kommen","Sie"], a:["woher kommen Sie"], p:"?", fa:"شما (رسمی) اهل کجا هستید؟"},
+    {w:["sie","ist","meine","Mutter"], a:["sie ist meine Mutter"], p:".", fa:"او مادر من است."},
+    {w:["habt","ihr","heute","Zeit"], a:["habt ihr heute Zeit"], p:"?", fa:"شما (جمع) امروز وقت دارید؟"}
+  ],
+  hw:{
+    items:[
+      {t:"c", q:"___ bist sehr nett.", o:["Du","Ich","Er"], a:0, fa:"تو خیلی مهربانی.", tip:"bist ← du"},
+      {t:"c", q:"Das ist mein Vater. ___ arbeitet viel.", o:["Er","Sie","Es"], a:0, fa:"این پدرم است. او زیاد کار می‌کند."},
+      {t:"c", q:"Der Tee ist heiß. ___ ist zu heiß.", o:["Er","Sie","Es"], a:0, fa:"چای داغ است. خیلی داغ است.", tip:"der Tee ← er"},
+      {t:"c", q:"Die Tasche ist teuer. ___ kostet 50 Euro.", o:["Sie","Er","Es"], a:0, fa:"کیف گران است. ۵۰ یورو قیمت دارد."},
+      {t:"c", q:"Das Auto ist neu. ___ ist rot.", o:["Es","Er","Sie"], a:0, fa:"ماشین نو است. قرمز است."},
+      {t:"w", q:"Mein Bruder und ich, ___ spielen Fußball.", a:["wir"], fa:"برادرم و من، ما فوتبال بازی می‌کنیم."},
+      {t:"c", q:"Frau Ahmadi, wie heißen ___?", o:["Sie","du","sie"], a:0, fa:"خانم احمدی، اسم شما چیست؟", tip:"رسمی ← Sie (با حرف بزرگ)"},
+      {t:"w", q:"Wo seid ___?", a:["ihr"], fa:"شما (جمع) کجا هستید؟", tip:"seid ← ihr"},
+      {t:"b", w:["sie","kommt","aus","Isfahan"], a:["sie kommt aus Isfahan"], p:".", fa:"او (زن) اهل اصفهان است."},
+      {t:"b", w:["wo","wohnst","du"], a:["wo wohnst du"], p:"?", fa:"کجا زندگی می‌کنی؟"}
+    ],
+    writing:{de:"Stell drei Personen aus deiner Familie oder deine Freunde vor. Benutze er, sie und wir.", fa:"سه نفر از خانواده یا دوستانت را معرفی کن. از ‎er، sie‎ و ‎wir‎ استفاده کن.", ex:"Das ist mein Vater. Er heißt … Wir wohnen in …", min:14}
+  },
+  plus:[
+    {t:"w", q:"Der Computer ist teuer. ___ kostet 900 Euro.", a:["Er"], fa:"کامپیوتر گران است. ۹۰۰ یورو قیمت دارد.", tip:"der Computer ← er"},
+    {t:"w", q:"Die Kinder spielen. ___ sind im Garten.", a:["Sie"], fa:"بچه‌ها بازی می‌کنند. آن‌ها در باغ هستند."},
+    {t:"c", q:"Frau Ahmadi, ___ Sie heute Zeit?", o:["haben","hat","habt"], a:0, fa:"خانم احمدی، امروز وقت دارید؟", tip:"Sie ← haben (مثل wir)"},
+    {t:"c", q:"Wo ist mein Handy? – ___ liegt auf dem Tisch.", o:["Es","Er","Sie"], a:0, fa:"موبایلم کجاست؟ – روی میز است.", tip:"das Handy ← es"},
+    {t:"c", q:"«شما (رسمی) خسته هستید.»", o:["Sie sind müde.","Sie ist müde.","Ihr seid müde."], a:0, tip:"رسمی ← Sie sind"},
+    {t:"w", q:"Mein Bruder und ich spielen Fußball. ___ spielen gut.", a:["Wir"], fa:"برادرم و من فوتبال بازی می‌کنیم. خوب بازی می‌کنیم."},
+    {t:"b", w:["seid","ihr","heute","zu","Hause"], a:["seid ihr heute zu Hause"], p:"?", fa:"امروز خانه هستید؟ (جمع، خودمانی)"},
+    {t:"b", w:["die","Uhr","ist","alt","aber","sie","geht","gut"], a:["die Uhr ist alt, aber sie geht gut"], p:".", fa:"ساعت قدیمی است، اما خوب کار می‌کند."}
+  ]
+},
+{
+  id:"akkpron", color:"var(--s9)", de:"Akkusativpronomen", sub:"mich, dich, ihn …", fa:"ضمیرهای مفعولی",
+  explain: `
+  <section class="ex">
+    <h4>Wen? – mich, dich, ihn …</h4>
+    <p class="fa">وقتی ضمیر <b>مفعول مستقیم</b> است (سؤال ${D("Wen?")} یا ${D("Was?")})، شکلش عوض می‌شود. در فارسی می‌گوییم «مرا»، «تو را»، «او را» یا کوتاه‌تر: «می‌بینم<b>ت</b>».</p>
+    ${TABLE("", [
+      [`ich → ${E("mich")}`, "مرا"],
+      [`du → ${E("dich")}`, "تو را"],
+      [`er → ${E("ihn")}`, "او را (مرد) / آن را (der)"],
+      ["sie → sie", "او را (زن) / آن را (die)"],
+      ["es → es", "آن را (das)"],
+      [`wir → ${E("uns")}`, "ما را"],
+      [`ihr → ${E("euch")}`, "شما را (جمع، خودمانی)"],
+      ["sie → sie", "آن‌ها را"],
+      ["Sie → Sie", "شما را (رسمی)"]
+    ], ["Nominativ → Akkusativ","فارسی"])}
+    ${NOTE(`ترفند: فقط ${D("ich, du, er, wir, ihr")} عوض می‌شوند. ${D("sie, es, Sie")} همان‌طور می‌مانند. مثل حرف تعریف: ${D("der → den")} و ${D("er → ihn")} – هر دو با ‎n‎!`)}
+  </section>
+  <section class="ex">
+    <h4>Beispiele</h4>
+    ${EX("Ich liebe dich.", "دوستت دارم.")}
+    ${EX("Kennst du Herrn Weber? – Ja, ich kenne ihn.", "آقای وبر را می‌شناسی؟ – بله، او را می‌شناسم.")}
+    ${EX("Mama holt uns von der Schule ab.", "مامان ما را از مدرسه می‌آورد.")}
+    ${EX("Wir besuchen euch am Wochenende.", "آخر هفته به دیدنتان می‌آییم.")}
+    <p class="fa">برای <b>چیزها</b> هم همین‌طور:</p>
+    ${EX("Der Pullover ist schön. Ich kaufe ihn.", "پلیور قشنگ است. آن را می‌خرم. (der ← ihn)")}
+    ${EX("Die Jacke ist teuer. Ich kaufe sie nicht.", "کاپشن گران است. آن را نمی‌خرم.")}
+    ${NOTE(`فعل‌های مهم با مفعول مستقیم: ${D("sehen, kennen, lieben, besuchen, fragen, verstehen, finden, brauchen, anrufen, abholen, einladen")}`)}
+  </section>`,
+  match:[
+    {title:"Verben", fa:"این فعل‌ها مفعول مستقیم می‌گیرند. وصلشان کن.", pairs:[["kennen","شناختن"],["fragen","پرسیدن (از کسی)"],["verstehen","فهمیدن"],["abholen","دنبال کسی رفتن، آوردن"],["anrufen","زنگ زدن (به کسی)"],["lieben","دوست داشتن (عشق)"],["einladen","دعوت کردن"],["finden","پیدا کردن؛ به نظر آمدن"]]},
+    {title:"Wer? → Wen?", fa:"هر ضمیر را به شکل مفعولی‌اش وصل کن.", rightDe:true, pairs:[["ich","mich"],["du","dich"],["er","ihn"],["es","es"],["wir","uns"],["ihr","euch"]]}
+  ],
+  practice:[
+    {t:"c", q:"Ich liebe ___. (du)", o:["dich","du","mich"], a:0, fa:"دوستت دارم.", tip:"du ← dich"},
+    {t:"c", q:"Kennst du Herrn Weber? – Ja, ich kenne ___.", o:["ihn","er","sie"], a:0, fa:"آقای وبر را می‌شناسی؟ – بله، می‌شناسمش.", tip:"er ← ihn"},
+    {t:"c", q:"Wo ist Sara? Ich sehe ___ nicht.", o:["sie","ihn","es"], a:0, fa:"سارا کجاست؟ او را نمی‌بینم.", tip:"sie ← sie (تغییر نمی‌کند)"},
+    {t:"c", q:"Der Kaffee ist gut. Ich trinke ___ gern.", o:["ihn","er","es"], a:0, fa:"قهوه خوب است. با علاقه می‌نوشمش.", tip:"der Kaffee ← ihn"},
+    {t:"c", q:"Die Jacke ist schön. Ich kaufe ___.", o:["sie","ihn","es"], a:0, fa:"کاپشن قشنگ است. آن را می‌خرم.", tip:"die Jacke ← sie"},
+    {t:"c", q:"Das Buch ist spannend. Ich lese ___.", o:["es","ihn","sie"], a:0, fa:"کتاب هیجان‌انگیز است. آن را می‌خوانم.", tip:"das Buch ← es"},
+    {t:"c", q:"Mama, holst du ___ ab? (wir)", o:["uns","wir","euch"], a:0, fa:"مامان، دنبالمان می‌آیی؟", tip:"wir ← uns"},
+    {t:"w", q:"Kinder, ich besuche ___ morgen.", base:"ihr", a:["euch"], fa:"بچه‌ها، فردا به دیدنتان می‌آیم."},
+    {t:"w", q:"Verstehst du ___?", base:"ich", a:["mich"], fa:"حرفم را می‌فهمی؟"},
+    {t:"c", q:"Herr Karimi, ich rufe ___ morgen an.", o:["Sie","dich","ihn"], a:0, fa:"آقای کریمی، فردا به شما زنگ می‌زنم.", tip:"رسمی ← Sie"}
+  ],
+  build:[
+    {w:["ich","rufe","dich","morgen","an"], a:["ich rufe dich morgen an","morgen rufe ich dich an"], p:".", fa:"فردا به تو زنگ می‌زنم."},
+    {w:["kennst","du","ihn"], a:["kennst du ihn"], p:"?", fa:"او (مرد) را می‌شناسی؟"},
+    {w:["wir","besuchen","euch","am","Wochenende"], a:["wir besuchen euch am Wochenende","am Wochenende besuchen wir euch"], p:".", fa:"آخر هفته به دیدنتان می‌آییم."},
+    {w:["der","Pullover","ist","schön","ich","kaufe","ihn"], a:["der Pullover ist schön. Ich kaufe ihn"], p:".", fa:"پلیور قشنگ است. آن را می‌خرم."},
+    {w:["Mama","holt","uns","von","der","Schule","ab"], a:["Mama holt uns von der Schule ab"], p:".", fa:"مامان ما را از مدرسه می‌آورد."}
+  ],
+  hw:{
+    items:[
+      {t:"c", q:"Siehst du ___? Ich bin hier! (ich)", o:["mich","ich","dich"], a:0, fa:"مرا می‌بینی؟ من اینجام!"},
+      {t:"c", q:"Wo ist Papa? Ich suche ___.", o:["ihn","er","sie"], a:0, fa:"بابا کجاست؟ دنبالش می‌گردم."},
+      {t:"c", q:"Die Suppe ist lecker. Ich esse ___ gern.", o:["sie","ihn","es"], a:0, fa:"سوپ خوشمزه است. با علاقه می‌خورمش."},
+      {t:"c", q:"Der Film ist super. Ich finde ___ toll.", o:["ihn","er","es"], a:0, fa:"فیلم عالی است. به نظرم خیلی خوب است."},
+      {t:"w", q:"Liebst du ___?", base:"ich", a:["mich"], fa:"مرا دوست داری؟"},
+      {t:"w", q:"Der Lehrer fragt ___.", base:"wir", a:["uns"], fa:"معلم از ما می‌پرسد."},
+      {t:"w", q:"Ich verstehe ___ nicht.", base:"du", a:["dich"], fa:"حرفت را نمی‌فهمم."},
+      {t:"c", q:"Liebe Eltern, ich lade ___ ein!", o:["euch","uns","ihr"], a:0, fa:"پدر و مادر عزیز، شما را دعوت می‌کنم!"},
+      {t:"b", w:["ich","besuche","sie","am","Sonntag"], a:["ich besuche sie am Sonntag","am Sonntag besuche ich sie"], p:".", fa:"یکشنبه به دیدنش (زن) می‌روم."},
+      {t:"b", w:["kannst","du","mich","verstehen"], a:["kannst du mich verstehen"], p:"?", fa:"می‌توانی حرفم را بفهمی؟"}
+    ],
+    writing:{de:"Wen besuchst du? Wen rufst du an? Schreib 4 Sätze mit mich, dich, ihn, sie, uns oder euch.", fa:"به دیدن چه کسی می‌روی؟ به چه کسی زنگ می‌زنی؟ ۴ جمله با ‎mich، dich، ihn، sie، uns‎ یا ‎euch‎ بنویس.", ex:"Ich rufe meine Oma an. Ich besuche sie …", min:16}
+  },
+  plus:[
+    {t:"w", q:"Wie findest du den Film? – Ich finde ___ super.", a:["ihn"], fa:"فیلم را چطور می‌بینی؟ – به نظرم عالی است.", tip:"der Film ← ihn"},
+    {t:"w", q:"Wie findest du die Wohnung? – Ich finde ___ zu klein.", a:["sie"], fa:"آپارتمان به نظرت چطور است؟ – به نظرم خیلی کوچک است."},
+    {t:"c", q:"Wir haben ein neues Auto. Wie findest du ___?", o:["es","ihn","sie"], a:0, fa:"ما یک ماشین نو داریم. به نظرت چطور است؟", tip:"das Auto ← es"},
+    {t:"c", q:"Kannst du ___ heute abholen? (wir)", o:["uns","wir","euch"], a:0, fa:"امروز می‌توانی دنبال ما بیایی؟"},
+    {t:"w", q:"Herr und Frau Shams, ich lade ___ zum Essen ein.", a:["Sie"], fa:"آقا و خانم شمس، شما را به غذا دعوت می‌کنم.", tip:"رسمی ← Sie"},
+    {t:"c", q:"Welcher Satz ist richtig?", o:["Ich besuche ihn morgen.","Ich besuche er morgen.","Ich ihn besuche morgen."], a:0},
+    {t:"b", w:["ich","kann","dich","nicht","verstehen"], a:["ich kann dich nicht verstehen"], p:".", fa:"نمی‌توانم حرفت را بفهمم."},
+    {t:"b", w:["rufst","du","mich","heute","an"], a:["rufst du mich heute an"], p:"?", fa:"امروز به من زنگ می‌زنی؟"}
+  ]
+},
+{
+  id:"praeteritum", color:"var(--s10)", de:"war & hatte", sub:"Präteritum von sein und haben", fa:"گذشتهٔ sein و haben",
+  explain: `
+  <section class="ex">
+    <h4>Gestern war ich müde.</h4>
+    <p class="fa">وقتی دربارهٔ گذشته حرف می‌زنیم، برای ${D("sein")} (بودن) و ${D("haben")} (داشتن) معمولاً از ${D("war")} و ${D("hatte")} استفاده می‌کنیم. این شکل را ${D("Präteritum")} می‌گویند.</p>
+    <div class="twin">
+      ${TABLE("sein → war", [["ich war","من بودم"],["du warst","تو بودی"],["er / sie / es war","او بود"],["wir waren","ما بودیم"],["ihr wart","شما بودید"],["sie / Sie waren","آن‌ها بودند / شما بودید"]])}
+      ${TABLE("haben → hatte", [["ich hatte","من داشتم"],["du hattest","تو داشتی"],["er / sie / es hatte","او داشت"],["wir hatten","ما داشتیم"],["ihr hattet","شما داشتید"],["sie / Sie hatten","آن‌ها داشتند / شما داشتید"]])}
+    </div>
+    ${NOTE(`مثل فعل‌های وجهی: ${D("ich")} و ${D("er / sie / es")} یکی‌اند: ${D("ich war – er war")}، ${D("ich hatte – sie hatte")}.`)}
+  </section>
+  <section class="ex">
+    <h4>Wann? – Zeitangaben</h4>
+    <ul class="vw">
+      <li><span class="de">gestern</span><span class="fa">دیروز</span></li>
+      <li><span class="de">vorgestern</span><span class="fa">پریروز</span></li>
+      <li><span class="de">letzte Woche</span><span class="fa">هفتهٔ پیش</span></li>
+      <li><span class="de">letztes Jahr</span><span class="fa">پارسال</span></li>
+      <li><span class="de">früher</span><span class="fa">قبلاً، در گذشته</span></li>
+      <li><span class="de">am Wochenende</span><span class="fa">آخر هفته</span></li>
+    </ul>
+    <p class="fa">یادت هست؟ فعل در <b>جایگاه دوم</b> است:</p>
+    <div class="pos" lang="de"><span>Gestern</span><span class="v">war</span><span>ich</span><span>im Park.</span></div>
+    ${EX("Gestern war ich im Park.", "دیروز در پارک بودم.")}
+    ${EX("Wo warst du am Wochenende?", "آخر هفته کجا بودی؟")}
+    ${EX("Letzte Woche hatten wir Besuch.", "هفتهٔ پیش مهمان داشتیم.")}
+    ${EX("Früher hatte ich ein Fahrrad.", "قبلاً یک دوچرخه داشتم.")}
+  </section>`,
+  match:[
+    {title:"Wann?", fa:"کلمه‌های زمان را وصل کن.", pairs:[["gestern","دیروز"],["vorgestern","پریروز"],["letzte Woche","هفتهٔ پیش"],["letztes Jahr","پارسال"],["früher","قبلاً"],["heute","امروز"],["morgen","فردا"]]},
+    {title:"Wie war es?", fa:"این عبارت‌ها را هم وصل کن.", pairs:[["müde sein","خسته بودن"],["zu Hause sein","خانه بودن"],["im Urlaub sein","در مرخصی/سفر بودن"],["Hunger haben","گرسنه بودن"],["Zeit haben","وقت داشتن"],["Glück haben","شانس آوردن"],["Besuch haben","مهمان داشتن"]]}
+  ],
+  practice:[
+    {t:"c", q:"Gestern ___ ich müde.", o:["war","warst","waren"], a:0, fa:"دیروز خسته بودم.", tip:"ich ← war"},
+    {t:"c", q:"Wo ___ du gestern?", o:["warst","war","wart"], a:0, fa:"دیروز کجا بودی؟", tip:"du ← warst"},
+    {t:"c", q:"Wir ___ im Kino.", o:["waren","war","wart"], a:0, fa:"ما سینما بودیم."},
+    {t:"c", q:"Letzte Woche ___ Ali Geburtstag.", o:["hatte","hattest","hatten"], a:0, fa:"هفتهٔ پیش تولد علی بود.", tip:"er ← hatte"},
+    {t:"c", q:"___ ihr gestern Zeit?", o:["Hattet","Hatten","Hatte"], a:0, fa:"دیروز وقت داشتید؟", tip:"ihr ← hattet"},
+    {t:"w", q:"Am Wochenende ___ wir Besuch.", base:"haben", a:["hatten"], fa:"آخر هفته مهمان داشتیم."},
+    {t:"w", q:"Ich ___ gestern keine Zeit.", base:"haben", a:["hatte"], fa:"دیروز وقت نداشتم."},
+    {t:"w", q:"Die Kinder ___ in der Schule.", base:"sein", a:["waren"], fa:"بچه‌ها مدرسه بودند."},
+    {t:"c", q:"Heute bin ich müde. Gestern ___ ich auch müde.", o:["war","bin","hatte"], a:0, fa:"امروز خسته‌ام. دیروز هم خسته بودم."},
+    {t:"c", q:"Welcher Satz ist richtig?", o:["Gestern war ich zu Hause.","Gestern ich war zu Hause.","Gestern war zu Hause ich."], a:0, tip:"فعل در جایگاه دوم است."}
+  ],
+  build:[
+    {w:["gestern","war","ich","im","Park"], a:["gestern war ich im Park","ich war gestern im Park"], p:".", fa:"دیروز در پارک بودم."},
+    {w:["wo","warst","du"], a:["wo warst du"], p:"?", fa:"کجا بودی؟"},
+    {w:["wir","hatten","keine","Zeit"], a:["wir hatten keine Zeit"], p:".", fa:"ما وقت نداشتیم."},
+    {w:["letzte","Woche","war","Papa","krank"], a:["letzte Woche war Papa krank","Papa war letzte Woche krank"], p:".", fa:"هفتهٔ پیش بابا مریض بود."},
+    {w:["hattest","du","Hunger"], a:["hattest du Hunger"], p:"?", fa:"گرسنه بودی؟"}
+  ],
+  hw:{
+    items:[
+      {t:"c", q:"Am Montag ___ ich beim Arzt.", o:["war","hatte","warst"], a:0, fa:"دوشنبه پیش پزشک بودم."},
+      {t:"c", q:"___ du gestern im Kurs?", o:["Warst","War","Wart"], a:0, fa:"دیروز سر کلاس بودی؟"},
+      {t:"c", q:"Meine Eltern ___ letztes Jahr in Hamburg.", o:["waren","war","wart"], a:0, fa:"پدر و مادرم پارسال در هامبورگ بودند."},
+      {t:"c", q:"Wir ___ gestern viel Spaß.", o:["hatten","hattet","hatte"], a:0, fa:"دیروز خیلی خوش گذشت."},
+      {t:"w", q:"Sara ___ keinen Hunger.", base:"haben", a:["hatte"], fa:"سارا گرسنه نبود."},
+      {t:"w", q:"Wo ___ ihr am Wochenende?", base:"sein", a:["wart"], fa:"آخر هفته کجا بودید؟"},
+      {t:"w", q:"Du ___ Glück!", base:"haben", a:["hattest"], fa:"شانس آوردی!"},
+      {t:"c", q:"Früher ___ wir ein kleines Auto.", o:["hatten","waren","hattet"], a:0, fa:"قبلاً یک ماشین کوچک داشتیم."},
+      {t:"b", w:["gestern","war","das","Wetter","schön"], a:["gestern war das Wetter schön","das Wetter war gestern schön"], p:".", fa:"دیروز هوا خوب بود."},
+      {t:"b", w:["wir","hatten","Besuch"], a:["wir hatten Besuch"], p:".", fa:"ما مهمان داشتیم."}
+    ],
+    writing:{de:"Wie war dein Wochenende? Schreib 4 Sätze mit war und hatte.", fa:"آخر هفته‌ات چطور بود؟ ۴ جمله با ‎war‎ و ‎hatte‎ بنویس.", ex:"Am Samstag war ich … Ich hatte …", min:16}
+  },
+  plus:[
+    {t:"w", q:"Wie ___ der Film?", base:"sein", a:["war"], fa:"فیلم چطور بود؟"},
+    {t:"w", q:"Ihr ___ gestern Glück.", base:"haben", a:["hattet"], fa:"شما دیروز شانس آوردید."},
+    {t:"w", q:"___ Sie letztes Jahr in Deutschland?", base:"sein", a:["Waren"], fa:"شما پارسال در آلمان بودید؟"},
+    {t:"c", q:"Früher ___ meine Eltern ein Geschäft in Teheran.", o:["hatten","hatte","hattet"], a:0, fa:"قبلاً پدر و مادرم در تهران یک مغازه داشتند."},
+    {t:"c", q:"«Ich habe Hunger.» → gestern:", o:["Ich hatte Hunger.","Ich hattet Hunger.","Ich war Hunger."], a:0},
+    {t:"c", q:"«Du bist im Urlaub.» → letzte Woche:", o:["Du warst im Urlaub.","Du war im Urlaub.","Du wart im Urlaub."], a:0},
+    {t:"b", w:["letztes","Jahr","waren","wir","in","Italien"], a:["letztes Jahr waren wir in Italien","wir waren letztes Jahr in Italien"], p:".", fa:"پارسال در ایتالیا بودیم."},
+    {t:"b", w:["am","Montag","hatte","ich","einen","Termin"], a:["am Montag hatte ich einen Termin","ich hatte am Montag einen Termin"], p:".", fa:"دوشنبه یک قرار ملاقات داشتم."}
+  ]
+},
+{
+  id:"perfekt", color:"var(--s11)", de:"Perfekt", sub:"Ich habe gekocht", fa:"گذشته در گفت‌وگو",
+  explain: `
+  <section class="ex">
+    <h4>Über gestern sprechen</h4>
+    <p class="fa">در گفت‌وگوی روزمره برای گذشته بیشتر از ${D("Perfekt")} استفاده می‌کنیم. معنی‌اش معمولاً مثل گذشتهٔ سادهٔ فارسی است: ${D("Ich habe Pizza gegessen.")} = «پیتزا خوردم».</p>
+    <p class="fa">ساختار مثل فعل‌های وجهی است: ${D("haben")} یا ${D("sein")} در <b>جایگاه دوم</b>، و ${D("Partizip II")} در <b>آخر جمله</b>.</p>
+    <div class="pos" lang="de"><span>Ich</span><span class="v">habe</span><span>gestern</span><span>Pizza</span><span class="inf">gegessen.</span></div>
+    <div class="pos" lang="de"><span>Wir</span><span class="v">sind</span><span>nach Hamburg</span><span class="inf">gefahren.</span></div>
+    ${EX("Ich habe gestern Pizza gegessen.", "دیروز پیتزا خوردم.")}
+    ${EX("Wir sind nach Hamburg gefahren.", "ما به هامبورگ رفتیم.")}
+  </section>
+  <section class="ex">
+    <h4>Das Partizip II</h4>
+    ${TABLE("", [
+      [`machen → ${E("ge")}mach${E("t")}`, "فعل‌های باقاعده: ge … t"],
+      [`kochen → ${E("ge")}koch${E("t")}`, "پختن"],
+      [`arbeiten → ${E("ge")}arbeit${E("et")}`, "ریشه با ‎t‎ ← ‎-et‎"],
+      [`essen → ${E("ge")}gess${E("en")}`, "فعل‌های بی‌قاعده: ge … en"],
+      [`trinken → ${E("ge")}trunk${E("en")}`, "نوشیدن"],
+      [`gehen → ${E("ge")}gang${E("en")}`, "رفتن"]
+    ], ["Infinitiv → Partizip II","توضیح"])}
+    <p class="fa">فعل‌های بی‌قاعده را باید حفظ کرد. مهم‌ترین‌ها:</p>
+    <ul class="vw">
+      <li><span class="de">schlafen → geschlafen</span><span class="fa">خوابیدن</span></li>
+      <li><span class="de">lesen → gelesen</span><span class="fa">خواندن</span></li>
+      <li><span class="de">sehen → gesehen</span><span class="fa">دیدن</span></li>
+      <li><span class="de">schreiben → geschrieben</span><span class="fa">نوشتن</span></li>
+      <li><span class="de">sprechen → gesprochen</span><span class="fa">صحبت کردن</span></li>
+      <li><span class="de">nehmen → genommen</span><span class="fa">گرفتن</span></li>
+      <li><span class="de">fahren → gefahren</span><span class="fa">رفتن (با وسیله)</span></li>
+      <li><span class="de">kommen → gekommen</span><span class="fa">آمدن</span></li>
+    </ul>
+    ${NOTE(`فعل‌های جداشدنی: ${D("ge")} وسط می‌آید – ${D("einkaufen → ein<b>ge</b>kauft")}، ${D("aufstehen → auf<b>ge</b>standen")}، ${D("anrufen → an<b>ge</b>rufen")}.<br>بدون ${D("ge")}: فعل‌های ‎-ieren‎ (${D("telefonieren → telefoniert")}) و فعل‌هایی که با ‎be-‎ یا ‎ver-‎ شروع می‌شوند (${D("besuchen → besucht")}، ${D("verstehen → verstanden")}).`)}
+  </section>
+  <section class="ex">
+    <h4>haben oder sein?</h4>
+    <p class="fa">بیشتر فعل‌ها با ${D("haben")} می‌آیند. با ${D("sein")} می‌آیند:</p>
+    <ul class="vw">
+      <li><span class="de">gehen, fahren, kommen, fliegen, laufen</span><span class="fa">حرکت از جایی به جایی</span></li>
+      <li><span class="de">aufstehen, einschlafen</span><span class="fa">تغییر حالت</span></li>
+      <li><span class="de">bleiben</span><span class="fa">ماندن</span></li>
+    </ul>
+    ${EX("Ich bin um 7 Uhr aufgestanden.", "ساعت ۷ بیدار شدم.")}
+    ${EX("Hast du mit Oma telefoniert?", "با مادربزرگ تلفنی صحبت کردی؟")}
+    ${NOTE(`برای ${D("sein")} و ${D("haben")} در گذشته بیشتر ${D("war")} و ${D("hatte")} را می‌گوییم (ایستگاه قبلی).`)}
+  </section>`,
+  match:[
+    {title:"Infinitiv → Partizip II", fa:"هر مصدر را به Partizip II آن وصل کن.", rightDe:true, pairs:[["machen","gemacht"],["essen","gegessen"],["gehen","gegangen"],["trinken","getrunken"],["einkaufen","eingekauft"],["telefonieren","telefoniert"],["besuchen","besucht"],["schlafen","geschlafen"]]},
+    {title:"Was hast du gemacht?", fa:"این فعل‌ها را به معنی‌شان وصل کن.", pairs:[["fernsehen","تلویزیون تماشا کردن"],["aufstehen","از خواب بیدار شدن"],["anrufen","زنگ زدن"],["aufräumen","مرتب کردن"],["fliegen","پرواز کردن"],["bleiben","ماندن"],["laufen","دویدن، پیاده رفتن"]]}
+  ],
+  practice:[
+    {t:"c", q:"Ich ___ gestern Pizza gegessen.", o:["habe","bin","hat"], a:0, fa:"دیروز پیتزا خوردم.", tip:"essen ← haben"},
+    {t:"c", q:"Wir ___ nach Hamburg gefahren.", o:["sind","haben","seid"], a:0, fa:"ما به هامبورگ رفتیم.", tip:"حرکت ← sein"},
+    {t:"c", q:"Was hast du am Wochenende ___?", o:["gemacht","machen","gemachen"], a:0, fa:"آخر هفته چه کار کردی؟", tip:"machen ← gemacht"},
+    {t:"c", q:"Er hat viel Wasser ___.", o:["getrunken","getrinkt","trinken"], a:0, fa:"او آب زیادی نوشید.", tip:"trinken ← getrunken (بی‌قاعده)"},
+    {t:"c", q:"Sara ___ um 7 Uhr aufgestanden.", o:["ist","hat","sind"], a:0, fa:"سارا ساعت ۷ بیدار شد.", tip:"aufstehen ← sein"},
+    {t:"c", q:"Ich habe meine Oma ___.", o:["besucht","gebesucht","besuchen"], a:0, fa:"به دیدن مادربزرگم رفتم.", tip:"be-‎ ← بدون ge"},
+    {t:"w", q:"Mama hat Reis ___.", base:"kochen", a:["gekocht"], fa:"مامان برنج پخت."},
+    {t:"w", q:"Ich habe gestern ___.", base:"einkaufen", a:["eingekauft"], fa:"دیروز خرید کردم.", tip:"جداشدنی ← ein-ge-kauft"},
+    {t:"w", q:"Bist du mit dem Bus ___?", base:"kommen", a:["gekommen"], fa:"با اتوبوس آمدی؟"},
+    {t:"c", q:"Welcher Satz ist richtig?", o:["Ich habe gestern ein Buch gelesen.","Ich habe gelesen gestern ein Buch.","Ich gestern habe ein Buch gelesen."], a:0, tip:"Partizip در آخر جمله"},
+    {t:"w", q:"Wir haben lange ___.", base:"schlafen", a:["geschlafen"], fa:"مدت زیادی خوابیدیم."}
+  ],
+  build:[
+    {w:["ich","habe","Fußball","gespielt"], a:["ich habe Fußball gespielt"], p:".", fa:"فوتبال بازی کردم."},
+    {w:["wir","sind","ins","Kino","gegangen"], a:["wir sind ins Kino gegangen"], p:".", fa:"ما به سینما رفتیم."},
+    {w:["was","hast","du","gestern","gemacht"], a:["was hast du gestern gemacht"], p:"?", fa:"دیروز چه کار کردی؟"},
+    {w:["Papa","hat","mit","Oma","telefoniert"], a:["Papa hat mit Oma telefoniert"], p:".", fa:"بابا با مادربزرگ تلفنی صحبت کرد."},
+    {w:["am","Samstag","haben","wir","eingekauft"], a:["am Samstag haben wir eingekauft","wir haben am Samstag eingekauft"], p:".", fa:"شنبه خرید کردیم."}
+  ],
+  hw:{
+    items:[
+      {t:"c", q:"Ich ___ einen Brief geschrieben.", o:["habe","bin","hat"], a:0, fa:"یک نامه نوشتم."},
+      {t:"c", q:"Wann ___ ihr nach Deutschland gekommen?", o:["seid","habt","sind"], a:0, fa:"کی به آلمان آمدید؟", tip:"kommen ← sein؛ ihr ← seid"},
+      {t:"c", q:"Hast du den Film ___?", o:["gesehen","gesieht","sehen"], a:0, fa:"فیلم را دیدی؟"},
+      {t:"c", q:"Mein Sohn hat lange ___.", o:["gearbeitet","gearbeit","arbeitet"], a:0, fa:"پسرم مدت زیادی کار کرد.", tip:"ریشه با t ← ‎-et‎"},
+      {t:"w", q:"Wir haben Tee ___.", base:"trinken", a:["getrunken"], fa:"ما چای نوشیدیم."},
+      {t:"w", q:"Ich habe mein Zimmer ___.", base:"aufräumen", a:["aufgeräumt"], fa:"اتاقم را مرتب کردم."},
+      {t:"w", q:"Sie ist nach Berlin ___.", base:"fliegen", a:["geflogen"], fa:"او به برلین پرواز کرد."},
+      {t:"c", q:"Ich habe den Lehrer nicht ___.", o:["verstanden","geversteht","verstehen"], a:0, fa:"حرف معلم را نفهمیدم.", tip:"ver-‎ ← بدون ge"},
+      {t:"b", w:["ich","habe","gestern","Deutsch","gelernt"], a:["ich habe gestern Deutsch gelernt","gestern habe ich Deutsch gelernt"], p:".", fa:"دیروز آلمانی خواندم."},
+      {t:"b", w:["bist","du","zu","Hause","geblieben"], a:["bist du zu Hause geblieben"], p:"?", fa:"خانه ماندی؟"}
+    ],
+    writing:{de:"Was hast du gestern gemacht? Schreib 5 Sätze im Perfekt.", fa:"دیروز چه کارهایی کردی؟ ۵ جمله در ‎Perfekt‎ بنویس.", ex:"Ich bin um 7 Uhr aufgestanden. Dann habe ich …", min:18}
+  },
+  plus:[
+    {t:"w", q:"Wann bist du heute ___?", base:"aufstehen", a:["aufgestanden"], fa:"امروز کی بیدار شدی؟"},
+    {t:"w", q:"Hast du mich ___?", base:"verstehen", a:["verstanden"], fa:"حرفم را فهمیدی؟"},
+    {t:"w", q:"Ich habe dich gestern ___.", base:"anrufen", a:["angerufen"], fa:"دیروز به تو زنگ زدم."},
+    {t:"c", q:"Wir ___ zwei Wochen in Shiraz geblieben.", o:["sind","haben","waren"], a:0, fa:"ما دو هفته در شیراز ماندیم.", tip:"bleiben ← sein"},
+    {t:"c", q:"___ ihr schon gegessen?", o:["Habt","Seid","Hat"], a:0, fa:"غذا خوردید؟"},
+    {t:"w", q:"Die Kinder haben den ganzen Abend ___.", base:"fernsehen", a:["ferngesehen"], fa:"بچه‌ها تمام شب تلویزیون تماشا کردند."},
+    {t:"c", q:"«Er fliegt nach Berlin.» → Perfekt:", o:["Er ist nach Berlin geflogen.","Er hat nach Berlin geflogen.","Er ist nach Berlin gefliegt."], a:0},
+    {t:"c", q:"Ich habe mit meinem Bruder ___.", o:["telefoniert","getelefoniert","telefonieren"], a:0, fa:"با برادرم تلفنی صحبت کردم.", tip:"‎-ieren‎ ← بدون ge"},
+    {t:"b", w:["letztes","Jahr","sind","wir","nach","Deutschland","gekommen"], a:["letztes Jahr sind wir nach Deutschland gekommen","wir sind letztes Jahr nach Deutschland gekommen"], p:".", fa:"پارسال به آلمان آمدیم."},
+    {t:"b", w:["hast","du","die","Rechnung","schon","bezahlt"], a:["hast du die Rechnung schon bezahlt"], p:"?", fa:"صورت‌حساب را پرداخت کردی؟"}
+  ]
+}
+];
+
+/* ---------- Profi-Aufgaben für die bisherigen Stationen ---------- */
+const PLUS = {
+  praesens:[
+    {t:"w", q:"Du ___ zu viel.", base:"arbeiten", a:["arbeitest"], fa:"تو زیادی کار می‌کنی.", tip:"ریشه با t ← du arbeitest"},
+    {t:"w", q:"Mein Sohn ___ gern Bücher.", base:"lesen", a:["liest"], fa:"پسرم با علاقه کتاب می‌خواند."},
+    {t:"w", q:"Was ___ ihr am Sonntag?", base:"machen", a:["macht"], fa:"یکشنبه چه کار می‌کنید؟"},
+    {t:"w", q:"Er ___ jeden Tag mit dem Rad.", base:"fahren", a:["fährt"], fa:"او هر روز با دوچرخه می‌رود."},
+    {t:"w", q:"Wie ___ du?", base:"heißen", a:["heißt"], fa:"اسمت چیست؟", tip:"ریشه با ß ← du heißt"},
+    {t:"c", q:"___ Sie Persisch?", o:["Sprechen","Sprichst","Spricht"], a:0, fa:"شما فارسی صحبت می‌کنید؟"},
+    {t:"b", w:["am","Wochenende","schläft","mein","Mann","lange"], a:["am Wochenende schläft mein Mann lange","mein Mann schläft am Wochenende lange"], p:".", fa:"آخر هفته شوهرم تا دیر وقت می‌خوابد."},
+    {t:"b", w:["was","isst","du","zum","Frühstück"], a:["was isst du zum Frühstück"], p:"?", fa:"صبحانه چه می‌خوری؟"}
+  ],
+  artikel:[
+    {t:"c", art:true, q:"___ Wohnung", o:["der","die","das"], a:1, fa:"آپارتمان", tip:"‎-ung‎ ← die"},
+    {t:"c", art:true, q:"___ Zimmer", o:["der","die","das"], a:2, fa:"اتاق"},
+    {t:"c", art:true, q:"___ Kühlschrank", o:["der","die","das"], a:0, fa:"یخچال"},
+    {t:"c", art:true, q:"___ Gesundheit", o:["der","die","das"], a:1, fa:"سلامتی", tip:"‎-heit‎ ← die"},
+    {t:"c", art:true, q:"___ Kindergarten", o:["der","die","das"], a:0, fa:"مهدکودک", tip:"کلمهٔ آخر تعیین می‌کند: der Garten"},
+    {t:"w", q:"Das ist keine Uhr, das ist ___ Handy.", a:["ein"], fa:"این ساعت نیست، این یک موبایل است."},
+    {t:"c", q:"das Buch → ___ Bücher", o:["die","das","der"], a:0, fa:"کتاب ← کتاب‌ها", tip:"جمع ← die"},
+    {t:"b", w:["das","ist","keine","Lampe","das","ist","eine","Uhr"], a:["das ist keine Lampe, das ist eine Uhr"], p:".", fa:"این چراغ نیست، این یک ساعت است."}
+  ],
+  akkusativ:[
+    {t:"w", q:"Wir haben ___ Garten.", base:"ein", a:["einen"], fa:"ما یک باغ داریم."},
+    {t:"w", q:"Siehst du ___ Bus?", base:"der", a:["den"], fa:"اتوبوس را می‌بینی؟"},
+    {t:"w", q:"Ich brauche ___ Termin beim Arzt.", base:"ein", a:["einen"], fa:"یک وقت پزشک لازم دارم."},
+    {t:"c", q:"Den Lehrer fragt das Kind. Wer fragt?", o:["das Kind","den Lehrer"], a:0, tip:"den ← مفعول"},
+    {t:"c", q:"Welcher Satz ist richtig?", o:["Es gibt hier keinen Parkplatz.","Es gibt hier kein Parkplatz.","Es gibt hier keine Parkplatz."], a:0, tip:"der Parkplatz + es gibt ← keinen"},
+    {t:"b", w:["den","Tee","trinkt","der","Vater"], a:["den Tee trinkt der Vater","der Vater trinkt den Tee"], p:".", fa:"پدر چای را می‌نوشد."},
+    {t:"b", w:["wir","suchen","eine","neue","Wohnung"], a:["wir suchen eine neue Wohnung"], p:".", fa:"ما دنبال یک آپارتمان نو می‌گردیم."}
+  ],
+  possessiv:[
+    {t:"w", q:"Frau Navabi sucht ___ Brille.", base:"sie", a:["ihre"], fa:"خانم نوابی دنبال عینکش می‌گردد."},
+    {t:"w", q:"Kinder, wo sind ___ Jacken?", base:"ihr", a:["eure"], fa:"بچه‌ها، کاپشن‌هایتان کجاست؟"},
+    {t:"w", q:"Ich rufe ___ Bruder an.", base:"ich", a:["meinen"], fa:"به برادرم زنگ می‌زنم."},
+    {t:"c", q:"Ali und Sara besuchen ___ Großeltern.", o:["ihre","seine","unsere"], a:0, fa:"علی و سارا به دیدن پدربزرگ و مادربزرگشان می‌روند.", tip:"صاحب «آن‌ها» ← ihr"},
+    {t:"c", q:"Herr Kaya, ist das ___ Sohn?", o:["Ihr","Ihren","sein"], a:0, fa:"آقای کایا، این پسر شماست؟"},
+    {t:"b", w:["unsere","Tochter","geht","in","die","Schule"], a:["unsere Tochter geht in die Schule"], p:".", fa:"دختر ما به مدرسه می‌رود."},
+    {t:"b", w:["Sara","sucht","ihren","Schlüssel"], a:["Sara sucht ihren Schlüssel"], p:".", fa:"سارا دنبال کلیدش می‌گردد."}
+  ],
+  modal:[
+    {t:"w", q:"___ ich hier parken?", base:"dürfen", a:["Darf"], fa:"اجازه دارم اینجا پارک کنم؟"},
+    {t:"w", q:"Mein Sohn ___ Pilot werden.", base:"wollen", a:["will"], fa:"پسرم می‌خواهد خلبان شود."},
+    {t:"w", q:"Ihr ___ morgen früh aufstehen.", base:"müssen", a:["müsst"], fa:"شما فردا باید زود بیدار شوید."},
+    {t:"c", q:"Der Arzt sagt: Sie ___ mehr schlafen.", o:["sollen","wollen","dürfen"], a:0, fa:"پزشک می‌گوید: شما باید بیشتر بخوابید.", tip:"به گفتهٔ کسی دیگر ← sollen"},
+    {t:"c", q:"Welcher Satz ist richtig?", o:["Am Wochenende möchten wir Oma besuchen.","Am Wochenende wir möchten Oma besuchen.","Am Wochenende möchten wir besuchen Oma."], a:0},
+    {t:"b", w:["kannst","du","mich","morgen","abholen"], a:["kannst du mich morgen abholen"], p:"?", fa:"فردا می‌توانی دنبالم بیایی؟"},
+    {t:"b", w:["heute","darf","ich","länger","fernsehen"], a:["heute darf ich länger fernsehen","ich darf heute länger fernsehen"], p:".", fa:"امروز اجازه دارم بیشتر تلویزیون ببینم."}
+  ],
+  einkaufen:[
+    {t:"w", q:"Ich hätte gern ___ Kilo Äpfel.", base:"ein", a:["ein"], fa:"یک کیلو سیب می‌خواستم.", tip:"das Kilo ← ein"},
+    {t:"w", q:"Wir brauchen noch ___ Flasche Öl.", base:"ein", a:["eine"], fa:"یک بطری روغن هم لازم داریم."},
+    {t:"w", q:"Haben Sie ___ Brötchen mehr?", base:"kein, Plural", a:["keine"], fa:"دیگر نان صبحانه ندارید؟"},
+    {t:"c", q:"Was ___ die Tomaten?", o:["kosten","kostet","koste"], a:0, fa:"گوجه‌فرنگی‌ها چند است؟", tip:"جمع ← kosten"},
+    {t:"c", q:"Möchten Sie noch etwas? –", o:["Ja, noch einen Tee, bitte.","Ja, noch ein Tee, bitte.","Ja, noch eine Tee, bitte."], a:0, fa:"چیز دیگری میل دارید؟"},
+    {t:"b", w:["ich","möchte","eine","Tasse","Tee","und","ein","Stück","Kuchen"], a:["ich möchte eine Tasse Tee und ein Stück Kuchen"], p:".", fa:"یک فنجان چای و یک تکه کیک می‌خواهم."},
+    {t:"b", w:["wir","möchten","bitte","bezahlen"], a:["wir möchten bitte bezahlen"], p:".", fa:"لطفاً می‌خواهیم حساب کنیم."}
+  ]
+};
+
+/* ---------- Stationen zusammenstellen ---------- */
+(function(){
+  const ORDER = ["aussprache","praesens","personal","artikel","akkusativ","akkpron","possessiv","modal","einkaufen","praeteritum","perfekt"];
+  const all = STATIONS.concat(NEW_STATIONS);
+  all.forEach(s => { if (PLUS[s.id]) s.plus = PLUS[s.id]; });
+  STATIONS.length = 0;
+  ORDER.forEach(id => { const s = all.find(x => x.id === id); if (s) STATIONS.push(s); });
+  all.forEach(s => { if (!STATIONS.includes(s)) STATIONS.push(s); });
+})();
+
 const STEPS = [
   {de:"Erklärung", fa:"توضیح"},
   {de:"Wörter", fa:"واژه‌ها"},
   {de:"Üben", fa:"تمرین"},
   {de:"Sätze bauen", fa:"جمله‌سازی"},
+  {de:"Profi", fa:"چالش"},
   {de:"Hausaufgabe", fa:"تکلیف"}
 ];
+const HW = 5, PROFI = 4;
 const PASS = 0.7;
 const PRAISE = [["Richtig!","آفرین!"],["Super!","عالی!"],["Sehr gut!","خیلی خوب!"],["Genau!","دقیقاً!"]];
+const PCOL = ["#2f5aa8","#b53a50","#138a8a","#c47f00","#6d4a9c","#4f7d2a","#9c3d73","#2b7a9e"];
+const ROLES = {sohn:["Sohn","پسر"], tochter:["Tochter","دختر"], mutter:["Mutter","مادر"], vater:["Vater","پدر"], kind:["Kind","فرزند"], andere:["Andere","دیگر"]};
+const LEVELS = {basis:["Basis","پایه"], plus:["Profi","پیشرفته"]};
 
-/* ---------- Speicher ---------- */
-const KEY = "ldma-a1-lernstationen-v1";
-let S = (() => { try { const r = localStorage.getItem(KEY); if (r) { const o = JSON.parse(r); if (o && o.st) return o; } } catch(e){} return {name:"", st:{}}; })();
-function save(){ try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e){} }
-function st(id){ if(!S.st[id]) S.st[id] = {steps:[false,false,false,false,false], hw:null}; return S.st[id]; }
-function markStep(id, i){ const s = st(id); if(!s.steps[i]){ s.steps[i] = true; save(); } }
+/* ---------- Firebase ---------- */
+const firebaseConfig = {
+  apiKey: "AIzaSyBDChXlm34Kr7Gg0Dw458GiiwoLnWJAnxM",
+  authDomain: "lern-deutsch-arash.firebaseapp.com",
+  databaseURL: "https://lern-deutsch-arash-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "lern-deutsch-arash",
+  storageBucket: "lern-deutsch-arash.firebasestorage.app",
+  messagingSenderId: "845503292114",
+  appId: "1:845503292114:web:f76ab5fcde1e978d00c30b"
+};
+const FB_ROOT = "lernpfad";
+let db = null, srvOffset = 0;
+try {
+  if (window.firebase){
+    if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+    db = firebase.database();
+    db.ref(".info/serverTimeOffset").on("value", s => { srvOffset = s.val() || 0; });
+  }
+} catch(e){ db = null; }
+const R = p => db.ref(FB_ROOT + "/" + p);
+const TS = () => firebase.database.ServerValue.TIMESTAMP;
+const nowS = () => Date.now() + srvOffset;
+const withTimeout = (p, ms) => Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error("timeout")), ms))]);
+const clean = o => JSON.parse(JSON.stringify(o, (k, v) => v === undefined ? null : v));
 
-const nameTop = $("#nameTop");
-nameTop.value = S.name || "";
-nameTop.addEventListener("input", () => { S.name = nameTop.value.trim(); save(); document.querySelectorAll("[data-name-mirror]").forEach(x => { if (x !== document.activeElement) x.value = nameTop.value; }); });
+/* ---------- Profile & Speicher ---------- */
+const LKEY = "ldma-lernpfad-v1", OLDKEY = "ldma-a1-lernstationen-v1";
+function newProfile(x){ return Object.assign({code:null, name:"", level:"basis", role:"", group:"", st:{}, best:{}, points:0}, x); }
+function migrateSt(st){
+  const o = {};
+  for (const k in st){
+    const s = st[k] || {}, old = s.steps || [];
+    o[k] = {steps:[!!old[0], !!old[1], !!old[2], !!old[3], false, !!old[4]], hw:s.hw || null};
+  }
+  return o;
+}
+function loadL(){
+  try { const o = JSON.parse(localStorage.getItem(LKEY)); if (o && o.profiles) return o; } catch(e){}
+  const l = {active:null, profiles:{}, guests:[]};
+  try {
+    const old = JSON.parse(localStorage.getItem(OLDKEY));
+    if (old && old.st && Object.keys(old.st).length){
+      l.profiles.gast = newProfile({name:old.name || "", st:migrateSt(old.st)});
+      l.active = "gast";
+    }
+  } catch(e){}
+  return l;
+}
+let L = loadL();
+if (!L.guests) L.guests = [];
+let P = L.active && L.profiles[L.active] ? L.profiles[L.active] : null;
+function saveL(){ try { localStorage.setItem(LKEY, JSON.stringify(L)); } catch(e){} }
+function st(id){
+  if (!P.st[id]) P.st[id] = {steps:[false,false,false,false,false,false], hw:null};
+  const s = P.st[id];
+  if (!Array.isArray(s.steps)) s.steps = Object.values(s.steps || {});
+  while (s.steps.length < 6) s.steps.push(false);
+  return s;
+}
+function pushStation(id){ if (P && P.code && db) R(`progress/${P.code}/${id}`).set(clean(st(id))).catch(() => {}); }
+function markStep(id, i){ const s = st(id); if (!s.steps[i]){ s.steps[i] = true; saveL(); pushStation(id); } }
+function needSteps(s){ const r = [0,1,2,3,HW]; if (P && P.level === "plus" && s.plus) r.splice(4, 0, PROFI); return r; }
+function stepsDone(s){ const d = st(s.id); return needSteps(s).filter(k => d.steps[k]).length; }
+function colorOf(name){ let h = 0; for (const ch of String(name)) h = (h * 31 + ch.charCodeAt(0)) >>> 0; return PCOL[h % PCOL.length]; }
+function initial(n){ return (String(n || "?").trim()[0] || "?").toUpperCase(); }
+function roleLbl(r){ return ROLES[r] || null; }
 
-/* Download-Fähigkeit (Artifact) oder normaler Download (GitHub Pages) */
-let dlPromise = (window.claude && typeof window.claude.use === "function") ? window.claude.use("downloads").catch(() => null) : Promise.resolve(null);
+/* Punkte: zählt nur Verbesserungen pro Station und Schritt */
+function bestOf(id, key){ return ((P.best || {})[id] || {})[key] || 0; }
+function setBest(id, key, v){
+  P.best = P.best || {}; P.best[id] = P.best[id] || {};
+  P.best[id][key] = v; saveL();
+  if (P.code && db) R(`best/${P.code}/${id}/${key}`).set(v).catch(() => {});
+}
+function improve(id, key, val, factor){
+  const old = bestOf(id, key);
+  if (val <= old) return 0;
+  setBest(id, key, val);
+  const pts = Math.round((val - old) * (factor || 1));
+  addPoints(pts);
+  return pts;
+}
+function addPoints(n){
+  if (!P || n <= 0) return;
+  P.points = (P.points || 0) + n; saveL(); renderWho();
+  if (P.code && db) R(`points/${P.code}`).transaction(v => (v || 0) + n).catch(() => {});
+  const t = $("#ptoast"); t.textContent = `+${n} ★`; t.classList.add("show");
+  clearTimeout(addPoints._t); addPoints._t = setTimeout(() => t.classList.remove("show"), 1800);
+}
+function logEv(e){
+  if (!(P && P.code && db)) return;
+  e.ts = TS();
+  R(`log/${P.code}`).push(clean(e)).catch(() => {});
+  R(`seen/${P.code}`).set(TS()).catch(() => {});
+}
+function logFor(code, e){ if (!(code && db)) return; e.ts = TS(); R(`log/${code}`).push(clean(e)).catch(() => {}); R(`seen/${code}`).set(TS()).catch(() => {}); }
+function pointsFor(code, n){
+  if (n <= 0) return;
+  const p = L.profiles[code];
+  if (p){ p.points = (p.points || 0) + n; saveL(); }
+  if (code && db) R(`points/${code}`).transaction(v => (v || 0) + n).catch(() => {});
+}
+
+function mergeSt(a, b){
+  const o = Object.assign({}, a);
+  for (const id in (b || {})){
+    const x = o[id] || {steps:[], hw:null}, y = b[id] || {};
+    const ys = Array.isArray(y.steps) ? y.steps : Object.values(y.steps || {});
+    const steps = [0,1,2,3,4,5].map(k => !!((x.steps || [])[k] || ys[k]));
+    let hw = x.hw || null;
+    if (y.hw && (!hw || (y.hw.passed && !hw.passed) || ((y.hw.score || 0) > (hw.score || 0)))) hw = y.hw;
+    o[id] = {steps, hw};
+  }
+  return o;
+}
+function mergeBest(a, b){
+  const o = JSON.parse(JSON.stringify(a || {}));
+  for (const id in (b || {})){ o[id] = o[id] || {}; for (const k in b[id]) o[id][k] = Math.max(o[id][k] || 0, b[id][k] || 0); }
+  return o;
+}
+function hasProgress(p){ return p && Object.values(p.st || {}).some(s => (s.steps || []).some(Boolean)); }
+
+async function fetchMember(code){
+  const snap = await withTimeout(R(`members/${code}`).get(), 9000);
+  if (!snap.exists()) { const e = new Error("notfound"); e.code = "notfound"; throw e; }
+  return snap.val();
+}
+async function loginCode(raw){
+  const code = String(raw || "").toUpperCase().replace(/[^A-Z0-9]/g, "");
+  if (code.length < 4){ const e = new Error("short"); e.code = "short"; throw e; }
+  if (!db){ const e = new Error("offline"); e.code = "offline"; throw e; }
+  const m = await fetchMember(code);
+  if (m.active === false){ const e = new Error("inactive"); e.code = "inactive"; throw e; }
+  const [prog, best, pts] = await Promise.all(["progress","best","points"].map(k => withTimeout(R(`${k}/${code}`).get(), 9000).then(s => s.val())));
+  const p = L.profiles[code] || newProfile({code});
+  Object.assign(p, {code, name:m.name || code, level:m.level || "basis", role:m.role || "", group:m.group || ""});
+  p.st = mergeSt(p.st || {}, prog || {});
+  p.best = mergeBest(p.best || {}, best || {});
+  p.points = Math.max(pts || 0, 0);
+  L.profiles[code] = p; L.active = code; P = p; saveL();
+  R(`seen/${code}`).set(TS()).catch(() => {});
+  return {code, freshRemote: !prog};
+}
+function transferGuest(){
+  const g = L.profiles.gast; if (!g || !P.code) return;
+  P.st = mergeSt(P.st, g.st); P.best = mergeBest(P.best, g.best);
+  saveL();
+  R(`progress/${P.code}`).set(clean(P.st)).catch(() => {});
+  R(`best/${P.code}`).set(clean(P.best)).catch(() => {});
+  logEv({k:"import", n:Object.keys(g.st || {}).length});
+  delete L.profiles.gast; saveL();
+}
+/* Profil im Hintergrund auffrischen (Stufe, Name, Fortschritt anderer Geräte) */
+let pointsRef = null;
+function watchProfile(){
+  if (pointsRef){ pointsRef.off(); pointsRef = null; }
+  if (!(P && P.code && db)) return;
+  const code = P.code;
+  pointsRef = R(`points/${code}`);
+  pointsRef.on("value", s => { if (P && P.code === code){ P.points = s.val() || 0; saveL(); renderWho(); } });
+  Promise.all([R(`members/${code}`).get(), R(`progress/${code}`).get(), R(`best/${code}`).get()]).then(([m, pr, b]) => {
+    if (!P || P.code !== code) return;
+    if (m.exists()){
+      const v = m.val();
+      if (v.active === false){ L.active = null; P = null; saveL(); renderStart("Dieser Code ist nicht mehr aktiv. · این کد دیگر فعال نیست."); return; }
+      const lvlChanged = P.level !== (v.level || "basis");
+      Object.assign(P, {name:v.name || code, level:v.level || "basis", role:v.role || "", group:v.group || ""});
+      if (lvlChanged) toast("Neue Stufe: " + LEVELS[P.level][0]);
+    }
+    P.st = mergeSt(P.st, pr.val() || {}); P.best = mergeBest(P.best, b.val() || {});
+    saveL(); renderWho();
+    if (VIEW === "home") renderHome();
+  }).catch(() => {});
+}
+
+/* ---------- Kopfzeile ---------- */
+let VIEW = "start";
+function renderWho(){
+  const w = $("#whoBtn");
+  if (!P){ w.innerHTML = `<span class="av" style="--c:var(--muted)">?</span><span class="nm">Wer übt? · کی تمرین می‌کند؟</span>`; return; }
+  const nm = P.name || "Gast";
+  w.innerHTML = `<span class="av" style="--c:${colorOf(nm)}">${esc(initial(nm))}</span><span class="nm">${esc(nm)}</span><span class="pt">★ ${P.points || 0}</span>`;
+  w.setAttribute("aria-label", `${nm}, ${P.points || 0} Punkte. Person wechseln`);
+}
+function setNav(v){ VIEW = v; document.querySelectorAll("[data-nav]").forEach(b => b.classList.toggle("on", b.dataset.nav === v)); }
+document.querySelectorAll("[data-nav]").forEach(b => b.addEventListener("click", () => {
+  if (!P) return renderStart();
+  ({home:renderHome, play:renderPlay, table:renderTable})[b.dataset.nav]();
+}));
+$("#whoBtn").addEventListener("click", () => renderStart());
+$("#brandBtn").addEventListener("click", () => P ? renderHome() : renderStart());
+
+/* ---------- Start: Wer übt? ---------- */
+function renderStart(msg){
+  stopLive();
+  setNav("start");
+  document.documentElement.style.setProperty("--accent", "var(--s2)");
+  const profs = Object.entries(L.profiles).filter(([k]) => k !== "gast");
+  const g = L.profiles.gast;
+  const card = (k, p) => {
+    const nm = p.name || "Gast", lv = LEVELS[p.level] || LEVELS.basis, rl = roleLbl(p.role);
+    return `<button class="pcard" style="--c:${colorOf(nm)}" data-prof="${esc(k)}"><span class="av">${esc(initial(nm))}</span><span><b>${esc(nm)}</b><small>${k === "gast" ? "ohne Code · بدون کد" : `${lv[0]} · ★ ${p.points || 0}`}</small></span></button>`;
+  };
+  $("#app").innerHTML = `
+  <section class="page wrap">
+    <h1>Wer übt heute?</h1>
+    <p class="fa h">امروز چه کسی تمرین می‌کند؟</p>
+    ${msg ? `<p class="err">${esc(msg)}</p>` : ""}
+    ${profs.length || g ? `<div class="pcards">${profs.map(([k, p]) => card(k, p)).join("")}${g ? card("gast", g) : ""}</div>` : ""}
+    <div class="grid2">
+      <div class="card">
+        <h2 style="margin:0 0 4px">Mit Code anmelden</h2>
+        <p class="fa" style="margin:0">با کدی که از معلم گرفته‌ای وارد شو. پیشرفت و امتیازهایت ذخیره می‌شوند و معلم آن‌ها را می‌بیند.</p>
+        <form class="codein" id="codeForm"><input id="codeIn" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="8" placeholder="CODE" aria-label="Code"><button class="btn primary" type="submit">Anmelden<span class="fa">ورود</span></button></form>
+        <p class="err" id="codeErr" hidden></p>
+        ${db ? "" : `<p class="small-note">Keine Verbindung zum Server – Anmelden ist gerade nicht möglich. · اتصال به سرور برقرار نیست.</p>`}
+      </div>
+      <div class="card">
+        <h2 style="margin:0 0 4px">Ohne Code üben</h2>
+        <p class="fa" style="margin:0">بدون کد هم می‌توانی تمرین کنی. پیشرفت فقط روی همین دستگاه ذخیره می‌شود و در جدول امتیاز نمی‌آید.</p>
+        <div class="codein"><input id="guestName" style="letter-spacing:0;text-transform:none;width:220px" maxlength="30" placeholder="Name · نام" value="${esc(g ? g.name : "")}"><button class="btn" id="guestGo">Als Gast üben<span class="fa">ادامه به‌عنوان مهمان</span></button></div>
+      </div>
+    </div>
+    ${profs.length ? `<p style="margin-top:22px"><button class="linkbtn" id="forget">Profile auf diesem Gerät verwalten</button></p>` : ""}
+  </section>`;
+  $("#app").querySelectorAll("[data-prof]").forEach(b => b.addEventListener("click", () => {
+    L.active = b.dataset.prof; P = L.profiles[L.active]; saveL(); renderWho(); watchProfile(); renderHome();
+  }));
+  $("#codeForm").addEventListener("submit", async e => {
+    e.preventDefault();
+    const err = $("#codeErr"), btn = e.submitter || $("#codeForm button");
+    err.hidden = true; btn.disabled = true;
+    try {
+      const r = await loginCode($("#codeIn").value);
+      renderWho(); watchProfile();
+      if (r.freshRemote && hasProgress(L.profiles.gast)) askTransfer(); else renderHome();
+    } catch(ex){
+      const c = ex.code || ex.message;
+      err.textContent = c === "notfound" ? "Diesen Code gibt es nicht. · این کد وجود ندارد." :
+        c === "inactive" ? "Dieser Code ist nicht aktiv. · این کد فعال نیست." :
+        c === "short" ? "Bitte den ganzen Code eingeben. · لطفاً کد کامل را بنویس." :
+        "Keine Verbindung. Bitte später nochmal. · اتصال برقرار نشد. بعداً دوباره امتحان کن.";
+      err.hidden = false;
+    } finally { btn.disabled = false; }
+  });
+  $("#guestGo").addEventListener("click", () => {
+    const n = $("#guestName").value.trim();
+    if (!n){ toast("Bitte Namen eingeben · لطفاً نام را بنویس"); $("#guestName").focus(); return; }
+    if (!L.profiles.gast) L.profiles.gast = newProfile({});
+    L.profiles.gast.name = n; L.active = "gast"; P = L.profiles.gast; saveL(); renderWho(); watchProfile(); renderHome();
+  });
+  const fg = $("#forget");
+  if (fg) fg.addEventListener("click", manageProfiles);
+  renderWho();
+  window.scrollTo(0, 0);
+}
+function askTransfer(){
+  const g = L.profiles.gast;
+  const n = Object.values(g.st || {}).filter(s => s.hw && s.hw.passed).length;
+  openDialog(`<h3 style="margin:0 0 6px">Fortschritt übernehmen?</h3>
+    <p class="fa">روی این دستگاه پیشرفتی بدون کد ذخیره شده است${n ? ` (${faNum(n)} گواهی)` : ""}. می‌خواهی آن را به کد خودت منتقل کنی؟</p>
+    <div class="actions"><button class="btn primary" id="tYes">Ja, übernehmen<span class="fa">بله، منتقل کن</span></button><button class="btn" id="tNo">Nein<span class="fa">نه</span></button></div>`);
+  $("#tYes").addEventListener("click", () => { transferGuest(); closeModal(); toast("Übernommen · منتقل شد"); renderHome(); });
+  $("#tNo").addEventListener("click", () => { closeModal(); renderHome(); });
+}
+function manageProfiles(){
+  const rows = Object.entries(L.profiles).map(([k, p]) => `<li style="display:flex;justify-content:space-between;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)"><span><b>${esc(p.name || "Gast")}</b> <span class="muted small">${k === "gast" ? "ohne Code" : esc(k)}</span></span><button class="btn" data-del="${esc(k)}" style="min-height:40px;padding:6px 12px;font-size:16px">Entfernen<span class="fa">حذف</span></button></li>`).join("");
+  openDialog(`<h3 style="margin:0 0 6px">Profile auf diesem Gerät</h3><p class="fa">حذف فقط از این دستگاه است. پیشرفت کدها روی سرور می‌ماند.</p><ul style="list-style:none;padding:0;margin:0">${rows}</ul><div class="actions"><button class="btn" id="dlgClose">Schließen<span class="fa">بستن</span></button></div>`);
+  $("#mbox").querySelectorAll("[data-del]").forEach(b => b.addEventListener("click", () => {
+    const k = b.dataset.del;
+    if (k === "gast" && !b.dataset.armed){ b.dataset.armed = "1"; b.firstChild.textContent = "Sicher? Gast-Fortschritt geht verloren"; return; }
+    delete L.profiles[k]; if (L.active === k){ L.active = null; P = null; }
+    saveL(); closeModal(); renderStart();
+  }));
+  $("#dlgClose").addEventListener("click", closeModal);
+}
+function openDialog(html){ const box = $("#mbox"); box.className = "mbox dialog"; box.innerHTML = html; $("#modal").classList.add("open"); }
 
 /* ---------- Übersicht ---------- */
 function renderHome(){
+  if (!P) return renderStart();
+  stopLive();
+  setNav("home");
   AUDIO = true;
   document.documentElement.style.setProperty("--accent", "var(--s1)");
   const app = $("#app");
+  const lv = LEVELS[P.level] || LEVELS.basis;
   const stops = STATIONS.map((s, i) => {
-    const d = st(s.id);
-    const n = d.steps.filter(Boolean).length;
+    const d = st(s.id), req = needSteps(s), n = stepsDone(s);
     const won = !!(d.hw && d.hw.passed);
-    const state = won ? "Zertifikat erhalten" : (n ? `${n} von 5 Schritten` : "Noch nicht begonnen");
+    const state = won ? "Zertifikat erhalten" : (n ? `${n} von ${req.length} Schritten` : "Noch nicht begonnen");
     return `<li class="stop${won ? " won" : ""}" style="--c:${s.color}">
-      <button data-open="${i}" aria-label="Station ${i+1}: ${s.de}">
-        <span class="dot" style="--p:${n*20}"><b>${i+1}</b>${won ? '<span class="medal" aria-hidden="true">🏅</span>' : ""}</span>
+      <button data-open="${i}" aria-label="Station ${i+1}: ${esc(s.de)}">
+        <span class="dot" style="--p:${Math.round(n / req.length * 100)}"><b>${i+1}</b>${won ? '<span class="medal" aria-hidden="true">🏅</span>' : ""}</span>
         <span>
-          <span class="nm" style="display:block">${s.de.replace("Possessivpronomen","Possessiv&shy;pronomen").replace(" & ", " &amp; ")}</span>
+          <span class="nm" style="display:block">${s.de.replace("Possessivpronomen","Possessiv&shy;pronomen").replace("Personalpronomen","Personal&shy;pronomen").replace("Akkusativpronomen","Akkusativ&shy;pronomen").replace(" & ", " &amp; ")}</span>
           <span class="sb" style="display:block">${s.sub}</span>
           <span class="fa" style="display:block">${s.fa}</span>
           <span class="stt" style="display:block">${state}</span>
@@ -915,27 +1690,25 @@ function renderHome(){
       <button class="btn primary" style="--accent:${s.color}" data-open="${nextIdx}">${begun ? "Weiter" : "Station starten"}<span class="fa">${begun ? "ادامه بده" : "شروع کن"}</span></button>
     </div>`;
   } else {
-    next = `<div class="nextcard" style="--c:var(--s5)"><div><h2>Alle Stationen geschafft! 🎉</h2><p class="fa" style="text-align:left">آفرین! همهٔ ایستگاه‌ها را تمام کردی. گواهی‌هایت را از روی هر ایستگاه می‌توانی دوباره ببینی.</p></div></div>`;
+    next = `<div class="nextcard" style="--c:var(--s5)"><div><h2>Alle Stationen geschafft! 🎉</h2><p class="fa" style="text-align:left">آفرین! همهٔ ایستگاه‌ها را تمام کردی. ایستگاه‌های تازه به‌زودی اضافه می‌شوند.</p></div></div>`;
   }
+  const nm = P.name || "";
   app.innerHTML = `
   <section class="hero wrap">
-    <h1>Lern Deutsch mit Arash</h1>
-    <p class="h1sub">Deutsch A1 – Station für Station</p>
-    <p class="fa title">آلمانی با آرش – ایستگاه به ایستگاه</p>
-    <p class="fa lead">سلام! این مسیر از چند ایستگاه تشکیل شده است و ایستگاه‌های تازه هم اضافه می‌شوند. در هر ایستگاه اول یک توضیح کوتاه به فارسی می‌خوانی، بعد واژه‌ها را تمرین می‌کنی، جمله می‌سازی و در آخر <b>تکلیف</b> را انجام می‌دهی. برای هر تکلیفِ موفق یک <b>گواهی</b> می‌گیری که می‌توانی برای معلمت بفرستی.</p>
+    <h1>Hallo${nm ? ", " + esc(nm) : ""}!</h1>
+    <p class="h1sub">Deutsch A1 – Station für Station <span class="badge${P.level === "plus" ? " plus" : ""}">Stufe: ${lv[0]} · ${lv[1]}</span></p>
+    <p class="fa title">سلام${nm ? " " + esc(nm) : ""}! آلمانی با آرش – ایستگاه به ایستگاه</p>
+    <p class="fa lead">در هر ایستگاه اول یک توضیح کوتاه به فارسی می‌خوانی، بعد واژه‌ها را تمرین می‌کنی، جمله می‌سازی و در آخر <b>تکلیف</b> را انجام می‌دهی. ${P.level === "plus" ? "چون در سطح <b>پیشرفته</b> هستی، بخش «چالش» هم برای تو جزو مسیر است." : "بخش «چالش» اختیاری است و امتیاز دوبرابر دارد."} زیر «با هم» می‌توانی با دیگران مسابقه بدهی.</p>
+    ${P.code ? "" : `<p class="small-note">Du übst ohne Code: Punkte und Fortschritt bleiben nur auf diesem Gerät. · بدون کد: فقط روی این دستگاه ذخیره می‌شود.</p>`}
     <ol class="route">${stops}</ol>
     ${next}
     <div class="foot">
       <span>Lern Deutsch mit Arash · Dr. Arash Guitoo</span>
-      <span><button class="linkbtn" id="resetBtn">Fortschritt löschen</button></span>
+      <span><button class="linkbtn" id="switchBtn">Person wechseln · تغییر نفر</button></span>
     </div>
   </section>`;
   app.querySelectorAll("[data-open]").forEach(b => b.addEventListener("click", () => openStation(+b.dataset.open)));
-  const rb = $("#resetBtn");
-  rb.addEventListener("click", () => {
-    if (rb.dataset.armed){ S = {name:S.name, st:{}}; save(); renderHome(); toast("Fortschritt gelöscht"); }
-    else { rb.dataset.armed = "1"; rb.textContent = "Wirklich löschen? Nochmal tippen"; setTimeout(() => { if (rb.isConnected){ rb.textContent = "Fortschritt löschen"; delete rb.dataset.armed; } }, 4000); }
-  });
+  $("#switchBtn").addEventListener("click", () => renderStart());
   window.scrollTo(0, 0);
 }
 
@@ -944,8 +1717,11 @@ let cur = {i:0, step:0};
 function openStation(i, step){
   const s = STATIONS[i];
   const d = st(s.id);
-  if (step === undefined){ step = d.steps.findIndex(x => !x); if (step < 0) step = 4; }
+  const visible = [0,1,2,3,PROFI,HW].filter(k => k !== PROFI || s.plus);
+  if (step === undefined){ step = needSteps(s).find(k => !d.steps[k]); if (step === undefined) step = HW; }
+  if (step === PROFI && !s.plus) step = HW;
   cur = {i, step};
+  setNav("home");
   AUDIO = s.audio !== false;
   document.documentElement.style.setProperty("--accent", s.color);
   const app = $("#app");
@@ -956,38 +1732,53 @@ function openStation(i, step){
       <div class="big">${i+1}</div>
       <div><h2>${s.de}</h2><p>${s.sub}</p><p class="fa">${s.fa}</p></div>
     </div>
-    <nav class="steps" aria-label="Schritte">${STEPS.map((p, k) => `<button class="stepbtn${d.steps[k] ? " done" : ""}${k === step ? " active" : ""}" data-step="${k}" ${k === step ? 'aria-current="step"' : ""}><span class="n">${d.steps[k] ? "✓" : k+1}</span><span class="l">${p.de}<span class="fa">${p.fa}</span></span></button>`).join("")}</nav>
+    <nav class="steps" aria-label="Schritte">${visible.map((k, n) => { const p = STEPS[k]; const opt = k === PROFI && P.level !== "plus"; return `<button class="stepbtn${d.steps[k] ? " done" : ""}${k === step ? " active" : ""}" data-step="${k}" ${k === step ? 'aria-current="step"' : ""}><span class="n">${d.steps[k] ? "✓" : (k === PROFI ? "★" : n + 1 - (k > PROFI && s.plus ? 1 : 0))}</span><span class="l">${p.de}<span class="fa">${p.fa}</span>${opt ? `<span class="opt-l">freiwillig · اختیاری</span>` : ""}</span></button>`; }).join("")}</nav>
     <div class="panel" id="panel"></div>
   </section>`;
   $("#backBtn").addEventListener("click", renderHome);
   app.querySelectorAll("[data-step]").forEach(b => b.addEventListener("click", () => openStation(i, +b.dataset.step)));
   const panel = $("#panel");
-  [stepExplain, stepMatch, stepPractice, stepBuild, stepHomework][step](s, panel, i);
+  ({0:stepExplain, 1:stepMatch, 2:stepPractice, 3:stepBuild, 4:stepProfi, 5:stepHomework})[step](s, panel, i);
 }
 function goNext(i, step){ openStation(i, step); const n = $(".steps"); if (n) n.scrollIntoView({behavior:"smooth", block:"start"}); }
+function nextAfterBuild(s){ return s.plus ? PROFI : HW; }
 function nextBtn(i, step, de, fa){ return `<div class="actions"><button class="btn primary" data-go="${step}">${de}<span class="fa">${fa}</span></button></div>`; }
 function wireGo(panel, i){ panel.querySelectorAll("[data-go]").forEach(b => b.addEventListener("click", () => goNext(i, +b.dataset.go))); }
+const wrongPack = list => list.slice(0, 15).map(it => ({q:String(it.t === "b" ? it.fa : it.q).slice(0, 140), g:String(it._given || "").slice(0, 120), r:solutionOf(it).slice(0, 140)}));
 
 function stepExplain(s, panel, i){
+  const t0 = Date.now();
   panel.innerHTML = `<h3>Erklärung</h3><div class="intro fa">توضیح را با دقت بخوان.${AUDIO ? " روی دکمهٔ صدا بزن تا جمله را بشنوی." : ""}</div>${s.explain}
     <div class="actions"><button class="btn primary" id="gotIt">Verstanden – zu den Wörtern<span class="fa">فهمیدم، برویم سراغ واژه‌ها</span></button></div>`;
-  $("#gotIt").addEventListener("click", () => { markStep(s.id, 0); goNext(i, 1); });
+  $("#gotIt").addEventListener("click", () => {
+    const first = !st(s.id).steps[0];
+    markStep(s.id, 0);
+    logEv({k:"explain", s:s.id, sec:Math.round((Date.now() - t0) / 1000)});
+    if (first) addPoints(1);
+    goNext(i, 1);
+  });
 }
 
 function stepMatch(s, panel, i){
+  const t0 = Date.now();
   panel.innerHTML = `<h3>Wörter: Paare finden</h3><div class="intro fa">اول روی یک کلمهٔ آلمانی بزن، بعد روی معنی درستش.${AUDIO ? " کلمه‌های آلمانی را هم می‌شنوی." : ""}</div><div id="mhost"></div><div id="mdone"></div>`;
-  renderMatch($("#mhost"), s.match, () => {
+  renderMatch($("#mhost"), s.match, errors => {
     markStep(s.id, 1);
+    const perfectSets = errors.filter(e => e === 0).length;
+    improve(s.id, "m", s.match.length * 2 + perfectSets, 1);
+    logEv({k:"match", s:s.id, c:perfectSets, n:s.match.length, e:errors.reduce((a, b) => a + b, 0), sec:Math.round((Date.now() - t0) / 1000)});
     $("#mdone").innerHTML = `<div class="fb ok"><strong>Alle Paare gefunden!</strong> <span class="fa">همهٔ جفت‌ها را پیدا کردی!</span></div>` + nextBtn(i, 2, "Weiter zum Üben", "برویم تمرین کنیم");
     wireGo($("#mdone"), i);
   });
 }
 
 function stepPractice(s, panel, i){
-  panel.innerHTML = `<h3>Üben</h3><div class="intro fa">جواب درست را انتخاب کن یا بنویس. اگر اشتباه کنی، اشکالی ندارد: آن سؤال دوباره در آخر می‌آید.</div><div id="qhost"></div>`;
-  runQuiz($("#qhost"), s.practice, "practice", () => {
+  panel.innerHTML = `<h3>Üben</h3><div class="intro fa">جواب درست را انتخاب کن یا بنویس. اگر اشتباه کنی، اشکالی ندارد: آن سؤال دوباره در آخر می‌آید. هر جواب درست در بار اول یک امتیاز دارد.</div><div id="qhost"></div>`;
+  runQuiz($("#qhost"), s.practice, "practice", res => {
     markStep(s.id, 2);
-    $("#qhost").innerHTML = `<div class="fb ok"><strong>Alle Aufgaben gelöst!</strong> <span class="fa">همهٔ تمرین‌ها را حل کردی!</span></div>` + nextBtn(i, 3, "Weiter zum Satzbau", "برویم جمله بسازیم") + `<div class="actions"><button class="btn" id="again">Nochmal üben<span class="fa">دوباره تمرین کن</span></button></div>`;
+    improve(s.id, "p", res.firstOk, 1);
+    logEv({k:"practice", s:s.id, c:res.firstOk, n:res.total, sec:res.sec, w:wrongPack(res.wrongList)});
+    $("#qhost").innerHTML = `<div class="fb ok"><strong>Alle Aufgaben gelöst!</strong> <span class="fa">همهٔ تمرین‌ها را حل کردی! ${faNum(res.firstOk)} از ${faNum(res.total)} در بار اول درست.</span></div>` + nextBtn(i, 3, "Weiter zum Satzbau", "برویم جمله بسازیم") + `<div class="actions"><button class="btn" id="again">Nochmal üben<span class="fa">دوباره تمرین کن</span></button></div>`;
     wireGo($("#qhost"), i);
     $("#again").addEventListener("click", () => stepPractice(s, panel, i));
   });
@@ -995,22 +1786,38 @@ function stepPractice(s, panel, i){
 
 function stepBuild(s, panel, i){
   panel.innerHTML = `<h3>Sätze bauen</h3><div class="intro fa">${s.buildIntro || "جملهٔ فارسی را بخوان و با زدن روی کلمه‌ها جملهٔ آلمانی را به ترتیب درست بساز."} برای برداشتن یک کلمه، دوباره رویش بزن.</div><div id="qhost"></div>`;
-  runQuiz($("#qhost"), s.build.map(b => Object.assign({t:"b"}, b)), "practice", () => {
+  runQuiz($("#qhost"), s.build.map(b => Object.assign({t:"b"}, b)), "practice", res => {
     markStep(s.id, 3);
-    $("#qhost").innerHTML = `<div class="fb ok"><strong>Alle Sätze richtig!</strong> <span class="fa">همهٔ جمله‌ها درست شد!</span></div>` + nextBtn(i, 4, "Zur Hausaufgabe", "برویم سراغ تکلیف");
+    improve(s.id, "b", res.firstOk, 1);
+    logEv({k:"build", s:s.id, c:res.firstOk, n:res.total, sec:res.sec, w:wrongPack(res.wrongList)});
+    const nx = nextAfterBuild(s);
+    $("#qhost").innerHTML = `<div class="fb ok"><strong>Alle Sätze richtig!</strong> <span class="fa">همهٔ جمله‌ها درست شد!</span></div>` + (nx === PROFI ? nextBtn(i, PROFI, "Zur Profi-Runde", "برویم سراغ چالش") + nextBtn(i, HW, "Direkt zur Hausaufgabe", "مستقیم به تکلیف") : nextBtn(i, HW, "Zur Hausaufgabe", "برویم سراغ تکلیف"));
     wireGo($("#qhost"), i);
   }, true);
+}
+
+function stepProfi(s, panel, i){
+  panel.innerHTML = `<h3>Profi-Runde ★</h3><div class="intro fa">این تمرین‌ها سخت‌ترند و راهنمای فارسی کمتری دارند. هر جواب درست در بار اول <b>دو امتیاز</b> دارد. ${P.level === "plus" ? "در سطح پیشرفته این بخش جزو مسیر توست." : "این بخش اختیاری است."}</div><div id="qhost"></div>`;
+  runQuiz($("#qhost"), s.plus, "practice", res => {
+    markStep(s.id, PROFI);
+    improve(s.id, "x", res.firstOk, 2);
+    logEv({k:"plus", s:s.id, c:res.firstOk, n:res.total, sec:res.sec, w:wrongPack(res.wrongList)});
+    $("#qhost").innerHTML = `<div class="fb ok"><strong>Profi-Runde geschafft!</strong> <span class="fa">چالش را تمام کردی! ${faNum(res.firstOk)} از ${faNum(res.total)} در بار اول درست.</span></div>` + nextBtn(i, HW, "Zur Hausaufgabe", "برویم سراغ تکلیف") + `<div class="actions"><button class="btn" id="again">Nochmal<span class="fa">دوباره</span></button></div>`;
+    wireGo($("#qhost"), i);
+    $("#again").addEventListener("click", () => stepProfi(s, panel, i));
+  });
 }
 
 /* ---------- Paare ---------- */
 function renderMatch(host, sets, onDone){
   host.innerHTML = "";
   let left = sets.length;
-  sets.forEach(set => {
+  const errs = [];
+  sets.forEach((set, si) => {
     const box = document.createElement("div");
     box.className = "mset";
     box.innerHTML = `<h4>${set.title}</h4><p class="fa small" style="margin:0">${set.fa || ""}</p><div class="mgrid"><div class="mcol" lang="de"></div><div class="mcol"></div></div><p class="mstatus"></p>`;
-    const [L, R] = box.querySelectorAll(".mcol");
+    const [Lc, Rc] = box.querySelectorAll(".mcol");
     const pairs = set.pairs.map((p, k) => ({de:p[0], other:p[1], k}));
     let sel = null, matched = 0, errors = 0;
     const mk = (p, side) => {
@@ -1023,8 +1830,8 @@ function renderMatch(host, sets, onDone){
       b.addEventListener("click", () => pick(b));
       return b;
     };
-    shuffle(pairs).forEach(p => L.append(mk(p, "L")));
-    shuffle(pairs).forEach(p => R.append(mk(p, "R")));
+    shuffle(pairs).forEach(p => Lc.append(mk(p, "L")));
+    shuffle(pairs).forEach(p => Rc.append(mk(p, "R")));
     function pick(b){
       if (b.classList.contains("done")) return;
       if (b.lang === "de") speak(b.textContent.replace(/\(.*\)/, ""));
@@ -1040,7 +1847,8 @@ function renderMatch(host, sets, onDone){
         matched++; sel = null;
         if (matched === pairs.length){
           box.querySelector(".mstatus").textContent = errors === 0 ? "Perfekt – ohne Fehler! ✓" : `Geschafft ✓ (${errors} Fehlversuche)`;
-          left--; if (!left) onDone();
+          errs[si] = errors;
+          left--; if (!left) onDone(errs);
         }
       } else {
         errors++;
@@ -1058,12 +1866,96 @@ function solutionOf(it){
   const ans = it.t === "c" ? it.o[it.a] : it.a[0];
   return it.q.includes("___") ? it.q.replace("___", ans) : ans;
 }
-function runQuiz(host, items, mode, onFinish, buildOnly){
+/* Eine Aufgabe zeichnen; onAnswer(ok, given) wird genau einmal aufgerufen */
+function renderItem(w, it, onAnswer){
+  const gapHtml = q => esc(q).replace("___", '<span class="gap">&nbsp;</span>');
+  if (it.t === "c"){
+    w.innerHTML = `<div class="qprompt" lang="de" dir="auto">${gapHtml(it.q)}</div>${it.art ? `<p class="fa qfa">${it.fa}</p>` : ""}<div class="opts" lang="de"></div>`;
+    const opts = w.querySelector(".opts");
+    shuffle(it.o.map((o, k) => ({o, k}))).sort((x, y) => it.art ? x.k - y.k : 0).forEach(({o, k}) => {
+      const b = document.createElement("button");
+      b.className = "opt" + (it.art ? " " + o : "") + (/[؀-ۿ]/.test(o) ? " faopt" : "");
+      b.textContent = o;
+      b.addEventListener("click", () => {
+        const ok = k === it.a;
+        opts.querySelectorAll("button").forEach(x => { x.disabled = true; });
+        b.classList.add(ok ? "ok" : "bad");
+        if (!ok) [...opts.children].find(x => x.textContent === it.o[it.a]).classList.add("ok");
+        const g = w.querySelector(".gap");
+        if (g){ g.textContent = o; g.classList.add(ok ? "ok" : "bad"); }
+        onAnswer(ok, o);
+      });
+      opts.append(b);
+    });
+  } else if (it.t === "w"){
+    w.innerHTML = `<div class="qprompt" lang="de">${gapHtml(it.q)}${it.base ? ` <span class="base">(${esc(it.base)})</span>` : ""}</div>
+      <div class="winput"><input type="text" lang="de" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Deine Antwort"><button class="btn primary chk">Prüfen<span class="fa">بررسی</span></button></div>
+      <div class="keys">${["ä","ö","ü","ß"].map(k => `<button type="button" data-k="${k}" aria-label="${k} einfügen">${k}</button>`).join("")}</div>`;
+    const inp = w.querySelector("input"), chk = w.querySelector(".chk");
+    w.querySelectorAll("[data-k]").forEach(k => k.addEventListener("click", () => {
+      const p = inp.selectionStart ?? inp.value.length;
+      inp.value = inp.value.slice(0, p) + k.dataset.k + inp.value.slice(inp.selectionEnd ?? p);
+      inp.focus(); inp.setSelectionRange(p + 1, p + 1);
+    }));
+    const check = () => {
+      if (!inp.value.trim()){ toast("Bitte schreib eine Antwort."); inp.focus(); return; }
+      const ok = it.a.some(a => norm(a) === norm(inp.value));
+      inp.disabled = true; chk.disabled = true;
+      w.querySelectorAll("[data-k]").forEach(k => k.disabled = true);
+      const g = w.querySelector(".gap");
+      if (g){ g.textContent = inp.value.trim(); g.classList.add(ok ? "ok" : "bad"); }
+      onAnswer(ok, inp.value.trim());
+    };
+    chk.addEventListener("click", check);
+    inp.addEventListener("keydown", e => { if (e.key === "Enter") check(); });
+    setTimeout(() => inp.focus({preventScroll:true}), 50);
+  } else {
+    w.innerHTML = `<p class="fa" style="font-size:20px;font-weight:700;margin:0 0 4px">${it.fa}</p><p class="muted small" style="margin:0 0 12px">Bilde den Satz auf Deutsch.</p>
+      <div class="bline" lang="de" aria-live="polite"></div><div class="bbank" lang="de"></div>
+      <div class="actions"><button class="btn primary chk">Prüfen<span class="fa">بررسی</span></button><button class="btn rst">Zurücksetzen<span class="fa">از نو</span></button></div>`;
+    const line = w.querySelector(".bline"), bank = w.querySelector(".bbank");
+    let order = shuffle(it.w.map((x, k) => k));
+    for (let t = 0; t < 6 && it.a.some(a => norm(a) === norm(order.map(k => it.w[k]).join(" "))); t++) order = shuffle(order);
+    let placed = [], locked = false;
+    const draw = () => {
+      line.innerHTML = ""; bank.innerHTML = "";
+      placed.forEach(k => { const b = document.createElement("button"); b.className = "tile"; b.textContent = it.w[k]; b.addEventListener("click", () => { if (locked) return; placed = placed.filter(x => x !== k); draw(); }); line.append(b); });
+      order.filter(k => !placed.includes(k)).forEach(k => { const b = document.createElement("button"); b.className = "tile"; b.textContent = it.w[k]; b.addEventListener("click", () => { if (locked) return; placed.push(k); draw(); }); bank.append(b); });
+    };
+    draw();
+    w.querySelector(".rst").addEventListener("click", () => { if (!locked){ placed = []; draw(); } });
+    w.querySelector(".chk").addEventListener("click", () => {
+      if (locked) return;
+      if (placed.length !== it.w.length){ toast("Benutze alle Wörter."); return; }
+      const user = placed.map(k => it.w[k]).join(" ");
+      const ok = it.a.some(a => norm(a) === norm(user));
+      locked = true;
+      w.querySelectorAll(".actions .btn").forEach(b => b.disabled = true);
+      line.style.borderColor = ok ? "var(--ok)" : "var(--bad)";
+      onAnswer(ok, user);
+    });
+  }
+}
+function feedbackHtml(it, ok, opt){
+  opt = opt || {};
+  const sol = solutionOf(it);
+  const pr = PRAISE[Math.floor(Math.random() * PRAISE.length)];
+  return (ok
+    ? `<strong>${pr[0]}</strong> <span class="fa">${pr[1]}</span>`
+    : `<strong>Nicht ganz.</strong> <span class="fa">نه کاملاً. جواب درست:</span>`)
+    + `<p class="sol" lang="de">${AUDIO ? `<button class="say" data-say="${esc(it.say || sol)}" aria-label="Vorlesen">${ICON}</button>` : ""}<b dir="auto">${esc(sol)}</b>${it.say && it.say !== sol ? ` <span class="muted">(${esc(it.say)})</span>` : ""}</p>`
+    + (it.fa && it.t !== "b" && !it.art ? `<p class="fa">${it.fa}</p>` : "")
+    + (!ok && it.tip ? `<p class="fa">💡 ${it.tip}</p>` : "")
+    + (opt.extra || "")
+    + `<div class="actions" style="margin-top:10px"><button class="btn primary nx">${opt.nextDe || "Weiter"}<span class="fa">${opt.nextFa || "بعدی"}</span></button></div>`;
+}
+function runQuiz(host, items, mode, onFinish){
   const hw = mode === "hw";
+  const t0 = Date.now();
   let queue = shuffle(items.map((it, k) => Object.assign({}, it, {_k:k})));
   const total = items.length;
   let answered = 0, correct = 0;
-  const solved = new Set();
+  const solved = new Set(), failed = new Set();
   const wrongList = [];
   host.innerHTML = `<div class="qbar"><div class="qfill"></div></div><div class="qcount"></div><div class="qcard"></div>`;
   const fill = host.querySelector(".qfill"), count = host.querySelector(".qcount"), card = host.querySelector(".qcard");
@@ -1074,102 +1966,33 @@ function runQuiz(host, items, mode, onFinish, buildOnly){
   }
   function next(){
     progress();
-    if (!queue.length){ onFinish({correct, total, wrongList}); return; }
+    if (!queue.length){ onFinish({correct, total, wrongList, firstOk: total - failed.size, sec:Math.round((Date.now() - t0) / 1000)}); return; }
     show(queue.shift());
-  }
-  function finish(it, ok, gapEl){
-    answered++;
-    if (ok){ correct++; solved.add(it._k); } else { if (!hw) queue.push(it); wrongList.push(it); }
-    const sol = solutionOf(it);
-    const pr = PRAISE[Math.floor(Math.random() * PRAISE.length)];
-    const fb = document.createElement("div");
-    fb.className = "fb " + (ok ? "ok" : "bad");
-    fb.innerHTML = (ok
-      ? `<strong>${pr[0]}</strong> <span class="fa">${pr[1]}</span>`
-      : `<strong>Nicht ganz.</strong> <span class="fa">نه کاملاً. جواب درست:</span>`)
-      + `<p class="sol" lang="de">${AUDIO ? `<button class="say" data-say="${esc(it.say || sol)}" aria-label="Vorlesen">${ICON}</button>` : ""}<b dir="auto">${esc(sol)}</b>${it.say && it.say !== sol ? ` <span class="muted">(${esc(it.say)})</span>` : ""}</p>`
-      + (it.fa && it.t !== "b" && !it.art ? `<p class="fa">${it.fa}</p>` : "")
-      + (!ok && it.tip ? `<p class="fa">💡 ${it.tip}</p>` : "")
-      + (!ok && !hw ? `<p class="fa small muted">این سؤال دوباره در آخر می‌آید.</p>` : "")
-      + `<div class="actions" style="margin-top:10px"><button class="btn primary nx">Weiter<span class="fa">بعدی</span></button></div>`;
-    card.querySelector(".qitem").append(fb);
-    const nx = fb.querySelector(".nx");
-    nx.addEventListener("click", next);
-    nx.focus({preventScroll:true});
-    fb.scrollIntoView({behavior:"smooth", block:"nearest"});
-    if (ok) speak(it.say || sol);
   }
   function show(it){
     const w = document.createElement("div");
     w.className = "qitem";
     card.innerHTML = ""; card.append(w);
-    const gapHtml = q => esc(q).replace("___", '<span class="gap">&nbsp;</span>');
-    if (it.t === "c"){
-      w.innerHTML = `<div class="qprompt" lang="de">${gapHtml(it.q)}</div>${it.art ? `<p class="fa qfa">${it.fa}</p>` : ""}<div class="opts" lang="de"></div>`;
-      const opts = w.querySelector(".opts");
-      shuffle(it.o.map((o, k) => ({o, k}))).sort((x, y) => it.art ? x.k - y.k : 0).forEach(({o, k}) => {
-        const b = document.createElement("button");
-        b.className = "opt" + (it.art ? " " + o : "") + (/[\u0600-\u06FF]/.test(o) ? " faopt" : "");
-        b.textContent = o;
-        b.addEventListener("click", () => {
-          const ok = k === it.a;
-          opts.querySelectorAll("button").forEach(x => { x.disabled = true; });
-          b.classList.add(ok ? "ok" : "bad");
-          if (!ok) [...opts.children].find(x => x.textContent === it.o[it.a]).classList.add("ok");
-          const g = w.querySelector(".gap");
-          if (g){ g.textContent = o; g.classList.add(ok ? "ok" : "bad"); }
-          finish(it, ok);
-        });
-        opts.append(b);
-      });
-    } else if (it.t === "w"){
-      w.innerHTML = `<div class="qprompt" lang="de">${gapHtml(it.q)}${it.base ? ` <span class="base">(${esc(it.base)})</span>` : ""}</div>
-        <div class="winput"><input type="text" lang="de" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Deine Antwort"><button class="btn primary chk">Prüfen<span class="fa">بررسی</span></button></div>
-        <div class="keys">${["ä","ö","ü","ß"].map(k => `<button type="button" data-k="${k}" aria-label="${k} einfügen">${k}</button>`).join("")}</div>`;
-      const inp = w.querySelector("input"), chk = w.querySelector(".chk");
-      w.querySelectorAll("[data-k]").forEach(k => k.addEventListener("click", () => {
-        const p = inp.selectionStart ?? inp.value.length;
-        inp.value = inp.value.slice(0, p) + k.dataset.k + inp.value.slice(inp.selectionEnd ?? p);
-        inp.focus(); inp.setSelectionRange(p + 1, p + 1);
-      }));
-      const check = () => {
-        if (!inp.value.trim()){ toast("Bitte schreib eine Antwort."); inp.focus(); return; }
-        const ok = it.a.some(a => norm(a) === norm(inp.value));
-        inp.disabled = true; chk.disabled = true;
-        w.querySelectorAll("[data-k]").forEach(k => k.disabled = true);
-        const g = w.querySelector(".gap");
-        if (g){ g.textContent = inp.value.trim(); g.classList.add(ok ? "ok" : "bad"); }
-        finish(it, ok);
-      };
-      chk.addEventListener("click", check);
-      inp.addEventListener("keydown", e => { if (e.key === "Enter") check(); });
-      setTimeout(() => inp.focus({preventScroll:true}), 50);
-    } else {
-      w.innerHTML = `<p class="fa" style="font-size:20px;font-weight:700;margin:0 0 4px">${it.fa}</p><p class="muted small" style="margin:0 0 12px">Bilde den Satz auf Deutsch.</p>
-        <div class="bline" lang="de" aria-live="polite"></div><div class="bbank" lang="de"></div>
-        <div class="actions"><button class="btn primary chk">Prüfen<span class="fa">بررسی</span></button><button class="btn rst">Zurücksetzen<span class="fa">از نو</span></button></div>`;
-      const line = w.querySelector(".bline"), bank = w.querySelector(".bbank");
-      let order = shuffle(it.w.map((x, k) => k));
-      for (let t = 0; t < 6 && it.a.some(a => norm(a) === norm(order.map(k => it.w[k]).join(" "))); t++) order = shuffle(order);
-      let placed = [], locked = false;
-      const draw = () => {
-        line.innerHTML = ""; bank.innerHTML = "";
-        placed.forEach(k => { const b = document.createElement("button"); b.className = "tile"; b.textContent = it.w[k]; b.addEventListener("click", () => { if (locked) return; placed = placed.filter(x => x !== k); draw(); }); line.append(b); });
-        order.filter(k => !placed.includes(k)).forEach(k => { const b = document.createElement("button"); b.className = "tile"; b.textContent = it.w[k]; b.addEventListener("click", () => { if (locked) return; placed.push(k); draw(); }); bank.append(b); });
-      };
-      draw();
-      w.querySelector(".rst").addEventListener("click", () => { if (!locked){ placed = []; draw(); } });
-      w.querySelector(".chk").addEventListener("click", () => {
-        if (locked) return;
-        if (placed.length !== it.w.length){ toast("Benutze alle Wörter."); return; }
-        const user = placed.map(k => it.w[k]).join(" ");
-        const ok = it.a.some(a => norm(a) === norm(user));
-        locked = true;
-        w.querySelectorAll(".actions .btn").forEach(b => b.disabled = true);
-        line.style.borderColor = ok ? "var(--ok)" : "var(--bad)";
-        finish(it, ok);
-      });
-    }
+    const box = document.createElement("div");
+    w.append(box);
+    renderItem(box, it, (ok, given) => {
+      answered++;
+      if (ok){ correct++; solved.add(it._k); }
+      else {
+        if (!hw) queue.push(it);
+        if (!failed.has(it._k)) wrongList.push(Object.assign({}, it, {_given:given}));
+        failed.add(it._k);
+      }
+      const fb = document.createElement("div");
+      fb.className = "fb " + (ok ? "ok" : "bad");
+      fb.innerHTML = feedbackHtml(it, ok, {extra: !ok && !hw ? `<p class="fa small muted">این سؤال دوباره در آخر می‌آید.</p>` : ""});
+      w.append(fb);
+      const nx = fb.querySelector(".nx");
+      nx.addEventListener("click", next);
+      nx.focus({preventScroll:true});
+      fb.scrollIntoView({behavior:"smooth", block:"nearest"});
+      if (ok) speak(it.say || solutionOf(it));
+    });
   }
   next();
 }
@@ -1180,19 +2003,19 @@ function stepHomework(s, panel, i){
   const passed = d.hw && d.hw.passed;
   panel.innerHTML = `<div class="hwbox">
     <h3>Hausaufgabe</h3>
-    <div class="intro fa">این تکلیف ۱۰ سؤال و یک تمرین نوشتاری دارد. به هر سؤال فقط <b>یک بار</b> جواب می‌دهی. اگر حداقل ${faNum(Math.ceil(PASS * 10))} جواب درست بدهی و تمرین نوشتاری را کامل کنی، <b>گواهی</b> می‌گیری.</div>
-    <p>10 Aufgaben + 1 Schreibaufgabe. Ab ${Math.ceil(PASS * 10)} richtigen Antworten bekommst du dein Zertifikat.</p>
-    ${passed ? `<div class="fb ok"><strong>Schon geschafft!</strong> <span class="fa">این تکلیف را قبلاً انجام داده‌ای.</span><p>Ergebnis: ${d.hw.score} von ${d.hw.total} · ${d.hw.date}</p></div>` : ""}
-    <div class="field"><label for="hwName">Dein Name für das Zertifikat <span class="fa small">نام تو برای گواهی</span></label><input id="hwName" data-name-mirror value="${esc(S.name || "")}" autocomplete="name"></div>
+    <div class="intro fa">این تکلیف ${faNum(s.hw.items.length)} سؤال و یک تمرین نوشتاری دارد. به هر سؤال فقط <b>یک بار</b> جواب می‌دهی. اگر حداقل ${faNum(Math.ceil(PASS * s.hw.items.length))} جواب درست بدهی و تمرین نوشتاری را کامل کنی، <b>گواهی</b> می‌گیری.${P.code ? " متن تو برای معلم هم فرستاده می‌شود." : ""}</div>
+    <p>${s.hw.items.length} Aufgaben + 1 Schreibaufgabe. Ab ${Math.ceil(PASS * s.hw.items.length)} richtigen Antworten bekommst du dein Zertifikat.</p>
+    ${passed ? `<div class="fb ok"><strong>Schon geschafft!</strong> <span class="fa">این تکلیف را قبلاً انجام داده‌ای.</span><p>Ergebnis: ${d.hw.score} von ${d.hw.total} · ${esc(d.hw.date)}</p></div>` : ""}
+    <div class="field"><label for="hwName">Dein Name für das Zertifikat <span class="fa small">نام تو برای گواهی</span></label><input id="hwName" value="${esc(P.name || "")}" autocomplete="name" ${P.code ? "readonly" : ""}></div>
     <div class="actions">
       ${passed ? `<button class="btn primary" id="showCert">Zertifikat ansehen<span class="fa">دیدن گواهی</span></button>` : ""}
       <button class="btn ${passed ? "" : "primary"}" id="startHw">${passed ? "Nochmal machen" : "Hausaufgabe starten"}<span class="fa">${passed ? "دوباره انجام بده" : "شروع تکلیف"}</span></button>
     </div></div>`;
   const nm = $("#hwName");
-  nm.addEventListener("input", () => { S.name = nm.value.trim(); nameTop.value = S.name; save(); });
+  nm.addEventListener("input", () => { if (!P.code){ P.name = nm.value.trim(); saveL(); renderWho(); } });
   if (passed) $("#showCert").addEventListener("click", () => showCertificate(i));
   $("#startHw").addEventListener("click", () => {
-    if (!S.name){ toast("Bitte schreib zuerst deinen Namen."); nm.focus(); return; }
+    if (!P.name){ toast("Bitte schreib zuerst deinen Namen."); nm.focus(); return; }
     panel.innerHTML = `<h3>Hausaufgabe</h3><div id="qhost"></div>`;
     runQuiz($("#qhost"), s.hw.items, "hw", res => hwResult(s, panel, i, res));
   });
@@ -1202,6 +2025,7 @@ function hwResult(s, panel, i, res){
   const pct = Math.round(res.correct / res.total * 100);
   const ok = res.correct / res.total >= PASS;
   if (!ok){
+    logEv({k:"hw", s:s.id, c:res.correct, n:res.total, sec:res.sec, ok:false, w:wrongPack(res.wrongList)});
     panel.innerHTML = `<div class="hwbox"><h3>Ergebnis</h3><div class="score">${res.correct} / ${res.total}</div>
       <p>Das sind ${pct} %. Für das Zertifikat brauchst du mindestens ${Math.ceil(PASS * res.total)} richtige Antworten.</p>
       <p class="fa">این بار کافی نبود. اشکالی ندارد! یک بار دیگر بخش «تمرین» را انجام بده و دوباره امتحان کن. تو می‌توانی! 💪</p>
@@ -1211,38 +2035,42 @@ function hwResult(s, panel, i, res){
     return;
   }
   const wr = s.hw.writing;
+  const t1 = Date.now();
   panel.innerHTML = `<div class="hwbox"><h3>Super, ${res.correct} von ${res.total} richtig!</h3>
-    <p class="fa">آفرین! حالا فقط تمرین نوشتاری مانده. متن تو روی گواهی چاپ می‌شود تا معلمت آن را ببیند.</p>
+    <p class="fa">آفرین! حالا فقط تمرین نوشتاری مانده. متن تو روی گواهی چاپ می‌شود${P.code ? " و برای معلم فرستاده می‌شود" : " تا معلمت آن را ببیند"}.</p>
     <h4 style="margin:18px 0 4px;font-size:22px">Schreibaufgabe</h4>
     <p style="margin:0">${esc(wr.de)}</p>
     <p class="fa">${wr.fa}</p>
     <p class="muted small">Beispiel: <span lang="de">${esc(wr.ex)}</span></p>
     <textarea id="wtext" lang="de" spellcheck="false" placeholder="Schreib hier …" maxlength="700"></textarea>
     <div class="wc" id="wc">0 von ${wr.min} Wörtern</div>
-    <div class="field"><label for="hwName2">Name auf dem Zertifikat</label><input id="hwName2" data-name-mirror value="${esc(S.name)}"></div>
     <div class="actions"><button class="btn primary" id="submitHw" disabled>Abgeben und Zertifikat erhalten<span class="fa">تحویل بده و گواهی بگیر</span></button></div></div>`;
-  const ta = $("#wtext"), wc = $("#wc"), sub = $("#submitHw"), n2 = $("#hwName2");
+  const ta = $("#wtext"), wc = $("#wc"), sub = $("#submitHw");
   const upd = () => {
     const words = ta.value.trim().split(/\s+/).filter(Boolean).length;
     wc.textContent = `${words} von ${wr.min} Wörtern`;
     wc.classList.toggle("ok", words >= wr.min);
-    sub.disabled = !(words >= wr.min && n2.value.trim());
+    sub.disabled = !(words >= wr.min);
   };
   ta.addEventListener("input", upd);
-  n2.addEventListener("input", () => { S.name = n2.value.trim(); nameTop.value = S.name; save(); upd(); });
   sub.addEventListener("click", () => {
     const d = st(s.id);
+    const first = !(d.hw && d.hw.passed);
+    const oldScore = d.hw && d.hw.passed ? d.hw.score : 0;
     const now = new Date();
-    d.hw = {passed:true, score:res.correct, total:res.total, date:now.toLocaleDateString("de-DE", {day:"2-digit", month:"2-digit", year:"numeric"}), text:ta.value.trim(), name:S.name};
-    d.steps[4] = true;
-    save();
-    openStation(i, 4);
+    const keep = !first && oldScore > res.correct;
+    const hwObj = {passed:true, score:res.correct, total:res.total, date:now.toLocaleDateString("de-DE", {day:"2-digit", month:"2-digit", year:"numeric"}), text:ta.value.trim(), name:P.name};
+    d.hw = keep ? Object.assign({}, d.hw, {text:hwObj.text, date:hwObj.date}) : hwObj;
+    d.steps[HW] = true;
+    saveL(); pushStation(s.id);
+    improve(s.id, "h", 10 + res.correct, 1);
+    logEv({k:"hw", s:s.id, c:res.correct, n:res.total, sec:res.sec + Math.round((Date.now() - t1) / 1000), ok:true, text:hwObj.text, w:wrongPack(res.wrongList)});
+    openStation(i, HW);
     showCertificate(i);
   });
 }
 
 /* ---------- Zertifikat ---------- */
-function cssColor(v){ const el = document.createElement("span"); el.style.color = v; document.body.append(el); const c = getComputedStyle(el).color; el.remove(); return c; }
 function wrapLines(ctx, text, maxW){
   const out = [];
   String(text).split(/\n+/).forEach(par => {
@@ -1255,12 +2083,11 @@ function wrapLines(ctx, text, maxW){
   });
   return out;
 }
+const HEXC = {"var(--s1)":"#138a8a","var(--s2)":"#2f5aa8","var(--s3)":"#b53a50","var(--s4)":"#c47f00","var(--s5)":"#6d4a9c","var(--s6)":"#4f7d2a","var(--s7)":"#a8431f","var(--s8)":"#8a5a14","var(--s9)":"#2b7a9e","var(--s10)":"#9c3d73","var(--s11)":"#5a6b1f"};
 async function drawCertificate(i){
   const s = STATIONS[i], d = st(s.id), hw = d.hw;
   try { await Promise.all(["700 40px Carlito","400 30px Carlito","700 40px Vazirmatn","400 30px Vazirmatn"].map(f => document.fonts.load(f))); } catch(e){}
-  // Farben immer im hellen Schema, damit das Zertifikat druckbar bleibt
-  const HEX = {"var(--s1)":"#138a8a","var(--s2)":"#2f5aa8","var(--s3)":"#b53a50","var(--s4)":"#c47f00","var(--s5)":"#6d4a9c","var(--s6)":"#4f7d2a","var(--s7)":"#a8431f"};
-  const hexOf = k => HEX[STATIONS[k].color] || "#18213b";
+  const hexOf = k => HEXC[STATIONS[k].color] || "#18213b";
   const col = hexOf(i);
   const W = 1240, H = 1754;
   const c = document.createElement("canvas"); c.width = W; c.height = H;
@@ -1268,21 +2095,19 @@ async function drawCertificate(i){
   const DE = (w, px) => `${w} ${px}px Calibri, Carlito, Vazirmatn, sans-serif`;
   const FA = (w, px) => `${w} ${px}px Vazirmatn, Tahoma, sans-serif`;
   const center = (t, y, font, color, dir) => { x.font = font; x.fillStyle = color; x.textAlign = "center"; x.direction = dir || "ltr"; x.fillText(t, W / 2, y); x.direction = "ltr"; };
-  const isFa = t => /[\u0600-\u06FF]/.test(t);
+  const isFa = t => /[؀-ۿ]/.test(t);
 
   x.fillStyle = "#ffffff"; x.fillRect(0, 0, W, H);
   x.fillStyle = col; x.globalAlpha = .07; x.fillRect(0, 0, W, 330); x.globalAlpha = 1;
   x.strokeStyle = col; x.lineWidth = 16; x.strokeRect(36, 36, W - 72, H - 72);
   x.lineWidth = 2; x.strokeRect(62, 62, W - 124, H - 124);
-
   center("Lern Deutsch mit Arash", 152, DE(700, 44), col);
 
-  // Linie mit allen Stationen
-  const y0 = 230, xs = 290, xe = W - 290, step = (xe - xs) / (STATIONS.length - 1);
+  const y0 = 230, xs = 200, xe = W - 200, step = (xe - xs) / Math.max(1, STATIONS.length - 1);
   x.lineCap = "round";
   for (let k = 0; k < STATIONS.length - 1; k++){ x.strokeStyle = hexOf(k); x.lineWidth = 10; x.beginPath(); x.moveTo(xs + k * step, y0); x.lineTo(xs + (k + 1) * step, y0); x.stroke(); }
   for (let k = 0; k < STATIONS.length; k++){
-    const cx = xs + k * step, sc = hexOf(k), rr = Math.min(24, step * 0.36), rb = Math.min(36, step * 0.46), won = STATIONS[k] && st(STATIONS[k].id).hw && st(STATIONS[k].id).hw.passed;
+    const cx = xs + k * step, sc = hexOf(k), rr = Math.min(24, step * 0.34), rb = Math.min(36, step * 0.46), won = st(STATIONS[k].id).hw && st(STATIONS[k].id).hw.passed;
     x.beginPath(); x.arc(cx, y0, k === i ? rb : rr, 0, Math.PI * 2);
     x.fillStyle = (won || k === i) ? sc : "#ffffff"; x.fill();
     x.lineWidth = 6; x.strokeStyle = sc; x.stroke();
@@ -1293,43 +2118,34 @@ async function drawCertificate(i){
   center("Zertifikat", 440, DE(700, 118), "#18213b");
   center("گواهی‌نامه", 520, FA(700, 50), col, "rtl");
   center("Hiermit wird bestätigt, dass", 620, DE(400, 38), "#18213b");
-
-  const name = hw.name || S.name || "";
+  const name = hw.name || P.name || "";
   let nsize = 84; x.font = (isFa(name) ? FA(800, nsize) : DE(700, nsize));
   while (x.measureText(name).width > W - 260 && nsize > 40){ nsize -= 4; x.font = (isFa(name) ? FA(800, nsize) : DE(700, nsize)); }
   center(name, 730, x.font, "#18213b", isFa(name) ? "rtl" : "ltr");
   x.strokeStyle = "#d5dbe7"; x.lineWidth = 2; x.beginPath(); x.moveTo(260, 760); x.lineTo(W - 260, 760); x.stroke();
-
   center("die Hausaufgabe der Lernstation", 830, DE(400, 38), "#18213b");
   let tsize = 52; const ttl = `Station ${i + 1}: ${s.de} – ${s.sub}`; x.font = DE(700, tsize);
   while (x.measureText(ttl).width > W - 220 && tsize > 30){ tsize -= 2; x.font = DE(700, tsize); }
   center(ttl, 905, x.font, col);
   center("erfolgreich abgeschlossen hat.", 970, DE(400, 38), "#18213b");
   center("آفرین! تکلیف این ایستگاه را با موفقیت انجام دادی.", 1035, FA(500, 32), "#56607a", "rtl");
-
-  // Ergebnis
   const pct = Math.round(hw.score / hw.total * 100);
   x.fillStyle = "#f5f7fb"; x.beginPath(); x.roundRect ? x.roundRect(170, 1080, W - 340, 96, 18) : x.rect(170, 1080, W - 340, 96); x.fill();
   x.font = DE(700, 36); x.fillStyle = "#18213b"; x.textAlign = "left"; x.fillText(`Ergebnis: ${hw.score} von ${hw.total} Punkten (${pct} %)`, 210, 1140);
   x.textAlign = "right"; x.font = DE(400, 34); x.fillText(`Datum: ${hw.date}`, W - 210, 1140);
-
-  // Schreibaufgabe
   x.textAlign = "left"; x.font = DE(700, 30); x.fillStyle = col;
   x.fillText("Schreibaufgabe (für die Lehrkraft)", 170, 1240);
   x.font = DE(400, 24); x.fillStyle = "#56607a";
   wrapLines(x, s.hw.writing.de, W - 340).slice(0, 2).forEach((l, k) => x.fillText(l, 170, 1276 + k * 30));
-  const boxTop = 1300 + 30;
+  const boxTop = 1330;
   x.strokeStyle = "#d5dbe7"; x.lineWidth = 2; x.strokeRect(170, boxTop, W - 340, 215);
   x.font = DE(400, 28); x.fillStyle = "#18213b";
   let lines = wrapLines(x, hw.text || "", W - 380);
   if (lines.length > 6){ lines = lines.slice(0, 6); lines[5] = lines[5].replace(/\s*\S*$/, "") + " …"; }
   lines.forEach((l, k) => x.fillText(l, 190, boxTop + 44 + k * 32));
-
-  // Unterschrift
   x.strokeStyle = "#18213b"; x.lineWidth = 2; x.beginPath(); x.moveTo(170, 1596); x.lineTo(600, 1596); x.stroke();
   x.font = DE(700, 30); x.fillStyle = "#18213b"; x.fillText("Dr. Arash Guitoo", 170, 1634);
   x.font = DE(400, 24); x.fillStyle = "#56607a"; x.fillText("Lehrkraft", 170, 1664);
-  // Siegel
   const sx = W - 250, sy = 1600;
   x.beginPath(); x.arc(sx, sy, 78, 0, Math.PI * 2); x.fillStyle = col; x.fill();
   x.beginPath(); x.arc(sx, sy, 64, 0, Math.PI * 2); x.strokeStyle = "#ffffff"; x.lineWidth = 3; x.stroke();
@@ -1337,15 +2153,16 @@ async function drawCertificate(i){
   x.font = DE(700, 18); x.fillText("DEUTSCH", sx, sy + 36);
   return c;
 }
-
+let dlPromise = (window.claude && typeof window.claude.use === "function") ? window.claude.use("downloads").catch(() => null) : Promise.resolve(null);
 async function showCertificate(i){
   const s = STATIONS[i];
   const modal = $("#modal"), box = $("#mbox");
+  box.className = "mbox";
   box.innerHTML = `<p class="muted">Zertifikat wird erstellt …</p>`;
   modal.classList.add("open");
   const canvas = await drawCertificate(i);
   box.innerHTML = `<h3 style="margin:0 0 4px">Dein Zertifikat 🏅</h3>
-    <p class="fa" style="margin:0 0 12px">گواهی را ذخیره کن و برای معلمت بفرست.</p>`;
+    <p class="fa" style="margin:0 0 12px">${P.code ? "معلمت نتیجه و متن تو را دیده است. می‌توانی گواهی را برای خودت ذخیره کنی." : "گواهی را ذخیره کن و برای معلمت بفرست."}</p>`;
   box.append(canvas);
   const act = document.createElement("div");
   act.className = "actions";
@@ -1353,7 +2170,7 @@ async function showCertificate(i){
   box.append(act);
   $("#closeCert").addEventListener("click", closeModal);
   $("#saveCert").addEventListener("click", async () => {
-    const safe = (S.name || "Name").replace(/[\\/:*?"<>|]+/g, "").replace(/\s+/g, "_");
+    const safe = (P.name || "Name").replace(/[\\/:*?"<>|]+/g, "").replace(/\s+/g, "_");
     const filename = `Zertifikat_Station${i + 1}_${s.id}_${safe}.png`;
     const blob = await new Promise(r => canvas.toBlob(r, "image/png"));
     const dl = await dlPromise;
@@ -1372,11 +2189,416 @@ function closeModal(){ $("#modal").classList.remove("open"); }
 $("#modal").addEventListener("click", e => { if (e.target.id === "modal") closeModal(); });
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
 
-/* Vorlesen überall */
+/* ---------- Rangliste ---------- */
+async function renderTable(){
+  if (!P) return renderStart();
+  stopLive();
+  setNav("table");
+  document.documentElement.style.setProperty("--accent", "var(--s2)");
+  const app = $("#app");
+  const head = `<section class="page wrap"><h1>Rangliste</h1><p class="fa h">جدول امتیاز</p>`;
+  if (!P.code || !db){
+    app.innerHTML = head + `<div class="card" style="margin-top:20px"><p class="fa">جدول امتیاز فقط با <b>کد</b> کار می‌کند. با کدی که از معلم گرفته‌ای وارد شو.</p><p>Die Tabelle gibt es nur mit Code.</p><div class="actions"><button class="btn primary" id="toStart">Mit Code anmelden<span class="fa">ورود با کد</span></button></div></div></section>`;
+    $("#toStart").addEventListener("click", () => renderStart());
+    return;
+  }
+  app.innerHTML = head + `<p class="muted" style="margin-top:20px">Lädt … · در حال بارگذاری …</p></section>`;
+  try {
+    const [m, pts, prog] = await Promise.all(["members","points","progress"].map(k => withTimeout(R(k).get(), 9000).then(s => s.val() || {})));
+    if (VIEW !== "table") return;
+    const grp = P.group || "";
+    const rows = Object.entries(m).filter(([c, v]) => v.active !== false && (v.group || "") === grp).map(([c, v]) => {
+      const pr = prog[c] || {};
+      const medals = Object.values(pr).filter(x => x && x.hw && x.hw.passed).length;
+      return {c, name:v.name || c, role:v.role, level:v.level || "basis", pts:pts[c] || 0, medals};
+    }).sort((a, b) => b.pts - a.pts || b.medals - a.medals);
+    const max = Math.max(1, ...rows.map(r => r.pts));
+    let place = 0, last = null;
+    const list = rows.map((r, k) => {
+      if (r.pts !== last){ place = k + 1; last = r.pts; }
+      const col = colorOf(r.name), rl = roleLbl(r.role);
+      return `<li class="${r.c === P.code ? "me" : ""}" style="--c:${col}"><span class="pl">${place}</span><span class="av">${esc(initial(r.name))}</span>
+        <div><b style="font-size:20px">${esc(r.name)}</b>${r.level === "plus" ? ` <span class="badge plus">Profi</span>` : ""}
+          <div class="small muted">🏅 ${r.medals} von ${STATIONS.length} Stationen · ${faNum(r.medals)} گواهی</div><div class="bar"><i style="width:${Math.round(r.pts / max * 100)}%"></i></div></div>
+        <span class="sc">${r.pts}<small>Punkte · امتیاز</small></span></li>`;
+    }).join("");
+    app.innerHTML = head + `<ol class="rank">${list || `<li>Noch niemand.</li>`}</ol>
+      <div class="card" style="margin-top:22px"><h3 style="margin:0 0 6px">So bekommt ihr Punkte</h3>
+      <ul class="fa" style="margin:0;padding-right:20px">
+        <li>هر جواب درست در بار اول در «تمرین» و «جمله‌سازی»: ۱ امتیاز – در «چالش»: ۲ امتیاز</li>
+        <li>تکلیف موفق: ۱۰ امتیاز + تعداد جواب‌های درست</li>
+        <li>دوئل و اتاق زنده: امتیاز برای هر جواب درست و جایزه برای برنده</li>
+        <li>تکرار یک تمرین فقط وقتی امتیاز دارد که نتیجه‌ات بهتر شود.</li>
+      </ul></div></section>`;
+  } catch(e){
+    app.innerHTML = head + `<p class="err" style="margin-top:20px">Keine Verbindung. · اتصال برقرار نشد.</p></section>`;
+  }
+}
+
+/* ---------- Zusammen spielen ---------- */
+function renderPlay(){
+  if (!P) return renderStart();
+  stopLive();
+  setNav("play");
+  document.documentElement.style.setProperty("--accent", "var(--s5)");
+  $("#app").innerHTML = `<section class="page wrap">
+    <h1>Zusammen spielen</h1><p class="fa h">با هم بازی کنیم</p>
+    <div class="grid2">
+      <button class="card modecard" id="mDuel"><h2>Duell</h2><span class="fa">دوئل – روی <b>یک دستگاه</b>، نوبتی. هر کس سؤال‌های سطح خودش را می‌گیرد.</span><span class="muted small">2–4 Personen · ein Handy oder Tablet</span></button>
+      <button class="card modecard" id="mLive"><h2>Live-Raum</h2><span class="fa">اتاق زنده – هر کس با <b>گوشی خودش</b>. همه هم‌زمان جواب می‌دهند؛ هرچه سریع‌تر، امتیاز بیشتر.</span><span class="muted small">jeder mit eigenem Handy · Raum-Code</span></button>
+    </div></section>`;
+  $("#mDuel").addEventListener("click", renderDuelSetup);
+  $("#mLive").addEventListener("click", renderLiveStart);
+}
+function topicChips(sel){
+  return `<div class="chips" id="topics">${STATIONS.map(s => `<button class="chip${sel.includes(s.id) ? " on" : ""}" style="--c:${s.color}" data-t="${s.id}">${esc(s.de)}</button>`).join("")}</div>
+    <p style="margin:2px 0"><button class="linkbtn" id="tAll">Alle · همه</button> <button class="linkbtn" id="tDone">Nur geschaffte · فقط ایستگاه‌های تمام‌شده</button></p>`;
+}
+function wireTopics(sel){
+  const box = $("#topics");
+  const sync = () => box.querySelectorAll("[data-t]").forEach(b => b.classList.toggle("on", sel.includes(b.dataset.t)));
+  box.querySelectorAll("[data-t]").forEach(b => b.addEventListener("click", () => { const k = sel.indexOf(b.dataset.t); if (k >= 0) sel.splice(k, 1); else sel.push(b.dataset.t); sync(); }));
+  $("#tAll").addEventListener("click", () => { sel.splice(0, sel.length, ...STATIONS.map(s => s.id)); sync(); });
+  $("#tDone").addEventListener("click", () => { const d = STATIONS.filter(s => (st(s.id).steps || []).some(Boolean)).map(s => s.id); sel.splice(0, sel.length, ...(d.length ? d : STATIONS.map(s => s.id))); sync(); });
+}
+function defaultTopics(){ const d = STATIONS.filter(s => st(s.id).steps[0] || st(s.id).steps[2]).map(s => s.id); return d.length ? d : STATIONS.slice(1, 4).map(s => s.id); }
+function poolFor(level, ids, onlyChoice){
+  const base = [], plus = [];
+  STATIONS.filter(s => ids.includes(s.id)).forEach(s => {
+    const tag = it => Object.assign({_s:s.id}, it);
+    s.practice.forEach(it => base.push(tag(it)));
+    s.hw.items.forEach(it => base.push(tag(it)));
+    s.build.forEach(it => base.push(tag(Object.assign({t:"b"}, it))));
+    (s.plus || []).forEach(it => plus.push(tag(it)));
+  });
+  const f = a => onlyChoice ? a.filter(it => it.t === "c") : a;
+  return level === "plus" ? shuffle(f(plus)).concat(shuffle(f(base))) : shuffle(f(base));
+}
+
+/* ---------- Duell (ein Gerät) ---------- */
+let DU = null;
+function duelCandidates(){
+  const out = [];
+  Object.entries(L.profiles).forEach(([k, p]) => out.push({pid:k, code:p.code || null, name:p.name || "Gast", level:p.level || "basis"}));
+  (L.guests || []).forEach((g, k) => out.push({pid:"x" + k, code:null, name:g.name, level:g.level || "basis", guest:k}));
+  return out;
+}
+function renderDuelSetup(){
+  setNav("play");
+  const cands = duelCandidates();
+  const sel = new Set([L.active]);
+  const topics = defaultTopics();
+  let rounds = 5;
+  $("#app").innerHTML = `<section class="page wrap">
+    <button class="back" id="backPlay">‹ Zurück <span class="fa" style="font-size:14px">برگشت</span></button>
+    <h1>Duell</h1><p class="fa h">دوئل روی یک دستگاه</p>
+    <div class="card" style="margin-top:18px">
+      <p class="lbl">Wer spielt mit?<span class="fa">چه کسانی بازی می‌کنند؟ (۲ تا ۴ نفر)</span></p>
+      <div class="pcards" id="cands"></div>
+      <div class="codein"><input id="gName" style="letter-spacing:0;text-transform:none;width:200px" maxlength="20" placeholder="Name · نام">
+        <div class="chips" id="gLvl"><button class="chip on" data-l="basis">Basis</button><button class="chip" data-l="plus">Profi</button></div>
+        <button class="btn" id="gAdd">+ Spieler ohne Code<span class="fa">بازیکن بدون کد</span></button></div>
+      <p class="small-note">Mit Code angemeldete Personen auf diesem Gerät erscheinen automatisch. Ihre Punkte zählen für die Tabelle. · کسانی که روی این دستگاه با کد وارد شده‌اند خودکار نشان داده می‌شوند.</p>
+      <p class="lbl">Themen<span class="fa">موضوع‌ها</span></p>
+      ${topicChips(topics)}
+      <p class="lbl">Fragen pro Person<span class="fa">تعداد سؤال برای هر نفر</span></p>
+      <div class="chips" id="rounds">${[3,5,8].map(n => `<button class="chip${n === rounds ? " on" : ""}" data-r="${n}">${n}</button>`).join("")}</div>
+      <div class="actions"><button class="btn primary" id="duelGo">Duell starten<span class="fa">شروع دوئل</span></button></div>
+    </div></section>`;
+  const drawC = () => {
+    $("#cands").innerHTML = duelCandidates().map(c => `<button class="pcard${sel.has(c.pid) ? " sel" : ""}" style="--c:${colorOf(c.name)}" data-pid="${esc(c.pid)}"><span class="av">${esc(initial(c.name))}</span><span><b>${esc(c.name)}</b><small>${LEVELS[c.level][0]}${c.code ? " · Code" : " · ohne Code"}</small></span></button>`).join("");
+    $("#cands").querySelectorAll("[data-pid]").forEach(b => b.addEventListener("click", () => { const p = b.dataset.pid; if (sel.has(p)) sel.delete(p); else if (sel.size < 4) sel.add(p); else toast("Maximal 4 Personen · حداکثر ۴ نفر"); drawC(); }));
+  };
+  drawC();
+  let glvl = "basis";
+  $("#gLvl").querySelectorAll("[data-l]").forEach(b => b.addEventListener("click", () => { glvl = b.dataset.l; $("#gLvl").querySelectorAll("[data-l]").forEach(x => x.classList.toggle("on", x === b)); }));
+  $("#gAdd").addEventListener("click", () => {
+    const n = $("#gName").value.trim(); if (!n){ $("#gName").focus(); return; }
+    L.guests.push({name:n, level:glvl}); saveL();
+    if (sel.size < 4) sel.add("x" + (L.guests.length - 1));
+    $("#gName").value = ""; drawC();
+  });
+  wireTopics(topics);
+  $("#rounds").querySelectorAll("[data-r]").forEach(b => b.addEventListener("click", () => { rounds = +b.dataset.r; $("#rounds").querySelectorAll("[data-r]").forEach(x => x.classList.toggle("on", x === b)); }));
+  $("#backPlay").addEventListener("click", renderPlay);
+  $("#duelGo").addEventListener("click", () => {
+    if (sel.size < 2){ toast("Mindestens 2 Personen · حداقل ۲ نفر"); return; }
+    if (!topics.length){ toast("Bitte ein Thema wählen · یک موضوع انتخاب کن"); return; }
+    const all = duelCandidates();
+    const players = [...sel].map(pid => all.find(c => c.pid === pid)).filter(Boolean).map(c => Object.assign({}, c, {color:colorOf(c.name), score:0, correct:0, wrong:[]}));
+    const pools = {};
+    players.forEach(p => { pools[p.pid] = poolFor(p.level, topics); });
+    DU = {players, rounds, turn:0, q:0, pools, topics, t0:Date.now()};
+    duelTurn();
+  });
+}
+function duelBar(){ return `<div class="sbar">${DU.players.map((p, k) => `<span class="${k === DU.turn ? "on" : ""}" style="--c:${p.color}"><i></i>${esc(p.name)} · ${p.score}</span>`).join("")}</div>`; }
+function duelTurn(){
+  const p = DU.players[DU.turn];
+  const qn = Math.floor(DU.q / DU.players.length) + 1;
+  $("#app").innerHTML = `<section class="page wrap">${duelBar()}
+    <div class="turn" style="--c:${p.color}"><p style="margin:0;opacity:.9">Frage ${qn} von ${DU.rounds}</p><h2>${esc(p.name)} ist dran!</h2><p class="fa">نوبت ${esc(p.name)} است!</p>
+    <button class="btn" id="goQ">Los geht's<span class="fa">شروع</span></button></div>
+    <p style="margin-top:16px"><button class="linkbtn" id="quitDuel">Duell beenden · پایان دوئل</button></p></section>`;
+  $("#goQ").addEventListener("click", duelQuestion);
+  $("#quitDuel").addEventListener("click", () => { if (confirm("Duell wirklich beenden?")) duelEnd(); });
+  window.scrollTo(0, 0);
+}
+function duelQuestion(){
+  const p = DU.players[DU.turn];
+  let pool = DU.pools[p.pid];
+  if (!pool.length) pool = DU.pools[p.pid] = poolFor(p.level, DU.topics);
+  const it = pool.shift();
+  const s = STATIONS.find(x => x.id === it._s);
+  document.documentElement.style.setProperty("--accent", p.color);
+  AUDIO = !s || s.audio !== false;
+  $("#app").innerHTML = `<section class="page wrap">${duelBar()}<div class="panel"><p class="muted small" style="margin:0 0 10px">${esc(p.name)} · ${s ? esc(s.de) : ""}</p><div class="qitem" id="dq"></div></div></section>`;
+  const w = $("#dq"), box = document.createElement("div");
+  w.append(box);
+  renderItem(box, it, (ok, given) => {
+    if (ok){ p.score++; p.correct++; } else p.wrong.push(Object.assign({}, it, {_given:given}));
+    const fb = document.createElement("div");
+    fb.className = "fb " + (ok ? "ok" : "bad");
+    fb.innerHTML = feedbackHtml(it, ok);
+    w.append(fb);
+    $(".sbar").outerHTML = duelBar();
+    const nx = fb.querySelector(".nx");
+    nx.focus({preventScroll:true});
+    fb.scrollIntoView({behavior:"smooth", block:"nearest"});
+    if (ok) speak(it.say || solutionOf(it));
+    nx.addEventListener("click", () => {
+      DU.q++; DU.turn = (DU.turn + 1) % DU.players.length;
+      if (DU.q >= DU.rounds * DU.players.length) duelEnd(); else duelTurn();
+    });
+  });
+}
+function podiumHtml(list){
+  const top = list.slice(0, 3);
+  const order = top.length === 3 ? [top[1], top[0], top[2]] : top.length === 2 ? [top[1], top[0]] : top;
+  const h = r => r === top[0] ? 140 : r === top[1] ? 100 : 70;
+  return `<div class="podium">${order.map(r => `<div style="--c:${r.color}"><b>${esc(r.name)}</b><div class="blk" style="height:${h(r)}px">${r.score}</div></div>`).join("")}</div>`;
+}
+function duelEnd(){
+  const list = DU.players.slice().sort((a, b) => b.score - a.score);
+  const best = list[0].score;
+  const sec = Math.round((Date.now() - DU.t0) / 1000);
+  const names = DU.players.map(p => p.name);
+  DU.players.forEach(p => {
+    if (!p.code) return;
+    const win = p.score === best && best > 0;
+    const pts = p.correct + (win ? 3 : 0) + 1;
+    pointsFor(p.code, pts);
+    logFor(p.code, {k:"duell", s:DU.topics.join(","), c:p.correct, n:Math.ceil(DU.q / DU.players.length) || DU.rounds, sec, win, with:names.filter(n => n !== p.name), w:wrongPack(p.wrong)});
+  });
+  if (P && P.code) watchProfile();
+  renderWho();
+  document.documentElement.style.setProperty("--accent", "var(--s5)");
+  const winners = list.filter(p => p.score === best).map(p => p.name);
+  $("#app").innerHTML = `<section class="page wrap"><h1>${winners.length > 1 ? "Unentschieden!" : esc(winners[0]) + " gewinnt!"}</h1>
+    <p class="fa h">${winners.length > 1 ? "مساوی!" : esc(winners[0]) + " برنده شد!"} 🎉</p>
+    ${podiumHtml(list)}
+    <div class="card"><ul style="margin:0;padding-left:20px">${list.map(p => `<li><b>${esc(p.name)}</b>: ${p.correct} richtig${p.code ? ` · +${p.correct + (p.score === best && best > 0 ? 3 : 0) + 1} ★` : ""}</li>`).join("")}</ul>
+    <p class="small-note">Punkte bekommen nur Personen mit Code. · فقط کسانی که کد دارند امتیاز می‌گیرند.</p></div>
+    <div class="actions"><button class="btn primary" id="again">Nochmal<span class="fa">دوباره</span></button><button class="btn" id="toPlay">Andere Spiele<span class="fa">بازی‌های دیگر</span></button></div></section>`;
+  const keep = DU;
+  $("#again").addEventListener("click", () => {
+    keep.players.forEach(p => { p.score = 0; p.correct = 0; p.wrong = []; });
+    DU = Object.assign(keep, {turn:0, q:0, t0:Date.now()});
+    duelTurn();
+  });
+  $("#toPlay").addEventListener("click", renderPlay);
+}
+
+/* ---------- Live-Raum (mehrere Handys) ---------- */
+let LV = null;
+function stopLive(){
+  if (LV){ if (LV.ref) LV.ref.off(); clearTimeout(LV.timer); clearInterval(LV.tick); }
+  LV = null;
+}
+function myPid(){ if (P.code) return P.code; if (!L.dev){ L.dev = "g" + Math.random().toString(36).slice(2, 8); saveL(); } return L.dev; }
+function renderLiveStart(){
+  setNav("play");
+  if (!db){ $("#app").innerHTML = `<section class="page wrap"><h1>Live-Raum</h1><p class="err">Keine Verbindung zum Server. · اتصال به سرور برقرار نیست.</p></section>`; return; }
+  const topics = defaultTopics();
+  let n = 10, secs = 25;
+  $("#app").innerHTML = `<section class="page wrap">
+    <button class="back" id="backPlay">‹ Zurück <span class="fa" style="font-size:14px">برگشت</span></button>
+    <h1>Live-Raum</h1><p class="fa h">اتاق زنده – هر کس با گوشی خودش</p>
+    <div class="grid2">
+      <div class="card"><h2 style="margin:0 0 4px">Raum beitreten</h2><p class="fa" style="margin:0">کد چهاررقمی اتاق را بنویس.</p>
+        <form class="codein" id="joinForm"><input id="roomIn" inputmode="numeric" maxlength="4" placeholder="0000" aria-label="Raum-Code"><button class="btn primary" type="submit">Beitreten<span class="fa">ورود</span></button></form><p class="err" id="joinErr" hidden></p></div>
+      <div class="card"><h2 style="margin:0 0 4px">Neuen Raum öffnen</h2><p class="fa" style="margin:0">تو اتاق را باز می‌کنی و بازی را شروع می‌کنی.</p>
+        <p class="lbl">Themen<span class="fa">موضوع‌ها</span></p>${topicChips(topics)}
+        <p class="lbl">Fragen<span class="fa">تعداد سؤال</span></p><div class="chips" id="nQ">${[5,10,15].map(x => `<button class="chip${x === n ? " on" : ""}" data-n="${x}">${x}</button>`).join("")}</div>
+        <p class="lbl">Zeit pro Frage<span class="fa">زمان هر سؤال</span></p><div class="chips" id="nS">${[15,25,40].map(x => `<button class="chip${x === secs ? " on" : ""}" data-s="${x}">${x} s</button>`).join("")}</div>
+        <div class="actions"><button class="btn primary" id="mkRoom">Raum öffnen<span class="fa">باز کردن اتاق</span></button></div></div>
+    </div></section>`;
+  wireTopics(topics);
+  $("#nQ").querySelectorAll("[data-n]").forEach(b => b.addEventListener("click", () => { n = +b.dataset.n; $("#nQ").querySelectorAll("[data-n]").forEach(x => x.classList.toggle("on", x === b)); }));
+  $("#nS").querySelectorAll("[data-s]").forEach(b => b.addEventListener("click", () => { secs = +b.dataset.s; $("#nS").querySelectorAll("[data-s]").forEach(x => x.classList.toggle("on", x === b)); }));
+  $("#backPlay").addEventListener("click", renderPlay);
+  $("#joinForm").addEventListener("submit", async e => {
+    e.preventDefault();
+    const code = $("#roomIn").value.replace(/\D/g, ""), err = $("#joinErr");
+    err.hidden = true;
+    try {
+      const s = await withTimeout(R(`rooms/${code}`).get(), 9000);
+      const v = s.val();
+      if (!v || nowS() - (v.created || 0) > 12 * 3600e3){ err.textContent = "Diesen Raum gibt es nicht. · این اتاق وجود ندارد."; err.hidden = false; return; }
+      if (v.status === "end"){ err.textContent = "Dieses Spiel ist schon vorbei. · این بازی تمام شده است."; err.hidden = false; return; }
+      await joinRoom(code);
+    } catch(ex){ err.textContent = "Keine Verbindung. · اتصال برقرار نشد."; err.hidden = false; }
+  });
+  $("#mkRoom").addEventListener("click", async () => {
+    if (!topics.length){ toast("Bitte ein Thema wählen · یک موضوع انتخاب کن"); return; }
+    const strip1 = it => clean({q:it.q, o:it.o, a:it.a, fa:it.fa || null, tip:it.tip || null, art:!!it.art, s:it._s});
+    const qb = poolFor("basis", topics, true).slice(0, n).map(strip1);
+    const qp = poolFor("plus", topics, true).slice(0, n).map(strip1);
+    const nn = Math.min(qb.length, qp.length);
+    if (nn < 3){ toast("Zu wenige Fragen – mehr Themen wählen · موضوع بیشتری انتخاب کن"); return; }
+    let code = null;
+    for (let t = 0; t < 6; t++){
+      const c = String(1000 + Math.floor(Math.random() * 9000));
+      const ex = (await R(`rooms/${c}`).get()).val();
+      if (!ex || nowS() - (ex.created || 0) > 12 * 3600e3){ code = c; break; }
+    }
+    if (!code){ toast("Bitte nochmal versuchen"); return; }
+    await R(`rooms/${code}`).set({created:TS(), host:myPid(), hostName:P.name || "", status:"lobby", n:nn, secs, idx:0, t0:0, topics:topics.join(","), qs:{b:qb.slice(0, nn), p:qp.slice(0, nn)}});
+    await joinRoom(code);
+  });
+}
+async function joinRoom(code){
+  stopLive();
+  const pid = myPid();
+  await R(`rooms/${code}/players/${pid}`).update({name:P.name || "Gast", level:P.level || "basis", code:P.code || null, score:0, at:TS()});
+  LV = {code, pid, ref:R(`rooms/${code}`), shown:null, timer:null, tick:null, logged:false};
+  LV.ref.on("value", snap => { const v = snap.val(); if (LV && LV.code === code) liveRender(v); });
+}
+function liveRanking(room){ return Object.entries(room.players || {}).map(([pid, p]) => Object.assign({pid, color:colorOf(p.name)}, p)).sort((a, b) => (b.score || 0) - (a.score || 0)); }
+function liveRender(room){
+  if (!room){ stopLive(); renderPlay(); toast("Raum geschlossen · اتاق بسته شد"); return; }
+  const isHost = room.host === LV.pid;
+  const key = room.status + ":" + room.idx;
+  const app = $("#app");
+  document.documentElement.style.setProperty("--accent", "var(--s5)");
+  const players = liveRanking(room);
+  if (room.status === "lobby"){
+    LV.shown = key;
+    app.innerHTML = `<section class="page wrap"><h1>Live-Raum</h1><p class="fa h">کد اتاق را به بقیه بگو:</p>
+      <div class="card" style="margin-top:16px;text-align:center"><div class="roomcode">${LV.code}</div>
+      <p class="muted">${room.n} Fragen · ${room.secs} s</p></div>
+      <p class="lbl">Im Raum (${players.length})<span class="fa">در اتاق</span></p>
+      <div class="sbar">${players.map(p => `<span style="--c:${p.color}"><i></i>${esc(p.name)}${p.level === "plus" ? " ★" : ""}</span>`).join("")}</div>
+      ${isHost ? `<div class="actions"><button class="btn primary" id="liveGo" ${players.length < 1 ? "disabled" : ""}>Spiel starten<span class="fa">شروع بازی</span></button></div>` : `<p class="wait">Warte auf den Start … · منتظر شروع بازی …</p>`}
+      <p style="margin-top:20px"><button class="linkbtn" id="leave">Raum verlassen · خروج از اتاق</button></p></section>`;
+    if (isHost) $("#liveGo").addEventListener("click", () => LV.ref.update({status:"q", idx:0, t0:TS()}));
+    $("#leave").addEventListener("click", () => { stopLive(); renderPlay(); });
+    return;
+  }
+  const me = (room.players || {})[LV.pid] || {level:P.level};
+  const set = (room.qs || {})[me.level === "plus" ? "p" : "b"] || [];
+  if (room.status === "q"){
+    const ans = ((room.ans || {})[room.idx] || {});
+    const nAns = Object.keys(ans).length;
+    if (isHost){
+      clearTimeout(LV.timer);
+      const left = (room.t0 || nowS()) + room.secs * 1000 - nowS();
+      if (nAns >= players.length) liveReveal(room);
+      else LV.timer = setTimeout(() => LV.ref.once("value").then(s => { const v = s.val(); if (v && v.status === "q" && v.idx === room.idx) liveReveal(v); }), Math.max(0, left) + 400);
+    }
+    if (LV.shown === key){ const c = $("#ansCount"); if (c) c.textContent = `${nAns} / ${players.length}`; return; }
+    LV.shown = key;
+    const it = set[room.idx];
+    if (!it){ return; }
+    const q = Object.assign({t:"c"}, it);
+    app.innerHTML = `<section class="page wrap">
+      <p class="muted small" style="margin:0">Frage ${room.idx + 1} von ${room.n} · <span id="ansCount">${nAns} / ${players.length}</span> geantwortet</p>
+      <div class="timer"><i id="tbar"></i></div>
+      <div class="panel"><div class="qitem" id="lq"></div></div>
+      ${isHost ? `<p style="margin-top:14px"><button class="linkbtn" id="forceReveal">Auflösen · نمایش جواب</button></p>` : ""}</section>`;
+    if (isHost) $("#forceReveal").addEventListener("click", () => LV.ref.once("value").then(s => liveReveal(s.val())));
+    const total = room.secs * 1000;
+    const bar = $("#tbar");
+    clearInterval(LV.tick);
+    let done = !!ans[LV.pid];
+    const tickF = () => {
+      const left = Math.max(0, (room.t0 || nowS()) + total - nowS());
+      if (bar) bar.style.width = (left / total * 100) + "%";
+      if (left <= 0){ clearInterval(LV.tick); if (!done){ done = true; $("#lq").insertAdjacentHTML("beforeend", `<p class="wait">Zeit ist um! · وقت تمام شد!</p>`); $("#lq").querySelectorAll("button").forEach(b => b.disabled = true); } }
+    };
+    LV.tick = setInterval(tickF, 200); tickF();
+    const box = document.createElement("div"); $("#lq").append(box);
+    renderItem(box, q, ok => {
+      if (done) return;
+      done = true;
+      const ms = Math.max(0, nowS() - (room.t0 || nowS()));
+      const pts = ok ? 500 + Math.round(500 * Math.max(0, 1 - ms / total)) : 0;
+      R(`rooms/${LV.code}/ans/${room.idx}/${LV.pid}`).set({ok, ms, pts}).catch(() => {});
+      $("#lq").insertAdjacentHTML("beforeend", `<p class="wait">${ok ? "Richtig! · درست!" : "Leider falsch. · متأسفانه غلط."} Warte auf die anderen … · منتظر بقیه …</p>`);
+    });
+    if (ans[LV.pid]){ $("#lq").querySelectorAll("button").forEach(b => b.disabled = true); $("#lq").insertAdjacentHTML("beforeend", `<p class="wait">Schon beantwortet · جواب داده‌ای</p>`); }
+    return;
+  }
+  clearInterval(LV.tick); clearTimeout(LV.timer);
+  if (room.status === "r"){
+    if (LV.shown === key) return;
+    LV.shown = key;
+    const it = Object.assign({t:"c"}, set[room.idx] || {});
+    const my = ((room.ans || {})[room.idx] || {})[LV.pid];
+    const last = room.idx + 1 >= room.n;
+    app.innerHTML = `<section class="page wrap"><p class="muted small" style="margin:0">Frage ${room.idx + 1} von ${room.n}</p>
+      <div class="fb ${my && my.ok ? "ok" : "bad"}"><strong>${my ? (my.ok ? `Richtig! +${my.pts}` : "Falsch") : "Keine Antwort"}</strong> <span class="fa">${my ? (my.ok ? "درست!" : "غلط") : "جوابی ندادی"}</span>
+      <p class="sol" lang="de"><b>${esc(it.q ? solutionOf(it) : "")}</b></p>${it.fa && !it.art ? `<p class="fa">${it.fa}</p>` : ""}${it.tip ? `<p class="fa">💡 ${it.tip}</p>` : ""}</div>
+      <ol class="rank">${players.map((p, k) => `<li class="${p.pid === LV.pid ? "me" : ""}" style="--c:${p.color}"><span class="pl">${k + 1}</span><span class="av">${esc(initial(p.name))}</span><div><b>${esc(p.name)}</b></div><span class="sc">${p.score || 0}</span></li>`).join("")}</ol>
+      ${isHost ? `<div class="actions"><button class="btn primary" id="liveNext">${last ? "Ergebnis zeigen" : "Nächste Frage"}<span class="fa">${last ? "نتیجهٔ نهایی" : "سؤال بعدی"}</span></button></div>` : `<p class="wait">Gleich geht's weiter … · الان ادامه می‌دهیم …</p>`}</section>`;
+    if (isHost) $("#liveNext").addEventListener("click", () => {
+      if (last) LV.ref.update({status:"end"});
+      else LV.ref.update({status:"q", idx:room.idx + 1, t0:TS()});
+    });
+    return;
+  }
+  if (room.status === "end"){
+    if (LV.shown === key) return;
+    LV.shown = key;
+    const myAns = Object.values(room.ans || {}).map(a => (a || {})[LV.pid]).filter(Boolean);
+    const correct = myAns.filter(a => a.ok).length;
+    const top = players.length ? players[0].score || 0 : 0;
+    const win = players.length > 1 && (me.score || 0) === top && top > 0;
+    const doneKey = LV.code + ":" + (room.created || 0);
+    L.liveDone = L.liveDone || {};
+    if (P.code && !L.liveDone[doneKey]){
+      L.liveDone[doneKey] = 1; saveL();
+      addPoints(correct + (win ? 5 : 0) + 1);
+      logEv({k:"live", s:room.topics || "", c:correct, n:room.n, win, with:players.filter(p => p.pid !== LV.pid).map(p => p.name)});
+    }
+    const list = players.map(p => ({name:p.name, score:p.score || 0, color:p.color}));
+    app.innerHTML = `<section class="page wrap"><h1>Ergebnis</h1><p class="fa h">نتیجهٔ نهایی 🎉</p>${podiumHtml(list)}
+      <div class="card"><p style="margin:0">Du hast ${correct} von ${room.n} Fragen richtig beantwortet. · ${faNum(correct)} جواب درست از ${faNum(room.n)}.</p>${P.code ? "" : `<p class="small-note">Ohne Code werden keine Punkte gespeichert.</p>`}</div>
+      <div class="actions"><button class="btn primary" id="toPlay">Zurück<span class="fa">برگشت</span></button></div></section>`;
+    $("#toPlay").addEventListener("click", () => { stopLive(); renderPlay(); });
+  }
+}
+function liveReveal(room){
+  if (!room || room.status !== "q" || !LV) return;
+  const code = LV.code, idx = room.idx;
+  R(`rooms/${code}/rev/${idx}`).transaction(cur => cur ? undefined : true).then(res => {
+    if (!res.committed) return;
+    return R(`rooms/${code}`).once("value").then(s => {
+      const v = s.val(); if (!v) return;
+      const a = ((v.ans || {})[idx]) || {};
+      const upd = {status:"r"};
+      Object.entries(v.players || {}).forEach(([pid, p]) => { upd[`players/${pid}/score`] = (p.score || 0) + ((a[pid] && a[pid].pts) || 0); });
+      return R(`rooms/${code}`).update(upd);
+    });
+  }).catch(() => {});
+}
+
+/* ---------- Start ---------- */
 document.addEventListener("click", e => { const b = e.target.closest("[data-say]"); if (b) speak(b.dataset.say); });
 try { if ("speechSynthesis" in window) speechSynthesis.getVoices(); } catch(e){}
+renderWho();
+if (P){ watchProfile(); renderHome(); } else renderStart();
 
-renderHome();
 </script>
 </body>
 </html>
